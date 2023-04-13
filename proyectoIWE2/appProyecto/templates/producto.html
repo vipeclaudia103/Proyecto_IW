@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Listado de departamentos</title>
+    </head>
+
+
+    <body>
+        <div id="content">
+	     <h1>Gestor de productos</h1>
+         <h2>Listado de productos</h2>
+         {% if lista_productos %}
+             <ul>
+             {% for r in lista_productos %}
+                 <li>
+                     <a href="/producto/{{ r.id }}">{{ r.nombre}}</a>
+                 </li>
+             {% endfor %}
+             </ul>
+         {% else %}
+         <p>No hay productos creados.</p>
+         {% endif %}
+        </div>
+    </body>
+</html>
