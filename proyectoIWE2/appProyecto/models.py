@@ -21,7 +21,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.CharField(max_length=1000)
     categoria = models.CharField(max_length=200)
-    componentes = models.ManyToManyField(Componente, through="Elemento")
+    #componentes = models.ManyToManyField(Componente, through="Elemento")
 
 
 class Elemento(models.Model):
@@ -31,6 +31,8 @@ class Elemento(models.Model):
         Componente, on_delete=models.CASCADE)
     # index = models.
     cantidad = models.IntegerField(default=0)
+    class Meta:
+        unique_together = (('id_producto', 'id_componente'),)
 
 
 class Pedido(models.Model):
@@ -39,6 +41,4 @@ class Pedido(models.Model):
     fecha = models.DateTimeField('Fecha de creacion')
     cantidad = models.IntegerField(default=0)
     precio = models.FloatField(default=0)
-
-
-# host = models.ForeignKey(User, related_name='host_set')
+    
