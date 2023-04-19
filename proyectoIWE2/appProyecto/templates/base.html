@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
   </head>
   <body>
     <div id="content">
         <h1>Gestión de pedidos</h1>
           <header class="cabeceraflex">
              <a href="" class="logocabecera">
-                 <img src="imagenes/logo completo.png" />
+                 <img src="{% static 'imagenes/miniLogo.png' %}" />
              </a>
              <section class="section-header-flex">
                 <h1>

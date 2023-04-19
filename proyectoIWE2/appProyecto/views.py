@@ -3,8 +3,8 @@ from django.shortcuts import render
 from .models import *
 
 
-def principal(request):
-    return HttpResponse("hola")
+def inicio(request):
+    return render(request, 'inicio.html')
 
 
 def producto(request):
