@@ -7,4 +7,6 @@ admin.site.register(Pedido)
 admin.site.register(Producto)
 admin.site.register(Componente)
 admin.site.register(Elemento)
+admin.site.register(Categoria)
+admin.site.register(Cantidad)
 

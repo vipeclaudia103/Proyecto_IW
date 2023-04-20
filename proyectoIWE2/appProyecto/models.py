@@ -2,47 +2,44 @@ from django.db import models
 
 # Create your models here.
 
-
-class Categoria(models.Model):
-    nombre = models.CharField(max_length=20)
-
-
 class Cliente(models.Model):
-    cif = models.CharField(primary_key=True, max_length=100)
+    cif = models.CharField(max_length=100, unique=True)
     nombre = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)
-    telefono = models.IntegerField(default=0)
+    telefono = models.CharField(max_length=30)
     email = models.EmailField(max_length=200)
-
 
 class Componente(models.Model):
     nombre = models.CharField(max_length=200)
     marca = models.CharField(max_length=200)
 
+class Categoria(models.Model):
+    descripcion = models.CharField(max_length=1000)
+    nombre = models.CharField(max_length=100, unique=True)
 
 class Producto(models.Model):
-    precio = models.IntegerField
+    precio = models.FloatField(default=0)
     nombre = models.CharField(max_length=200)
     descripcion = models.CharField(max_length=1000)
-    categoria = models.CharField(max_length=200)
-    # componentes = models.ManyToManyField(Componente, through="Elemento")
-
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    componente = models.ManyToManyField(Componente, through="Elemento")
 
 class Elemento(models.Model):
-    id_producto = models.ForeignKey(
-        Producto, on_delete=models.CASCADE)
-    id_componente = models.ForeignKey(
-        Componente, on_delete=models.CASCADE)
-    # index = models.
-    cantidad = models.IntegerField(default=0)
-
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    id_componente = models.ForeignKey(Componente, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(default=1)
     class Meta:
         unique_together = (('id_producto', 'id_componente'),)
 
-
 class Pedido(models.Model):
-    cif = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    id_producto = models.ManyToManyField(Producto)
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     fecha = models.DateTimeField('Fecha de creacion')
-    cantidad = models.IntegerField(default=0)
     precio = models.FloatField(default=0)
+    producto = models.ManyToManyField(Producto, through="Cantidad")
+
+class Cantidad(models.Model):
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    id_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    n_producto = models.IntegerField(default=1)
+    class Meta:
+        unique_together = (('id_producto', 'id_pedido'),)
