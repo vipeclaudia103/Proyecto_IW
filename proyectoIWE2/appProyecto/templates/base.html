@@ -10,123 +10,58 @@
   </head>
   <body>
     <header class="cabeceraflex">
-      <div class="cabecera">
-        <a href="appProyecto/" class="logocabecera">
+      <a href="{% url 'inicio'%}" class="logoCabecera enlacesClaros">
+        <div class="cabecera" style="margin-right: 10em">
           <img src="{% static 'imagenes/miniLogo.png' %}" style="height: 4em" />
-        </a>
-        <h1 style="text-decoration: none; margin: 0px; display: inline-block">
-          Deustronic Components S.L.
-        </h1>
-      </div>
+          <h1 style="text-decoration: none; margin: 0px; display: inline-block">
+            Deustronic Components S.L.
+          </h1>
+        </div></a
+      >
       <div class="cabecera">
         <nav class="menu">
-          <a class="enlace" href="">Sectores </a>
-          <a class="enlace" href="">Contacto</a>
-          <a class="enlace" href="/appProyecto">Clientes</a>
-
+          <a class="enlace" href="{% url 'lista productos'  %}">Productos</a>
+          <a class="enlace" href="{% url 'lista pedidos'  %}">Pedidos</a>
+          <a class="enlace" href="{% url 'lista clientes'  %}">Clientes</a>
+          <a class="enlace" href="{% url 'lista componentes'  %}">Componentes</a>
+          <!-- <a class="enlace" href="">Caracteristicas</a> -->
         </nav>
       </div>
     </header>
     <main>{% block contenido %}{% endblock %}</main>
     <footer class="flexFila">
       <div class="sociales-footer">
-        <h3>Enlaces de interes</h3>
+        <h3>Navegación</h3>
         <ul class="linksFooter">
           <li class="iconosRedes">
-            <a class="LinkIiconosRedes" href="Contacto.html"
-              ><span>Contacto</span>
+            <a class="LinkIiconosRedes enlacesClaros" href="Contacto.html">
+              <span>Contacto</span>
             </a>
-            <a href="Contacto.html">
-              <img class="imgIconos" src="Imagenes/iconoContacto.png" alt="" />
-            </a>
+            <a class="enlacesClaros" href="Contacto.html"> </a>
           </li>
           <li class="iconosRedes">
-            <a class="LinkIiconosRedes" href="clientes.html"
+            <a class="LinkIiconosRedes enlacesClaros" href="clientes.html"
               ><span>Clientes</span>
             </a>
-            <a href="sectores.html">
-              <img
-                class="imgIconos"
-                src="Imagenes/iconoInetum.png"
-                alt="Icono Libro"
-              />
-            </a>
           </li>
           <li class="iconosRedes">
-            <a class="LinkIiconosRedes" href="sectores.html"
+            <a class="LinkIiconosRedes enlacesClaros" href="sectores.html"
               ><span>Sectores</span>
             </a>
-            <a href="sectores.html">
+            <a class="enlacesClaros" href="sectores.html">
               <img class="imgIconos" src="Imagenes/iconoLibro.png" alt="" />
             </a>
           </li>
         </ul>
       </div>
-      <div class="sociales-footer">
-        <h3>Redes Sociales</h3>
-        <ul class="linksFooter">
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes"
-              href="https://es.linkedin.com/company/inetum-realdolmen?trk=public_profile_topcard-current-company"
-              ><span>Linkedin</span>
-            </a>
-            <a
-              href="https://es.linkedin.com/company/inetum-realdolmen?trk=public_profile_topcard-current-company"
-            >
-              <img
-                class="imgIconos"
-                src="Imagenes/icono_linkedin.png"
-                alt="icono de linkedin"
-              />
-            </a>
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes"
-              href="https://es.linkedin.com/company/inetum-realdolmen?trk=public_profile_topcard-current-company"
-            >
-              <span>Twiter</span></a
-            >
-            <a href="https://twitter.com/inetum_es?lang=es">
-              <img
-                class="imgIconos"
-                src="Imagenes/icono_twitter.png"
-                alt="icono_twitter"
-              />
-            </a>
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes"
-              href="https://es.linkedin.com/company/inetum-realdolmen?trk=public_profile_topcard-current-company"
-            >
-              <span>Facebook</span></a
-            >
-            <a href="https://twitter.com/inetum_es?lang=es">
-              <img
-                class="imgIconos"
-                src="Imagenes/icono_facebook.png"
-                alt="icono_twitter"
-              />
-            </a>
-          </li>
-        </ul>
-      </div>
-
       <div id="cuadroFooterLogo" class="sociales-footer">
-        <a clase="enlaceLogoOscuro" href=" Principal.html"
+        <a class="enlacesClaros" href="{% url 'inicio'%}"
           ><img
-            id="logoAzulOscuro"
-            src="Imagenes/logo-blue.png"
-            alt="logo Inetum Oscuro"
+            id="logoCompleto"
+            src="{% static 'imagenes/logoCompleto.png' %}"
+            alt="logo completo"
           />
         </a>
-        <span
-          ><h4 class="linksFooter">
-            <a id="derechosIcons" href="https://icons8.com">@iconos </a>
-          </h4></span
-        >
       </div>
     </footer>
   </body>
