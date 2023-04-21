@@ -10,19 +10,25 @@
 
 </div>
 
-    <ul class="listadoDetalles">
-        <li>
-            {{ producto.nombre}}
-        </li>
-        <li>
-            {{ producto.telefono}}
-        </li>
-        <li>
-            <a href="/appEmpresaDjango/productos/{{ producto.id }}/empleados">Ver empleados</a>
-        </li>
+<ul class="listadoDetalles">
+    <li>
+        {{ producto.nombre}}
+    </li>
+    <li>
+        {{ producto.precio}}
+    </li>
+    <h2>Componentes:</h2>
+    <ul>
+        {% for elemento in elementos %}
+        <li>{{ elemento.id_componente.nombre }} - {{ elemento.id_componente.marca }}</li>
+        {% endfor %}
     </ul>
+    <!-- <li>
+            <a href="/appEmpresaDjango/productos/{{ producto.id }}/componente">Ver empleados</a>
+        </li> -->
+</ul>
 {% else %}
-    <p>No existe este producto.</p>
+<p>No existe este producto.</p>
 {% endif %}
 
 {% endblock %}

@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import *
 from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404, get_list_or_404
 
 
 def inicio(request):
@@ -11,9 +12,12 @@ def inicio(request):
 class ProductosListView(ListView):
     model = Producto
 
-
 class ProductoDetailView(DetailView):
     model = Producto
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['elementos'] = self.object.elemento_set.all()
+        return context
 
 
 class PedidosListView(ListView):
