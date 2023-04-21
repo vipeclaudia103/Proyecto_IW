@@ -40,12 +40,9 @@ nav {
   flex-grow: 1;
 }
 main {
-  margin: 0;
-  display: flex;
-  flex-flow: row wrap;
   padding: 20px;
   background-color: #e3f1f5;
-  border: 1.5em solid #242c32;
+  border: 1em dashed #242c32;
 }
 .enlace {
   background-color: #fff;
@@ -100,7 +97,7 @@ table {
   border: 5px solid #232d4b;
   align-items: center;
   padding: 8px;
-  width: 14em;
+  width: fit-content;
 }
 td {
   border-bottom: 2px dashed rgb(159, 70, 70);
@@ -123,4 +120,10 @@ td {
 #logoCompleto {
   flex-wrap: wrap-reverse;
   max-height: 150px;
+}
+h2 {
+  padding: 0.5em;
+  margin-bottom: .5cm;
+  border-bottom: 6px double darkslategrey;
+  width: fit-content;
 }

@@ -1,22 +1,20 @@
-{% extends "base.html" %}
-
-{% block titulo %}Listado de productos{% endblock %}
-
+{% extends "base.html" %} {% block titulo %}Listado de productos{% endblock %}
 {% block contenido %}
-    <div id="content">
-	    <h1>Gestor de productos</h1>
-        <h2>Listado de productos</h2>
-        {% if producto_list %}
-            <ul>
-            {% for producto in producto_list %}
-                <li>
-                    <!-- <a href="/producto/{{ r.id }}">{{ r.nombre}}</a> -->
-                    <a href="/appProyecto/productos/{{ producto.id }}">{{producto.nombre}}</a> - Precio: {{producto.precio}}€
-                </li>
-            {% endfor %}
-            </ul>
-        {% else %}
-        <p>No hay productos creados.</p>
-        {% endif %}
-    </div>
+<div id="content">
+  <h1>Gestor de productos</h1>
+  <h2>Listado de productos</h2>
+  {% if producto_list %}
+  <ul>
+    {% for producto in producto_list %}
+    <li>
+      <!-- <a href="/producto/{{ r.id }}">{{ r.nombre}}</a> -->
+      <a href="{% url 'detalle producto' producto.id %}">{{producto.nombre}}</a>
+      - Precio: {{producto.precio}}€
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No hay productos creados.</p>
+  {% endif %}
+</div>
 {% endblock %}

@@ -24,6 +24,7 @@
           <a class="enlace" href="{% url 'lista pedidos'  %}">Pedidos</a>
           <a class="enlace" href="{% url 'lista clientes'  %}">Clientes</a>
           <a class="enlace" href="{% url 'lista componentes'  %}">Componentes</a>
+          <a class="enlace" href="{% url 'lista categorias'  %}">Categorias</a>
           <!-- <a class="enlace" href="">Caracteristicas</a> -->
         </nav>
       </div>
@@ -34,23 +35,39 @@
         <h3>Navegación</h3>
         <ul class="linksFooter">
           <li class="iconosRedes">
-            <a class="LinkIiconosRedes enlacesClaros" href="Contacto.html">
-              <span>Contacto</span>
-            </a>
-            <a class="enlacesClaros" href="Contacto.html"> </a>
+            <a
+              class="LinkIiconosRedes enlacesClaros"
+              href="{% url 'lista productos'  %}"
+              ><span>Productos</span></a
+            >
           </li>
           <li class="iconosRedes">
-            <a class="LinkIiconosRedes enlacesClaros" href="clientes.html"
-              ><span>Clientes</span>
-            </a>
+            <a
+              class="LinkIiconosRedes enlacesClaros"
+              href="{% url 'lista pedidos'  %}"
+              ><span>Pedidos</span></a
+            >
           </li>
           <li class="iconosRedes">
-            <a class="LinkIiconosRedes enlacesClaros" href="sectores.html"
-              ><span>Sectores</span>
-            </a>
-            <a class="enlacesClaros" href="sectores.html">
-              <img class="imgIconos" src="Imagenes/iconoLibro.png" alt="" />
-            </a>
+            <a
+              class="LinkIiconosRedes enlacesClaros"
+              href="{% url 'lista clientes'  %}"
+              ><span>Clientes</span></a
+            >
+          </li>
+          <li class="iconosRedes">
+            <a
+              class="LinkIiconosRedes enlacesClaros"
+              href="{% url 'lista componentes'  %}"
+              ><span>Componentes</span></a
+            >
+          </li>
+          <li class="iconosRedes">
+            <a
+              class="LinkIiconosRedes enlacesClaros"
+              href="{% url 'lista categorias'  %}"
+              >Categorias</a
+            >
           </li>
         </ul>
       </div>

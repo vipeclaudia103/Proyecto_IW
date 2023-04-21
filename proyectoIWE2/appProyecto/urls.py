@@ -10,8 +10,11 @@ urlpatterns = [
          views.PedidosListView.as_view(), name='lista pedidos'),
     path('pedidos/<int:pk>',  views.PedidoDetailView.as_view(),
          name='detalle pedido'),
-    # path('categoria/<int:pk>',
-    #      views.CategoriasListView, name='listaCategoria'),
+    path('categoria/<int:pk>/productos',
+         views.CategoriaDetailView.as_view(), name='lista producto categoria'),
+    path('categoria/',         views.CategoriasListView.as_view(),
+         name='lista categorias'),
+
     path('productos/<int:pk>/componentes',
          views.ComponenteDetailView.as_view(), name='detalle componentes productos'),
     path('componentes/',

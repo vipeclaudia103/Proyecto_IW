@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block titulo %} Lista de Categorias{% endblock %}
+{% block contenido %}
+<h2>Listado de categorias</h2>
+<h3>{{ categoria.nombre }}</h3>
+{% if object_list %}
+<ul>
+  {% for e in object_list %}
+  <li>
+    <a href="{% url 'lista producto categoria' e.id %}">{{ e.nombre}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No hay empleados creados.</p>
+{% endif %} {% endblock contenido %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block titulo %} Detalle del categoria {% endblock%}
+ {% block contenido %}
+<h2>Datos del categoria</h2>
+
+{% if categoria %}
+<table>
+  <thead>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th role="2">Más informacion</th>
+  </thead>
+  {% for departamento in categoria_list %}
+  <tbody></tbody>
+  <tbody>
+    <tr>
+      <td>{{ categoria.nombre}}</td>
+      <td>{{ categoria.descripcion}}</td>
+      <td>
+        <a href="{% url 'lista producto categoria' r.id %}">Ver categorias</a>
+      </td>
+      <td>
+        <a href="{% url 'detalle componentes productos' r.id %}">Ver componentes</a>
+      </td>
+    </tr>
+    {% endfor%}
+  </tbody>
+</table>
+{% else %}
+<p>No existe este categoria.</p>
+{% endif %} {% endblock %}

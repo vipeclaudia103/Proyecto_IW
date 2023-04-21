@@ -11,9 +11,12 @@ def inicio(request):
 
 class ProductosListView(ListView):
     model = Producto
+    context_object_name = 'producto'
+
 
 class ProductoDetailView(DetailView):
     model = Producto
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['elementos'] = self.object.elemento_set.all()
@@ -34,6 +37,8 @@ class ComponentesListView(ListView):
 
 class ComponenteDetailView(DetailView):
     model = Componente
+
+
 class ClientesListView(ListView):
     model = Cliente
 
@@ -42,12 +47,12 @@ class ClienteDetailView(DetailView):
     model = Cliente
 
 
-# class CategoriasListView(ListView):
-#     model = Categoria
+class CategoriasListView(ListView):
+    model = Categoria
 
 
-# class CategoriaDetailView(DetailView):
-#     model = Categoria
+class CategoriaDetailView(DetailView):
+    model = Categoria
 
 
 # def producto(request):
