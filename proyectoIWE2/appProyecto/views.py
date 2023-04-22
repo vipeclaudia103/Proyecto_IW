@@ -1,8 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.views.generic import ListView, DetailView
+from django.views import View
 from django.shortcuts import get_object_or_404, get_list_or_404
+from appProyecto.forms import *
 
 
 def inicio(request):
@@ -22,6 +24,22 @@ class ProductoDetailView(DetailView):
         context['elementos'] = self.object.elemento_set.all()
         return context
 
+class ProductoCreateView(View):
+    def get(self, request, *args, **kwargs):
+        formulario = ProductoForm()
+        context = {
+            'formulario': formulario
+        }
+        return render(request, 'appProyecto/producto_create.html', context)
+    
+    def post(self, request, *args, **kwargs):
+        formulario = ProductoForm(request.POST)
+        if formulario.is_valid():
+
+            formulario.save()
+            
+            return redirect('lista productos')
+        return render(request, 'appProyecto/producto_create.html', {'formulario': formulario})
 
 class PedidosListView(ListView):
     model = Pedido

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalle del producto {% endblock %}
+
+{% block contenido %}
+<h2>Nuevo producto</h2>
+
+<form action="{% url 'crear producto' %}" method="post">
+    {% csrf_token %}
+    {{ formulario.errors }}
+    {{ formulario.as_ul }}
+    <input type="submit" value="Nuevo producto" />
+</form>
+
+{% endblock %}
