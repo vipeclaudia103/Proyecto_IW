@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import *
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views import View
 from django.shortcuts import get_object_or_404, get_list_or_404
 from appProyecto.forms import *
@@ -49,7 +49,7 @@ class PedidoDetailView(DetailView):
     model = Pedido
 
 
-class ComponentesListView(ListView):
+class ComponenteListView(ListView):
     model = Componente
 
 
@@ -77,3 +77,42 @@ class CategoriaDetailView(DetailView):
 #     Pedido = Producto.objects.order_by('nombre')
 #     context = {'lista_productos': productos}
 #     return render(request, 'producto.html', context)
+
+class ComponenteCreateView(View):
+    # Llamada para mostrar la página con el formulario de creación al usuario
+    def get(self, request, *args, **kwargs):
+        formulario = ComponenteForm()
+        context = {
+            'formulario': formulario
+        }
+        return render(request, 'appProyecto/componente_create.html', {'formulario': formulario})
+
+    # Llamada para procesar la creación del departamento
+    def post(self, request, *args, **kwargs):
+        formulario = ComponenteForm(request.POST)
+        if formulario.is_valid(): # is_valid() deja los datos validados en el atributo cleaned_data
+            
+            formulario.save()
+
+            # Volvemos a la lista de departamentos
+            return redirect('lista componentes')
+        # Si los datos no son válidos, mostramos el formulario nuevamente indicando los errores
+        return render(request, 'appProyecto/componente_create.html', {'formulario': formulario})
+    
+class ComponenteUpdateView(UpdateView):
+    model = Componente
+    fields = '__all__'
+    success_url ="/appProyecto/componentes"
+    template_name = "appProyecto/componente_update_form.html"
+
+        
+class ComponenteDeleteView(DeleteView):
+    # specify the model you want to use
+    model = Componente
+     
+    # can specify success url
+    # url to redirect after successfully
+    # deleting object
+    success_url ="/appProyecto/componentes"
+     
+    template_name = "appProyecto/componente_confirm_delete.html"

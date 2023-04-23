@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalle del departamento {% endblock %}
+
+{% block contenido %}
+<h2>Datos del componente</h2>
+
+{% if componente %}
+    <ul>
+        <li>
+            {{ componente.nombre}}
+        </li>
+        <li>
+            {{ componente.marca}}
+        </li>
+    </ul>
+{% else %}
+    <p>No existe este componente.</p>
+{% endif %}
+
+{% endblock %}

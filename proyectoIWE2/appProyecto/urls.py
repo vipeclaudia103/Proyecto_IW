@@ -22,10 +22,13 @@ urlpatterns = [
     path('productos/<int:pk>/componentes',
          views.ComponenteDetailView.as_view(), name='detalle componentes productos'),
     path('componentes/',
-         views.ComponentesListView.as_view(), name='lista componentes'),
+         views.ComponenteListView.as_view(), name='lista componentes'),
     path('clientes/',
          views.ClientesListView.as_view(), name='lista clientes'),
     path('clientes/<int:pk>',
          views.ClienteDetailView.as_view(), name='detalle cliente'),
 
+     path('componentes/create', views.ComponenteCreateView.as_view(), name='componente_create'),
+     path('componentes/<int:pk>/update/', views.ComponenteUpdateView.as_view(), name='departamento_update'),
+     path('componentes/<int:pk>/delete/', views.ComponenteDeleteView.as_view(), name='departamento_delete'),
 ]
