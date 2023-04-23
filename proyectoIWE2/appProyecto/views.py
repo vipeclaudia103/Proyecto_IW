@@ -87,7 +87,6 @@ class ComponenteCreateView(View):
         }
         return render(request, 'appProyecto/componente_create.html', {'formulario': formulario})
 
-    # Llamada para procesar la creación del departamento
     def post(self, request, *args, **kwargs):
         formulario = ComponenteForm(request.POST)
         if formulario.is_valid(): # is_valid() deja los datos validados en el atributo cleaned_data
@@ -107,7 +106,6 @@ class ComponenteUpdateView(UpdateView):
 
         
 class ComponenteDeleteView(DeleteView):
-    # specify the model you want to use
     model = Componente
      
     # can specify success url
