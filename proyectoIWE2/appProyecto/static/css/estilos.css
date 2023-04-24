@@ -93,18 +93,6 @@ h4 {
   margin: 0em;
   width: fit-content;
 }
-table {
-  border: 5px solid #232d4b;
-  align-items: center;
-  padding: 8px;
-  width: fit-content;
-}
-td {
-  border-bottom: 2px dashed rgb(159, 70, 70);
-  margin: 3px;
-  padding: 0px;
-  width: 5em;
-}
 .descripcion {
   font-size: 16px;
   line-height: 30px;
@@ -123,7 +111,69 @@ td {
 }
 h2 {
   padding: 0.5em;
-  margin-bottom: .5cm;
+  margin-bottom: 0.5cm;
   border-bottom: 6px double darkslategrey;
   width: fit-content;
+}
+table.listados {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 80%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.listados td, table.listados th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.listados tbody td {
+  font-size: 13px;
+}
+table.listados tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.listados thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.listados thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.listados thead th:first-child {
+  border-left: none;
+}
+
+table.listados tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.listados tfoot td {
+  font-size: 14px;
+}
+table.listados tfoot .links {
+  text-align: right;
+}
+table.listados tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+table.listados tbody tr:hover {
+  background-color: #eed189;
+  color: #204956;
 }

@@ -1,31 +1,37 @@
-{% extends "base.html" %}
-
-{% block titulo %} Producto| {{ producto.nombre}}{% endblock %}
-
-{% block contenido %}
+{% extends "base.html" %} {% block titulo %} Producto| {{ producto.nombre}}
+{%endblock %} {% block contenido %}
 <h1>Detalle del Producto</h1>
-<h2>{{ producto.nombre}}</h2>
-{% if producto %}
 <div class="descripcion">
+  {% if producto %}
+  <h2>{{ producto.nombre}} - {{ producto.precio}}€</h2>
 
+  <h2>Componentes:</h2>
+  <table class="listados">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for elemento in elementos %}
+      <tr>
+        <td>
+          <a href="{% url 'detalle componentes' elemento.id_componente.pk %}">
+            {{ elemento.id_componente.nombre }}
+          </a>
+        </td>
+        <td>{{ elemento.id_componente.marca }}</td>
+        <td>{{ elemento.cantidad }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+  <p>No existe este producto.</p>
+  {% endif %}
 </div>
-
-<ul class="listadoDetalles">
-    <li>
-        {{ producto.nombre}}
-    </li>
-    <li>
-        {{ producto.precio}}
-    </li>
-    <h2>Componentes:</h2>
-    <ul>
-        {% for elemento in elementos %}
-        <li>{{ elemento.id_componente.nombre }} - {{ elemento.id_componente.marca }}</li>
-        {% endfor %}
-    </ul>
-</ul>
-{% else %}
-<p>No existe este producto.</p>
-{% endif %}
 
 {% endblock %}

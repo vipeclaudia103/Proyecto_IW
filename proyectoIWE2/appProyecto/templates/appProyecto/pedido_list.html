@@ -1,18 +1,32 @@
-{% extends "base.html" %} {% block titulo %}Listado de pedidos{% endblock %}
-{% block contenido %}
+{% extends "base.html" %} 
+{% block titulo %}Listado de pedidos{% endblock %} 
+{%block contenido %}
 <div id="content">
   <h1>Gestor de pedidos</h1>
   <h2>Listado de pedidos</h2>
-  {% if items %}
-  <ul>
-    {% for r in object_list %}
-    <li>
-      <a href="{% url 'detalle producto' r.id %}">{{ r.nombre}}</a>
-    </li>
-    {% endfor %}
-  </ul>
+  {% if object_list %}
+  <table class="listados">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in object_list %}
+      <tr>
+        <td>
+          <a href="{% url 'detalle pedido' r.id %}">{{ r.id_cliente}}</a>
+        </td>
+        <td>{{ r.fecha}}</td>
+        <td>{{ r.precio}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   {% else %}
-  <p>No hay pedidos creados.</p>
+  <p>No hay productos creados.</p>
   {% endif %}
 </div>
 {% endblock %}

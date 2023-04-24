@@ -1,17 +1,28 @@
-{% extends "base.html" %} {% block titulo %}Listado de productos{% endblock %}
+{% extends "base.html" %} {% block tittro %}Listado de productos{% endblock %}
 {% block contenido %}
 <div id="content">
   <h1>Gestor de productos</h1>
   <h2>Listado de productos</h2>
   {% if object_list %}
-  <ul>
-    {% for producto in object_list %}
-    <li>
-      <a href="{% url 'detalle producto' producto.id %}">{{producto.nombre}}</a>
-      - Precio: {{producto.precio}}€
-    </li>
-    {% endfor %}
-  </ul>
+  <table class="listados">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for producto in object_list %}
+      <tr>
+        <td>
+          <a href="{% url 'detalle producto' producto.id %}">
+            {{producto.nombre}}</a>
+        </td>
+        <td>{{producto.precio}}€</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   {% else %}
   <p>No hay productos creados.</p>
   {% endif %}

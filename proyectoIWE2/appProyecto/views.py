@@ -1,9 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import *
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views import View
-from django.shortcuts import get_object_or_404, get_list_or_404
 from appProyecto.forms import *
 
 
@@ -24,6 +22,7 @@ class ProductoDetailView(DetailView):
         context['elementos'] = self.object.elemento_set.all()
         return context
 
+
 class ProductoCreateView(View):
     def get(self, request, *args, **kwargs):
         formulario = ProductoForm()
@@ -31,15 +30,16 @@ class ProductoCreateView(View):
             'formulario': formulario
         }
         return render(request, 'appProyecto/producto_create.html', context)
-    
+
     def post(self, request, *args, **kwargs):
         formulario = ProductoForm(request.POST)
         if formulario.is_valid():
 
             formulario.save()
-            
+
             return redirect('lista productos')
         return render(request, 'appProyecto/producto_create.html', {'formulario': formulario})
+
 
 class PedidosListView(ListView):
     model = Pedido
@@ -89,28 +89,29 @@ class ComponenteCreateView(View):
 
     def post(self, request, *args, **kwargs):
         formulario = ComponenteForm(request.POST)
-        if formulario.is_valid(): # is_valid() deja los datos validados en el atributo cleaned_data
-            
+        if formulario.is_valid():  # is_valid() deja los datos validados en el atributo cleaned_data
+
             formulario.save()
 
             # Volvemos a la lista de departamentos
             return redirect('lista componentes')
         # Si los datos no son válidos, mostramos el formulario nuevamente indicando los errores
         return render(request, 'appProyecto/componente_create.html', {'formulario': formulario})
-    
+
+
 class ComponenteUpdateView(UpdateView):
     model = Componente
     fields = '__all__'
-    success_url ="/appProyecto/componentes"
+    success_url = "/appProyecto/componentes"
     template_name = "appProyecto/componente_update_form.html"
 
-        
+
 class ComponenteDeleteView(DeleteView):
     model = Componente
-     
+
     # can specify success url
     # url to redirect after successfully
     # deleting object
-    success_url ="/appProyecto/componentes"
-     
+    success_url = "/appProyecto/componentes"
+
     template_name = "appProyecto/componente_confirm_delete.html"

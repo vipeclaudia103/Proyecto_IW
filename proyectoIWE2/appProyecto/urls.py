@@ -19,8 +19,8 @@ urlpatterns = [
     path('categoria/',         views.CategoriasListView.as_view(),
          name='lista categorias'),
 
-    path('productos/<int:pk>/componentes',
-         views.ComponenteDetailView.as_view(), name='detalle componentes productos'),
+    path('componentes/<int:pk>',
+         views.ComponenteDetailView.as_view(), name='detalle componentes'),
     path('componentes/',
          views.ComponenteListView.as_view(), name='lista componentes'),
     path('clientes/',
