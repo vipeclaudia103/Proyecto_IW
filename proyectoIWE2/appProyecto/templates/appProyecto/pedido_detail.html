@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block titulo %} Detalle Pedido
+{%endblock %} {% block contenido %}
+<h1>Detalle del Pedido</h1>
+<div class="descripcion">
+  {% if pedido %}
+  <h2>{{ pedido.nombre}}</h2>
+
+  <h2>Productos:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for nProducto in pedido.all %}
+      <tr>
+        <td>
+          <a href="{% url 'detalle componentes' nProducto.id_componente.pk %}">
+            {{ nProducto.id_producto.nombre }}
+          </a>
+        </td>
+        <td>
+          <a
+            href="{% url 'detalle categoria' nProducto.id_componente.categoria.pk %}"
+          >
+            {{ nProducto.id_producto.categoria }}
+          </a>
+        </td>
+        <td>{{ nProducto.cantidad }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Precio total</td>
+        <td>{{pedido.precio}}€</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  {% else %}
+  <p>No existe este pedido.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

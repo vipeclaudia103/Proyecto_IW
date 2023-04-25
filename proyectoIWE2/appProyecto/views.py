@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import *
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views import View
@@ -47,6 +47,12 @@ class PedidosListView(ListView):
 
 class PedidoDetailView(DetailView):
     model = Pedido
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pedido = get_object_or_404(Pedido, pk=self.kwargs['pk'])
+        context['cantidad'] = pedido.cantidad_set.all()
+        return context
 
 
 class ComponenteListView(ListView):
