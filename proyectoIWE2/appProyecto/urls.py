@@ -14,6 +14,9 @@ urlpatterns = [
          views.PedidosListView.as_view(), name='lista pedidos'),
     path('pedidos/<int:pk>',  views.PedidoDetailView.as_view(),
          name='detalle pedido'),
+     path('pedidos/create/',
+         views.PedidoCreateView.as_view(), name='crear pedido'),
+
     path('categoria/<int:pk>',
          views.CategoriaDetailView.as_view(), name='detalle categoria'),
     path('categoria/',         views.CategoriasListView.as_view(),
