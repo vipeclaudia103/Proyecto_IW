@@ -62,7 +62,6 @@ class ComponenteListView(ListView):
 class ComponenteDetailView(DetailView):
     model = Componente
 
-
 class ClientesListView(ListView):
     model = Cliente
 
