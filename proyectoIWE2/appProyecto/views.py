@@ -50,8 +50,9 @@ class PedidoDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        pedido = get_object_or_404(Pedido, pk=self.kwargs['pk'])
-        context['cantidad'] = pedido.cantidad_set.all()
+        context['pedido_list'] = Pedido.objects.order_by('id')
+        context['cantidad_list'] = context['pedido'].cantidad_set.all()
+        # context[]=
         return context
 
 
@@ -61,6 +62,7 @@ class ComponenteListView(ListView):
 
 class ComponenteDetailView(DetailView):
     model = Componente
+
 
 class ClientesListView(ListView):
     model = Cliente
