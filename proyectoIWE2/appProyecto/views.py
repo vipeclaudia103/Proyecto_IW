@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import redirect, render
 from .models import *
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views import View
@@ -44,16 +44,17 @@ class ProductoCreateView(View):
 class PedidosListView(ListView):
     model = Pedido
 
+
 class PedidoCreateView(View):
-     def get(self, request, *args, **kwargs):
-        formulario = ProductoForm()
+    def get(self, request, *args, **kwargs):
+        formulario = PedidoForm()
         context = {
             'formulario': formulario
         }
         return render(request, 'appProyecto/pedido_create.html', context)
-     
-     def post(self, request, *args, **kwargs):
-        formulario = ProductoForm(request.POST)
+
+    def post(self, request, *args, **kwargs):
+        formulario = PedidoForm(request.POST)
         if formulario.is_valid():
 
             formulario.save()
@@ -61,15 +62,9 @@ class PedidoCreateView(View):
             return redirect('lista pedidos')
         return render(request, 'appProyecto/pedido_create.html', {'formulario': formulario})
 
+
 class PedidoDetailView(DetailView):
     model = Pedido
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['pedido_list'] = Pedido.objects.order_by('id')
-        context['cantidad_list'] = context['pedido'].cantidad_set.all()
-        # context[]=
-        return context
 
 
 class ComponenteListView(ListView):

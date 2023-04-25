@@ -1,35 +1,33 @@
 {% extends "base.html" %} {% block titulo %} Detalle Pedido
-{%endblock %} {% block contenido %}
-<h1>Detalle del Pedido</h1>
-<div class="descripcion">
-  {% if pedido %}
-  <h2>{{ pedido.nombre}}</h2>
-
+{%endblock %} 
+{% block contenido %}
+  <h1>Detalle de pedido</h1>
+  <ul>
+    <li>
+      Cliente:<a href="{% url 'detalle cliente' pedido.id_cliente.pk %}">
+ {{ pedido.id_cliente }}
+  </a>
+    </li> 
+  <li>Fecha: {{ pedido.fecha }}</li>
+  <li>Precio: {{ pedido.precio }}</li>
+  </ul>
   <h2>Productos:</h2>
-  <table>
+  <table class="paleBlueRows">
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Categoria</th>
         <th>Cantidad</th>
       </tr>
     </thead>
     <tbody>
-      {% for nProducto in cantidad_list.producto.all %}
+     {% for cantidad in pedido.cantidad_set.all %}
       <tr>
         <td>
-          <a href="{% url 'detalle componentes' nProducto.id_componente.pk %}">
-            {{ nProducto.id_producto.nombre }}
+          <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
+            {{ cantidad.id_producto.nombre }}
           </a>
         </td>
-        <td>
-          <a
-            href="{% url 'detalle categoria' nProducto.id_componente.categoria.pk %}"
-          >
-            {{ nProducto.id_producto.categoria }}
-          </a>
-        </td>
-        <td>{{ nProducto.cantidad }}</td>
+        <td>{{ cantidad.n_producto }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -41,9 +39,11 @@
     </tfoot>
   </table>
 
-  {% else %}
-  <p>No existe este pedido.</p>
-  {% endif %}
+
+  {{ pedido_form.as_p }}
+  {{ cantidad_form.as_p }}
+  <button type="submit">Crear Pedido</button>
+
 </div>
 
 {% endblock %}

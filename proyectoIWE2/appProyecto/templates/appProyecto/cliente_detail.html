@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block titulo %} Detalle del Cliente {% endblock%}
+{% block contenido %}
+<h2>Datos del cliente</h2>
+
+{% if object_list %}
+<table>
+  <thead>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th role="2">Más informacion</th>
+  </thead>
+  {% for c in object_list %}
+  <tbody>
+    <tr>
+      <td>{{ c.nombre}}</td>
+      <td>{{ c.descripcion}}</td>
+    </tr>
+    {% endfor%}
+  </tbody>
+</table>
+{% else %}
+<p>No existe este cliente.</p>
+{% endif %} {% endblock %}

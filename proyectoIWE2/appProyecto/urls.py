@@ -3,18 +3,18 @@ from . import views
 
 urlpatterns = [
     path('', views.inicio, name='inicio'),
-    
+
     path('productos/', views.ProductosListView.as_view(), name='lista productos'),
     path('productos/<int:pk>/',
          views.ProductoDetailView.as_view(), name='detalle producto'),
-     path('productos/create/',
+    path('productos/create/',
          views.ProductoCreateView.as_view(), name='crear producto'),
 
     path('pedidos/',
          views.PedidosListView.as_view(), name='lista pedidos'),
     path('pedidos/<int:pk>',  views.PedidoDetailView.as_view(),
          name='detalle pedido'),
-     path('pedidos/create/',
+    path('pedidos/create/',
          views.PedidoCreateView.as_view(), name='crear pedido'),
 
     path('categoria/<int:pk>',
@@ -31,7 +31,10 @@ urlpatterns = [
     path('clientes/<int:pk>',
          views.ClienteDetailView.as_view(), name='detalle cliente'),
 
-     path('componentes/create', views.ComponenteCreateView.as_view(), name='componente_create'),
-     path('componentes/<int:pk>/update/', views.ComponenteUpdateView.as_view(), name='departamento_update'),
-     path('componentes/<int:pk>/delete/', views.ComponenteDeleteView.as_view(), name='departamento_delete'),
+    path('componentes/create', views.ComponenteCreateView.as_view(),
+         name='componente_create'),
+    path('componentes/<int:pk>/update/',
+         views.ComponenteUpdateView.as_view(), name='departamento_update'),
+    path('componentes/<int:pk>/delete/',
+         views.ComponenteDeleteView.as_view(), name='departamento_delete'),
 ]
