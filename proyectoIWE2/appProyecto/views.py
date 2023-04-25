@@ -44,6 +44,22 @@ class ProductoCreateView(View):
 class PedidosListView(ListView):
     model = Pedido
 
+class PedidoCreateView(View):
+     def get(self, request, *args, **kwargs):
+        formulario = ProductoForm()
+        context = {
+            'formulario': formulario
+        }
+        return render(request, 'appProyecto/pedido_create.html', context)
+     
+     def post(self, request, *args, **kwargs):
+        formulario = ProductoForm(request.POST)
+        if formulario.is_valid():
+
+            formulario.save()
+
+            return redirect('lista pedidos')
+        return render(request, 'appProyecto/pedido_create.html', {'formulario': formulario})
 
 class PedidoDetailView(DetailView):
     model = Pedido
