@@ -1,3 +1,4 @@
+from django.forms import Form
 from django.shortcuts import redirect, render
 from .models import *
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
@@ -63,6 +64,23 @@ class PedidoCreateView(View):
         return render(request, 'appProyecto/pedido_create.html', {'formulario': formulario})
 
 
+class CantidadCreateView(View):
+    def get(self, request, *args, **kwargs):
+        formulario = CantidadForm()
+        context = {
+            'formulario': formulario
+        }
+        return render(request, 'appProyecto/pedido_list.html', context)
+
+    def post(self, request, *args, **kwargs):
+        formulario = CantidadForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+
+            return redirect('lista pedidos')
+        return render(request, 'appProyecto/pedido_list.html', {'formulario': formulario})
+
+
 class PedidoDetailView(DetailView):
     model = Pedido
 
@@ -91,11 +109,6 @@ class CategoriaDetailView(DetailView):
     model = Categoria
 
 
-# def producto(request):
-#     Pedido = Producto.objects.order_by('nombre')
-#     context = {'lista_productos': productos}
-#     return render(request, 'producto.html', context)
-
 class ComponenteCreateView(View):
     # Llamada para mostrar la página con el formulario de creación al usuario
     def get(self, request, *args, **kwargs):
@@ -108,7 +121,6 @@ class ComponenteCreateView(View):
     def post(self, request, *args, **kwargs):
         formulario = ComponenteForm(request.POST)
         if formulario.is_valid():  # is_valid() deja los datos validados en el atributo cleaned_data
-
             formulario.save()
 
             # Volvemos a la lista de departamentos

@@ -17,14 +17,18 @@ class ComponenteForm(forms.ModelForm):
 
 
 class PedidoForm(forms.ModelForm):
+    fecha = forms.DateField(
+        label='Fecha', widget=forms.DateInput(attrs={'type': 'date'}))
+
     class Meta:
         model = Pedido
         fields = ['id_cliente', 'fecha']
-        widgets = {
-            'fecha': DateTimeInput(attrs={'type': 'date'})
-        }
+        # widgets = {
+        #     'fecha': DateTimeInput(attrs={'type': 'date'})
+        # }
+
 
 class CantidadForm(forms.ModelForm):
     class Meta:
         model = Cantidad
-        fields = ['id_producto', 'n_producto']
+        fields = '__all__'

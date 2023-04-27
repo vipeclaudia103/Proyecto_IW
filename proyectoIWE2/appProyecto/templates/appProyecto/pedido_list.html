@@ -1,9 +1,11 @@
-{% extends "base.html" %} 
-{% block titulo %}Listado de pedidos{% endblock %} 
+{% extends "base.html" %} {% block titulo %}Listado de pedidos{% endblock %}
 {%block contenido %}
 <div id="content">
   <h1>Gestor de pedidos</h1>
   <h2>Listado de pedidos</h2>
+  <a href="{%url 'crear pedido'%}" class="button"
+    ><input type="button" value="Agregar pedido"
+  /></a>
   {% if object_list %}
   <table class="listados">
     <thead>

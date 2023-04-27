@@ -5,7 +5,7 @@
   <ul>
     <li>
       Cliente:<a href="{% url 'detalle cliente' pedido.id_cliente.pk %}">
- {{ pedido.id_cliente }}
+      {{ pedido.id_cliente }}
   </a>
     </li> 
   <li>Fecha: {{ pedido.fecha }}</li>
@@ -39,10 +39,6 @@
     </tfoot>
   </table>
 
-
-  {{ pedido_form.as_p }}
-  {{ cantidad_form.as_p }}
-  <button type="submit">Crear Pedido</button>
 
 </div>
 

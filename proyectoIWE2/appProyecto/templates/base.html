@@ -23,7 +23,9 @@
           <a class="enlace" href="{% url 'lista productos'  %}">Productos</a>
           <a class="enlace" href="{% url 'lista pedidos'  %}">Pedidos</a>
           <a class="enlace" href="{% url 'lista clientes'  %}">Clientes</a>
-          <a class="enlace" href="{% url 'lista componentes'  %}">Componentes</a>
+          <a class="enlace" href="{% url 'lista componentes'  %}"
+            >Componentes</a
+          >
           <a class="enlace" href="{% url 'lista categorias'  %}">Categorias</a>
           <!-- <a class="enlace" href="">Caracteristicas</a> -->
         </nav>
@@ -32,7 +34,40 @@
     <main>{% block contenido %}{% endblock %}</main>
     <footer class="flexFila">
       <div class="sociales-footer">
-        <h3>Navegación</h3>
+        <div class="sociales-footer">
+          <h3>Formularios</h3>
+          <ul class="linksFooter">
+            <li class="iconosRedes">
+              <a
+                class="LinkIiconosRedes enlacesClaros"
+                href="{% url 'crear producto'  %}"
+                ><span>+ Productos</span></a
+              >
+            </li>
+            <li class="iconosRedes">
+              <a
+                class="LinkIiconosRedes enlacesClaros"
+                href="{% url 'crear pedido'  %}"
+                ><span>+ Pedidos</span></a
+              >
+            </li>
+            <li class="iconosRedes">
+              <a
+                class="LinkIiconosRedes enlacesClaros"
+                href="{% url 'crear componente'  %}"
+                ><span>+ Componentes</span></a
+              >
+            </li>
+            <li class="iconosRedes">
+              <a
+                class="LinkIiconosRedes enlacesClaros"
+                href="{% url 'crear cantidad'  %}"
+                ><span>+ Pedido cantidad </span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <h3>Listados</h3>
         <ul class="linksFooter">
           <li class="iconosRedes">
             <a
