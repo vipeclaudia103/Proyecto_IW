@@ -2,22 +2,19 @@
 {% block contenido %}
 <h2>Datos del cliente</h2>
 
-{% if object_list %}
-<table>
-  <thead>
-    <th>Nombre</th>
-    <th>Descripcion</th>
-    <th role="2">Más informacion</th>
-  </thead>
-  {% for c in object_list %}
-  <tbody>
-    <tr>
-      <td>{{ c.nombre}}</td>
-      <td>{{ c.descripcion}}</td>
-    </tr>
-    {% endfor%}
-  </tbody>
-</table>
+{% if cliente %}
+<ul>
+  <li>Nombre: {{ cliente.nombre}}</li>
+  <li>CIF: {{ cliente.cif}}</li>
+  <li>
+    Datos de contacto:
+    <ul>
+      <li>Teléfono: {{ cliente.telefono}}</li>
+      <li>Correo: {{ cliente.email}}</li>
+      <li>Dirección: {{ cliente.direccion}}</li>
+    </ul>
+  </li>
+</ul>
 {% else %}
 <p>No existe este cliente.</p>
 {% endif %} {% endblock %}

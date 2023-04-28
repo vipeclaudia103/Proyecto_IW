@@ -31,6 +31,8 @@ urlpatterns = [
          views.ClientesListView.as_view(), name='lista clientes'),
     path('clientes/<int:pk>',
          views.ClienteDetailView.as_view(), name='detalle cliente'),
+    path('cliente/create', views.ClienteCreateView.as_view(),
+         name='crear cliente'),
 
     path('componentes/create', views.ComponenteCreateView.as_view(),
          name='crear componente'),

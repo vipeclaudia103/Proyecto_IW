@@ -1,18 +1,31 @@
 {% extends "base.html" %} {% block titulo %}Listado de componentes{% endblock %}
 {% block contenido %}
 <div id="content">
-  <h1>Gestor de componentes</h1>
-  <h2>Listado de componentes</h2>
-  {% if items %}
-  <ul>
-    {% for r in object_list %}
-    <li>
-      <a href="{% url 'detalle cliente' r.id %}">{{ r.nombre}}</a>
-    </li>
-    {% endfor %}
-  </ul>
+  <h1>Gestor de Clientes</h1>
+  <h2>Listado de Clientes</h2>
+  <a href="{%url 'crear cliente'%}" class="button"/>Cliente&nbsp;✚</a>
+
+  {% if object_list %}
+  <table class="listados">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Telfono</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in object_list %}
+      <tr>
+        <td><a href="{% url 'detalle cliente' r.id %}">{{ r.nombre}}</a></td>
+        <td>{{r.telefono}}</td>
+        <td>{{r.email}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   {% else %}
-  <p>No hay componentes creados.</p>
+  <p>No hay clientes creados.</p>
   {% endif %}
 </div>
 {% endblock %}

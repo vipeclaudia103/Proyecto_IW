@@ -1,15 +1,23 @@
 {% extends "base.html" %} {% block titulo %} Lista de Categorias{% endblock %}
 {% block contenido %}
 <h2>Listado de categorias</h2>
-<h3>{{ categoria.nombre }}</h3>
 {% if object_list %}
-<ul>
-  {% for e in object_list %}
-  <li>
-    <a href="{% url 'lista producto categoria' e.id %}">{{ e.nombre}}</a>
-  </li>
-  {% endfor %}
-</ul>
+<table class="listados">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for e in object_list %}
+    <tr>
+      <td>
+        <a href="{% url 'detalle categoria' e.id %}">{{ e.nombre}}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% else %}
-<p>No hay empleados creados.</p>
+<p>No hay categorias creadas.</p>
 {% endif %} {% endblock contenido %}

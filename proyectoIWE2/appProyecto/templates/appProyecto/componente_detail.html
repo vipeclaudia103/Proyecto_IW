@@ -5,9 +5,14 @@
 <div class="descripcion">
 {% if componente %} 
   <ul>
-    <li>{{ componente.nombre}}</li>
-    <li>{{ componente.marca}}</li>
+    <li>Nombre: {{ componente.nombre}}</li>
+    <li>Marca: {{ componente.marca}}</li>
   </ul>
+  <div class="barraBtn">
+    <a href="/appProyecto/componentes/{{componente.id}}/update/" class="button"> Actualizar</a>
+    <a href="/appProyecto/componentes/{{componente.id}}/delete/" class="button"> Borrar</a>
+  </div>
+
 <h2>Componentes:</h2>
   <table class="listados">
     <thead>

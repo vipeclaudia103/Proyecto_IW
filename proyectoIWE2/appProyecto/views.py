@@ -64,6 +64,55 @@ class PedidoCreateView(View):
         return render(request, 'appProyecto/pedido_create.html', {'formulario': formulario})
 
 
+class PedidoDetailView(DetailView):
+    model = Pedido
+
+
+class ComponenteListView(ListView):
+    model = Componente
+
+
+class ComponenteDetailView(DetailView):
+    model = Componente
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['elementos'] = self.object.elemento_set.all()
+        return context
+
+
+class ClientesListView(ListView):
+    model = Cliente
+
+
+class ClienteDetailView(DetailView):
+    model = Cliente
+
+
+class ClienteCreateView(View):
+    def get(self, request, *args, **kwargs):
+        formulario = ClienteForm()
+        context = {
+            'formulario': formulario
+        }
+        return render(request, 'appProyecto/pedido_list.html', context)
+
+    def post(self, request, *args, **kwargs):
+        formulario = ClienteForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('lista pedidos')
+        return render(request, 'appProyecto/pedido_list.html', {'formulario': formulario})
+
+
+class CategoriasListView(ListView):
+    model = Categoria
+
+
+class CategoriaDetailView(DetailView):
+    model = Categoria
+
+
 class CantidadCreateView(View):
     def get(self, request, *args, **kwargs):
         formulario = CantidadForm()
@@ -79,37 +128,6 @@ class CantidadCreateView(View):
 
             return redirect('lista pedidos')
         return render(request, 'appProyecto/pedido_list.html', {'formulario': formulario})
-
-
-class PedidoDetailView(DetailView):
-    model = Pedido
-
-
-class ComponenteListView(ListView):
-    model = Componente
-
-
-class ComponenteDetailView(DetailView):
-    model = Componente
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['elementos'] = self.object.elemento_set.all()
-        return context
-
-class ClientesListView(ListView):
-    model = Cliente
-
-
-class ClienteDetailView(DetailView):
-    model = Cliente
-
-
-class CategoriasListView(ListView):
-    model = Categoria
-
-
-class CategoriaDetailView(DetailView):
-    model = Categoria
 
 
 class ComponenteCreateView(View):
