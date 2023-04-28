@@ -112,6 +112,11 @@ class CategoriasListView(ListView):
 class CategoriaDetailView(DetailView):
     model = Categoria
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['productos'] = self.object.producto_set.all()
+        return context
+
 
 class CantidadCreateView(View):
     def get(self, request, *args, **kwargs):
