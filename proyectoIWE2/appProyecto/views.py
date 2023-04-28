@@ -91,7 +91,10 @@ class ComponenteListView(ListView):
 
 class ComponenteDetailView(DetailView):
     model = Componente
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['elementos'] = self.object.elemento_set.all()
+        return context
 
 class ClientesListView(ListView):
     model = Cliente

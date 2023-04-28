@@ -2,13 +2,39 @@
 {% block titulo %} Detalle del departamento {%endblock %} 
 {% block contenido %}
 <h2>Datos del componente</h2>
-
+<div class="descripcion">
 {% if componente %} 
-<ul>
-  <li>{{ componente.nombre}}</li>
-  <li>{{ componente.marca}}</li>
-  <li>{{ componente.n_producto}}</li>
-</ul>
+  <ul>
+    <li>{{ componente.nombre}}</li>
+    <li>{{ componente.marca}}</li>
+  </ul>
+<h2>Componentes:</h2>
+  <table class="listados">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Cantidad</th>
+        <th>Productos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for elemento in elementos %}
+        <tr>
+          <td>
+            <a href="{% url 'detalle componentes' elemento.id_componente.pk %}">
+              {{ elemento.id_componente.nombre }}
+            </a>
+          </td>
+          <td>{{ elemento.id_componente.marca }}</td>
+          <td>{{ elemento.cantidad }}</td>
+          <td>{{ elemento.id_producto}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% else %}
 <p>No existe este componente.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+</div>
+{% endblock %}

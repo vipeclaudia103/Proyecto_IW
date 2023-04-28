@@ -1,23 +1,36 @@
 {% extends "base.html" %} {% block titulo %}Listado de componentes{% endblock %}
 {% block contenido %}
-<div id="content">
-  <h1>Gestor de componentes</h1>
-  <h2>Listado de componentes</h2>
-  {% if componente_list %}
-  <a href="/appProyecto/componentes/create">Formulario componente</a>
-  <ul>
-    {% for r in object_list %}
-    <li>
-      <a href="{% url 'detalle componentes' r.id %}">{{ r.nombre}}</a> 
-      <a href="/appProyecto/componentes/{{r.id}}/update/"> Actualizar</a>
-      <a href="/appProyecto/componentes/{{r.id}}/delete/"> Borrar</a>
-    </li>
-
-
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>No hay componentes creados.</p>
-  {% endif %}
-</div>
+  <div id="content">
+    <h1>Gestor de componentes</h1>
+    <h2>Listado de componentes</h2>
+    {% if componente_list %}
+      <a href="/appProyecto/componentes/create">Formulario componente</a>
+      <table class="listados">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in object_list %}
+            <tr>
+              <td>
+                <a href="{% url 'detalle componentes' r.id %}">{{ r.nombre}}</a> 
+              </td>
+              <td>
+                <a href="/appProyecto/componentes/{{r.id}}/update/"> Actualizar</a>
+              </td>
+              <td>
+                <a href="/appProyecto/componentes/{{r.id}}/delete/"> Borrar</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No hay componentes creados.</p>
+    {% endif %}
+  </div>
 {% endblock %}

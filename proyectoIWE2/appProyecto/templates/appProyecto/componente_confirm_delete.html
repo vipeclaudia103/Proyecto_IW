@@ -1,12 +1,12 @@
-<form method="post">{% csrf_token %}
+{% extends "base.html" %}
+
+{% block titulo %}Listado de componentes{% endblock %}
+
+{% block contenido %}
+    <form method="post">{% csrf_token %}
      
- 
- 
- 
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-     
-     
-     
+        <p>Are you sure you want to delete "{{ object }}"?</p>
      
         <input type="submit" value="Confirm">
     </form>
+{% endblock %}
