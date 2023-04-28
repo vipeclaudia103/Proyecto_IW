@@ -5,10 +5,6 @@
 <form action="{% url 'crear pedido' %}" method="post">
   {% csrf_token %} {{ formulario.errors }} {{ formulario.as_ul }}
   <input type="submit" value="Nuevo pedido" />
-
-  <a href="{%url 'crear cantidad'%}"
-    ><input type="button" value="Agregar Producto"
-  /></a>
 </form>
 
 {% endblock %}
