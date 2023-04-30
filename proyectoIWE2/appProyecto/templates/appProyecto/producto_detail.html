@@ -5,6 +5,9 @@
   {% if producto %}
   <h2>{{ producto.nombre}} - {{ producto.precio}}€</h2>
 
+  <p>{{ producto.descripcion}}</p>
+  <p>Categoria: {{ producto.categoria}}</p>
+
   <a href="/appProyecto/productos/{{producto.id}}/delete/" class="button"> Borrar</a>
   <a href="/appProyecto/productos/{{producto.id}}/update/" class="button"> Actualizar</a>
 
@@ -27,6 +30,11 @@
         </td>
         <td>{{ elemento.id_componente.marca }}</td>
         <td>{{ elemento.cantidad }}</td>
+        <td> <form action="{% url 'borrar elemento' elemento.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="button">Borrar</button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
@@ -40,6 +48,14 @@
     </form>
 
     
+  <h2>Todos los productos:</h2>
+  <ul>
+    {% for p in productos %}
+      <li><a href="{% url 'detalle producto' p.pk %}">{{ p.nombre }}</a></li>
+    {% endfor %}
+  </ul>
+
+
   {% else %}
   <p>No existe este producto.</p>
   {% endif %}

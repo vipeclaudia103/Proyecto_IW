@@ -4,10 +4,19 @@ from .models import *
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views import View
 from appProyecto.forms import *
+from django.urls import reverse_lazy
 
 
 def inicio(request):
     return render(request, 'inicio.html')
+
+
+class ElementoDeleteView(DeleteView):
+    model = Elemento
+    success_url = "/appProyecto/productos"
+
+    def get_success_url(self):
+        return reverse_lazy('detalle producto', kwargs={'pk': self.object.id_producto.pk})
 
 
 class ProductosListView(ListView):
@@ -22,6 +31,7 @@ class ProductoDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['elementos'] = self.object.elemento_set.all()
         context['form'] = ElementoForm(initial={'id_producto': self.object})
+        context['productos'] = Producto.objects.all()
         return context
     
     def post(self, request, *args, **kwargs):
@@ -59,7 +69,7 @@ class ProductoCreateView(View):
 
 class ProductoUpdateView(UpdateView):
     model = Producto
-    fields = '__all__'
+    fields = ['nombre', 'precio', 'descripcion', 'categoria', ]
     success_url = "/appProyecto/productos"
     template_name = "appProyecto/producto_update.html"
 
