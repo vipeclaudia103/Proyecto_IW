@@ -48,6 +48,14 @@
     </form>
 
     
+  <h2>Todos los productos:</h2>
+  <ul>
+    {% for p in productos %}
+      <li><a href="{% url 'detalle producto' p.pk %}">{{ p.nombre }}</a></li>
+    {% endfor %}
+  </ul>
+
+
   {% else %}
   <p>No existe este producto.</p>
   {% endif %}

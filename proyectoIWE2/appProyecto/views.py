@@ -31,6 +31,7 @@ class ProductoDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['elementos'] = self.object.elemento_set.all()
         context['form'] = ElementoForm(initial={'id_producto': self.object})
+        context['productos'] = Producto.objects.all()
         return context
     
     def post(self, request, *args, **kwargs):
