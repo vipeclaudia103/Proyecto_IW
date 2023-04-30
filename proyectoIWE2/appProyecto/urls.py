@@ -47,4 +47,9 @@ urlpatterns = [
          views.ComponenteUpdateView.as_view(), name='actualiza componente'),
     path('componentes/<int:pk>/delete/',
          views.ComponenteDeleteView.as_view(), name='borra componente'),
+     path('categoria/<int:pk>/update/',
+         views.CategoriaUpdateView.as_view(), name='actualiza categoria'),
+    path('categoria/<int:pk>/delete/',
+         views.CategoriaDeleteView.as_view(), name='borra categoria'),
+
 ]

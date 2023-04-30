@@ -190,16 +190,26 @@ class ComponenteCreateView(View):
 class ComponenteUpdateView(UpdateView):
     model = Componente
     fields = '__all__'
-    success_url = "/appProyecto/componentes"
+    success_url = "/appProyecto/componentes/"
     template_name = "appProyecto/componente_update_form.html"
 
 
 class ComponenteDeleteView(DeleteView):
     model = Componente
 
-    # can specify success url
-    # url to redirect after successfully
-    # deleting object
-    success_url = "/appProyecto/componentes"
+    success_url = "/appProyecto/componentes/"
 
     template_name = "appProyecto/componente_confirm_delete.html"
+
+class CategoriaUpdateView(UpdateView):
+    model = Categoria
+    fields = '__all__'
+    success_url = "/appProyecto/categoria/"
+    template_name = "appProyecto/categoria_update_form.html"
+
+class CategoriaDeleteView(DeleteView):
+    model = Categoria
+
+    success_url = "/appProyecto/categoria/"
+
+    template_name = "appProyecto/categoria_confirm_delete.html"
