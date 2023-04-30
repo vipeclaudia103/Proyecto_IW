@@ -7,7 +7,7 @@ from django.forms.widgets import DateTimeInput
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = '__all__'
+        fields = ['nombre', 'precio', 'descripcion', 'categoria', ]
 
 
 class ComponenteForm(forms.ModelForm):
