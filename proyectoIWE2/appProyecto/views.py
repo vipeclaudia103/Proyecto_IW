@@ -21,7 +21,19 @@ class ProductoDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['elementos'] = self.object.elemento_set.all()
+        context['form'] = ElementoForm(initial={'id_producto': self.object})
         return context
+    
+    def post(self, request, *args, **kwargs):
+        form = ElementoForm(request.POST)
+        if form.is_valid():
+            elemento = form.save(commit=False)
+            elemento.id_producto = self.get_object()
+            elemento.save()
+            return redirect('detalle producto', pk=self.get_object().pk)
+        else:
+            return self.get(request, *args, **kwargs)
+
 
 class ProductoDeleteView(DeleteView):
     model = Producto
@@ -134,7 +146,7 @@ class CantidadCreateView(View):
         context = {
             'formulario': formulario
         }
-        return render(request, 'appProyecto/pedido_list.html', context)
+        return render(request, 'appProyecto/cantidad_create.html', context)
 
     def post(self, request, *args, **kwargs):
         formulario = CantidadForm(request.POST)

@@ -38,3 +38,9 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = '__all__'
+
+
+class ElementoForm(forms.ModelForm):
+    class Meta:
+        model = Elemento
+        fields = ['id_componente', 'cantidad']

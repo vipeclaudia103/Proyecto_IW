@@ -32,6 +32,14 @@
     </tbody>
   </table>
 
+  <h2>Agregar Componente:</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Agregar</button>
+    </form>
+
+    
   {% else %}
   <p>No existe este producto.</p>
   {% endif %}
