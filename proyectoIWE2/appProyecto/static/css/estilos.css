@@ -125,6 +125,7 @@ table.listados {
   text-align: left;
   border-collapse: collapse;
   margin: 1em auto;
+  padding: 2em;
 }
 table.listados td,
 table.listados th {
