@@ -23,6 +23,10 @@ class ProductoDetailView(DetailView):
         context['elementos'] = self.object.elemento_set.all()
         return context
 
+class ProductoDeleteView(DeleteView):
+    model = Producto
+    success_url = "/appProyecto/productos"
+    template_name = "appProyecto/produto_confirm_delete.html"
 
 class ProductoCreateView(View):
     def get(self, request, *args, **kwargs):
@@ -40,6 +44,12 @@ class ProductoCreateView(View):
 
             return redirect('lista productos')
         return render(request, 'appProyecto/producto_create.html', {'formulario': formulario})
+
+class ProductoUpdateView(UpdateView):
+    model = Producto
+    fields = '__all__'
+    success_url = "/appProyecto/productos"
+    template_name = "appProyecto/producto_update.html"
 
 
 class PedidosListView(ListView):

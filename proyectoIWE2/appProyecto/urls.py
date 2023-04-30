@@ -9,6 +9,10 @@ urlpatterns = [
          views.ProductoDetailView.as_view(), name='detalle producto'),
     path('productos/create/',
          views.ProductoCreateView.as_view(), name='crear producto'),
+    path('productos/<int:pk>/update/',
+         views.ProductoUpdateView.as_view(), name='actualiza producto'),
+    path('productos/<int:pk>/delete/',
+         views.ProductoDeleteView.as_view(), name='borrar producto'),
 
     path('pedidos/',
          views.PedidosListView.as_view(), name='lista pedidos'),

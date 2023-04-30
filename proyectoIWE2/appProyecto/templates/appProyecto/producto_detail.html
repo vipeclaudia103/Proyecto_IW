@@ -5,6 +5,9 @@
   {% if producto %}
   <h2>{{ producto.nombre}} - {{ producto.precio}}€</h2>
 
+  <a href="/appProyecto/productos/{{producto.id}}/delete/" class="button"> Borrar</a>
+  <a href="/appProyecto/productos/{{producto.id}}/update/" class="button"> Actualizar</a>
+
   <h2>Componentes:</h2>
   <table class="paleBlueRows">
     <thead>
