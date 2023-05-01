@@ -45,7 +45,6 @@ class Pedido(models.Model):
     fecha = models.DateTimeField('Fecha de creacion')
     precio = models.FloatField(default=0)
     producto = models.ManyToManyField(Producto, through="Cantidad")
-
 class Cantidad(models.Model):
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     id_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)

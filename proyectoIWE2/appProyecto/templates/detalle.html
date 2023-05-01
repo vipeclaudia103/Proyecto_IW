@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+{% block titulo %} Detalle {%endblock %} 
+{% block contenido %}
+<div class="contenedorPrincipal">
+  <section class="navegadorProductos">
+    <div class="tituloNavegadorProductos">
+      Todos los {% block elemListado %} {% endblock %}
+    </div>
+    <div class="listaProductos">
+      <ul>
+        {% for p in listaTodos %}
+        {% block urlElemento %} {% endblock %}
+      {% endfor %} </ul>
+    </div>
+  </section>
+  <div class="descripcionProducto">
+    {% block detalle %} {% endblock %}
+</div>
+</div>
+{% endblock %}

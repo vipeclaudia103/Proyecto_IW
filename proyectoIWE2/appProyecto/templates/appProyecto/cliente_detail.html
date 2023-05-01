@@ -1,8 +1,24 @@
-{% extends "base.html" %} {% block titulo %} Detalle del Cliente {% endblock%}
-{% block contenido %}
+{% extends "detalle.html" %} 
+
+{% block titulo %} Cliente| {{ cliente.nombre}}{% endblock%}
+
+{% block elemListado %} cliente {% endblock %} 
+{% block urlElemento %} 
+
+<a href="{% url 'detalle cliente' p.pk %}">
+  <li>{{ p.nombre }}</li>
+</a> {% endblock %} 
+
+{% block detalle %}
 <h2>Datos del cliente</h2>
 
 {% if cliente %}
+<a href="/appProyecto/clientes/{{cliente.id}}/delete/" class="button">
+  Borrar
+</a>
+<a href="/appProyecto/clientes/{{cliente.id}}/update/" class="button">
+  Actualizar
+</a>
 <ul>
   <li>Nombre: {{ cliente.nombre}}</li>
   <li>CIF: {{ cliente.cif}}</li>
@@ -15,6 +31,25 @@
     </ul>
   </li>
 </ul>
+
+<h2>Pedidos de este cliente:</h2>
+<table class="paleBlueRows">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in pedidos %}
+    <tr>
+      <td>
+        <a href="{% url 'detalle pedido' p.pk %}"> {{ p.fecha }} </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% else %}
 <p>No existe este cliente.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+{% endblock %}

@@ -17,6 +17,12 @@ class ElementoDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('detalle producto', kwargs={'pk': self.object.id_producto.pk})
+class CantidadDeleteView(DeleteView):
+    model = Cantidad
+    success_url = "/appProyecto/pedidos"
+
+    def get_success_url(self):
+        return reverse_lazy('detalle pedido', kwargs={'pk': self.object.id_pedido.pk})
 
 
 class ProductosListView(ListView):
@@ -31,9 +37,9 @@ class ProductoDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['elementos'] = self.object.elemento_set.all()
         context['form'] = ElementoForm(initial={'id_producto': self.object})
-        context['productos'] = Producto.objects.all()
+        context['listaTodos'] = Producto.objects.all()
         return context
-    
+
     def post(self, request, *args, **kwargs):
         form = ElementoForm(request.POST)
         if form.is_valid():
@@ -49,6 +55,7 @@ class ProductoDeleteView(DeleteView):
     model = Producto
     success_url = "/appProyecto/productos"
     template_name = "appProyecto/produto_confirm_delete.html"
+
 
 class ProductoCreateView(View):
     def get(self, request, *args, **kwargs):
@@ -66,6 +73,7 @@ class ProductoCreateView(View):
 
             return redirect('lista productos')
         return render(request, 'appProyecto/producto_create.html', {'formulario': formulario})
+
 
 class ProductoUpdateView(UpdateView):
     model = Producto
@@ -98,8 +106,11 @@ class PedidoCreateView(View):
 
 class PedidoDetailView(DetailView):
     model = Pedido
-
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cantidades']  = self.object.cantidad_set.all()
+        context['listaTodos'] = Pedido.objects.all()
+        return context
 class ComponenteListView(ListView):
     model = Componente
 
@@ -120,6 +131,12 @@ class ClientesListView(ListView):
 class ClienteDetailView(DetailView):
     model = Cliente
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pedidos'] = self.object.pedido_set.all()
+        context['listaTodos'] = Cliente.objects.all()
+        return context
+
 
 class ClienteCreateView(View):
     def get(self, request, *args, **kwargs):
@@ -127,14 +144,29 @@ class ClienteCreateView(View):
         context = {
             'formulario': formulario
         }
-        return render(request, 'appProyecto/pedido_list.html', context)
+        return render(request, 'appProyecto/cliente_create.html', context)
 
     def post(self, request, *args, **kwargs):
         formulario = ClienteForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            return redirect('lista pedidos')
-        return render(request, 'appProyecto/pedido_list.html', {'formulario': formulario})
+            return redirect('lista clientes')
+        return render(request, 'appProyecto/cliente_create.html', {'formulario': formulario})
+
+
+class ClienteUpdateView(UpdateView):
+    model = Cliente
+    fields = '__all__'
+    success_url = "/appProyecto/clientes"
+    template_name = "appProyecto/cliente_update.html"
+
+
+class ClienteDeleteView(DeleteView):
+    model = Cliente
+
+    success_url = "/appProyecto/clientes/"
+
+    template_name = "appProyecto/cliente_confirm_delete.html"
 
 
 class CategoriasListView(ListView):
@@ -201,11 +233,13 @@ class ComponenteDeleteView(DeleteView):
 
     template_name = "appProyecto/componente_confirm_delete.html"
 
+
 class CategoriaUpdateView(UpdateView):
     model = Categoria
     fields = '__all__'
     success_url = "/appProyecto/categoria/"
     template_name = "appProyecto/categoria_update_form.html"
+
 
 class CategoriaDeleteView(DeleteView):
     model = Categoria
@@ -213,3 +247,23 @@ class CategoriaDeleteView(DeleteView):
     success_url = "/appProyecto/categoria/"
 
     template_name = "appProyecto/categoria_confirm_delete.html"
+
+
+class CategoriaCreateView(View):
+    # Llamada para mostrar la página con el formulario de creación al usuario
+    def get(self, request, *args, **kwargs):
+        formulario = CategoriaForm()
+        context = {
+            'formulario': formulario
+        }
+        return render(request, 'appProyecto/categoria_create.html', {'formulario': formulario})
+
+    def post(self, request, *args, **kwargs):
+        formulario = CategoriaForm(request.POST)
+        if formulario.is_valid():  # is_valid() deja los datos validados en el atributo cleaned_data
+            formulario.save()
+
+            # Volvemos a la lista de departamentos
+            return redirect('lista categorias')
+        # Si los datos no son válidos, mostramos el formulario nuevamente indicando los errores
+        return render(request, 'appProyecto/categoria_create.html', {'formulario': formulario})

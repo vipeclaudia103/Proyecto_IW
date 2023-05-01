@@ -1,111 +1,97 @@
-{% extends "base.html" %} {% block titulo %} Producto| {{ producto.nombre}}
-{%endblock %} {% block contenido %}
-
-<div class="contenedorPrincipal">
-  <section class="navegadorProductos">
-
-    <div class="tituloNavegadorProductos">
-      Todos los productos
-    </div>
-
-    <div class="listaProductos">
-      <ul>
-        {% for p in productos %}
-        <li>
-          <a href="{% url 'detalle producto' p.pk %}">{{ p.nombre }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-
-  </section>
-
-  <div class="descripcionProducto">
-    {% if producto %}
-    <div class="tituloProducto">
-      Detalle del Producto
-      <div class="botonesProducto">
-        <a href="/appProyecto/productos/{{producto.id}}/delete/" class="button"> Borrar</a>
-        <a href="/appProyecto/productos/{{producto.id}}/update/" class="button"> Actualizar</a>
-      </div>
-    </div>
-
-    <div class="datosProducto">
-      <div class="propiedadProducto">
-        <div class="tituloPropiedad">
-          Nombre:
-        </div>
-        {{ producto.nombre}}
-      </div>
-      <div class="propiedadProducto">
-        <div class="tituloPropiedad">
-          Precio:
-        </div>
-        {{ producto.precio}} €
-      </div>
-      <div class="propiedadProducto">
-        <div class="tituloPropiedad">
-          Categoria:
-        </div>
-        {{ producto.categoria}}
-      </div>
-
-      <h2>Componentes:</h2>
+{% extends "detalle.html" %} 
 
 
-      <div class="contenedorComponentes">
-        <div class="elementoCompoenente">
-        <table class="paleBlueRows">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Marca</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for elemento in elementos %}
-            <tr>
-              <td>
-                <a href="{% url 'detalle componentes' elemento.id_componente.pk %}">
-                  {{ elemento.id_componente.nombre }}
-                </a>
-              </td>
-              <td>{{ elemento.id_componente.marca }}</td>
-              <td>{{ elemento.cantidad }}</td>
-              <td>
-                <form action="{% url 'borrar elemento' elemento.pk %}" method="POST">
-                  {% csrf_token %}
-                  <button type="submit" class="button">Borrar</button>
-                </form>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+{% block titulo %} 
+Producto| {{ producto.nombre}}
+{% endblock %} 
 
-        <div class="elementoCompoenente">
-          <h2>Agregar Componente:</h2>
-          <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Agregar</button>
-          </form>
-        </div>
-      </div>
+{% block elemListado %} productos {% endblock %} 
+{% block urlElemento %} 
 
+<a href="{% url 'detalle producto' p.pk %}">
+  <li>{{ p.nombre }}</li>
+</a>
+{% endblock %} 
 
+{% block detalle %} 
+{% if producto %}
+<div class="tituloProducto">
+  Detalle del Producto
+  <div class="botonesProducto">
+    <a href="/appProyecto/productos/{{producto.id}}/delete/" class="button">
+      Borrar</a
+    >
+    <a href="/appProyecto/productos/{{producto.id}}/update/" class="button">
+      Actualizar</a
+    >
+  </div>
+</div>
 
-
-    </div>
-
-    {% else %}
-    <p>No existe este producto.</p>
-    {% endif %}
-
+<div class="datosProducto">
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Nombre:</div>
+    {{ producto.nombre}}
+  </div>
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Precio:</div>
+    {{ producto.precio}} €
+  </div>
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Categoria:</div>
+    {{ producto.categoria}}
   </div>
 
-  {% endblock %}
+  <h2>Componentes:</h2>
 
+  <div class="contenedorComponentes">
+    <div class="elementoCompoenente">
+      <table class="paleBlueRows">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for elemento in elementos %}
+          <tr>
+            <td>
+              <a
+                href="{% url 'detalle componentes' elemento.id_componente.pk %}"
+              >
+                {{ elemento.id_componente.nombre }}
+              </a>
+            </td>
+            <td>{{ elemento.id_componente.marca }}</td>
+            <td>{{ elemento.cantidad }}</td>
+            <td>
+              <form
+                class="botones"
+                action="{% url 'borrar elemento' elemento.pk %}"
+                method="POST"
+              >
+                {% csrf_token %}
+                <button type="submit" class="button">Borrar</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="elementoCompoenente">
+      <h2>Agregar Componente:</h2>
+     <form  class = "cuadroFormularios" method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Agregar</button>
+      </form>
+    </div>
+  </div>
 </div>
+
+{% else %}
+<p>No existe este producto.</p>
+{% endif %} {% endblock %}

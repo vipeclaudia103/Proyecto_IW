@@ -1,5 +1,13 @@
-{% extends "base.html" %} {% block titulo %} Detalle Pedido
-{%endblock %} 
+{% extends "base.html" %} 
+
+
+
+
+
+
+
+
+
 {% block contenido %}
   <h1>Detalle de pedido</h1>
   <ul>
@@ -17,10 +25,11 @@
       <tr>
         <th>Nombre</th>
         <th>Cantidad</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-     {% for cantidad in pedido.cantidad_set.all %}
+     {% for cantidad in cantidades %}
       <tr>
         <td>
           <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
@@ -28,6 +37,16 @@
           </a>
         </td>
         <td>{{ cantidad.n_producto }}</td>
+        <td>
+            <form
+        class="botones"
+        action="{% url 'borrar cantidad' cantidad.pk %}"
+        method="POST"
+      >
+        {% csrf_token %}
+        <button type="submit" class="button">Borrar</button>
+      </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

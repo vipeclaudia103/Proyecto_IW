@@ -5,11 +5,11 @@
 {% block contenido %}
 <h2>Nuevo componente</h2>
 
-<form  class = "cuadroFormularios" action="{% url 'crear componente' %}" method="post">
+<form  class = "cuadroFormularios" action="{% url 'crear categoria' %}" method="post">
     {% csrf_token %}
     {{ formulario.errors }}
     {{ formulario.as_p }}
-    <input type="submit" value="Nuevo componente" />
+    <input type="submit" value="Nueva categoria" />
 </form>
 
 {% endblock %}

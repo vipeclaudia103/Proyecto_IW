@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block titulo %}Listado de componentes{% endblock %}
+{% block titulo %}Borrar cliente{% endblock %}
 
 {% block contenido %}
    <form  class = "cuadroFormularios" method="post">{% csrf_token %}
      
-        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <p>¿Seguro que quieres borrar "{{ object }}"?</p>
      
         <input type="submit" value="Confirm">
     </form>

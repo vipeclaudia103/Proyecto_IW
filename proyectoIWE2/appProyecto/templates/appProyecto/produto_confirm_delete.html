@@ -3,7 +3,7 @@
 {% block titulo %}Listado de productos{% endblock %}
 
 {% block contenido %}
-    <form method="post">{% csrf_token %}
+   <form  class = "cuadroFormularios" method="post">{% csrf_token %}
      
         <p>¿Seguro que quieres borrar "{{ object }}"?</p>
      

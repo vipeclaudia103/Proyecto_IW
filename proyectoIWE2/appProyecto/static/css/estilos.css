@@ -116,7 +116,7 @@ h2 {
   border-bottom: 6px double darkslategrey;
   width: fit-content;
 }
-form,
+form.cuadroFormularios,
 table.listados {
   font-family: Arial, Helvetica, sans-serif;
   border: 1px solid #1c6ea4;
@@ -311,14 +311,6 @@ table.paleBlueRows tfoot td {
   box-shadow: 6px 2px 4px#cfa2de;
 }
 
-
-
-
-
-
-
-
-
 .contenedorPrincipal {
   display: flex;
   flex-direction: row;
@@ -350,7 +342,8 @@ table.paleBlueRows tfoot td {
   background-color: #d7d7d7;
   width: 100%;
 }
-.tituloProducto, .tituloNavegadorProductos {
+.tituloProducto,
+.tituloNavegadorProductos {
   font-size: 30px;
   background-color: black;
   color: #ffffff;
@@ -359,7 +352,7 @@ table.paleBlueRows tfoot td {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   height: 50px;
 }
 .datosProducto {

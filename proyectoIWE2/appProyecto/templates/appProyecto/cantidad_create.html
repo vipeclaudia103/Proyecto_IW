@@ -2,7 +2,7 @@
 
 <h2>Nuevo componente</h2>
 
-<form action="{% url 'crear cantidad' %}" method="post">
+<form  class = "cuadroFormularios" action="{% url 'crear cantidad' %}" method="post">
   {% csrf_token %} {{ formulario.errors }} {{ formulario.as_p }}
   <input type="submit" value="Agregar Producto" />
 </form>

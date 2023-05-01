@@ -44,3 +44,8 @@ class ElementoForm(forms.ModelForm):
     class Meta:
         model = Elemento
         fields = ['id_componente', 'cantidad']
+
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = '__all__'

@@ -25,6 +25,9 @@ urlpatterns = [
          views.PedidoCreateView.as_view(), name='crear pedido'),
     path('pedidos/cantidad', views.CantidadCreateView.as_view(),
          name='crear cantidad'),
+          path('cantidad/<int:pk>/delete/',
+         views.CantidadDeleteView.as_view(), name='borrar cantidad'),
+
     path('categoria/<int:pk>',
          views.CategoriaDetailView.as_view(), name='detalle categoria'),
     path('categoria/',         views.CategoriasListView.as_view(),
@@ -34,12 +37,17 @@ urlpatterns = [
          views.ComponenteDetailView.as_view(), name='detalle componentes'),
     path('componentes/',
          views.ComponenteListView.as_view(), name='lista componentes'),
+
     path('clientes/',
          views.ClientesListView.as_view(), name='lista clientes'),
     path('clientes/<int:pk>',
          views.ClienteDetailView.as_view(), name='detalle cliente'),
     path('cliente/create', views.ClienteCreateView.as_view(),
          name='crear cliente'),
+    path('clientes/<int:pk>/delete/',
+         views.ClienteDeleteView.as_view(), name='borra cliente'),
+    path('clientes/<int:pk>/update/',
+         views.ClienteUpdateView.as_view(), name='actualiza cliente'),
 
     path('componentes/create', views.ComponenteCreateView.as_view(),
          name='crear componente'),
@@ -51,5 +59,7 @@ urlpatterns = [
          views.CategoriaUpdateView.as_view(), name='actualiza categoria'),
     path('categoria/<int:pk>/delete/',
          views.CategoriaDeleteView.as_view(), name='borra categoria'),
+     path('categoria/create', views.CategoriaCreateView.as_view(),
+          name='crear categoria'),
 
 ]

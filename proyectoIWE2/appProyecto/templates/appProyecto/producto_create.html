@@ -5,7 +5,7 @@
 {% block contenido %}
 <h2>Nuevo producto</h2>
 
-<form action="{% url 'crear producto' %}" method="post">
+<form  class = "cuadroFormularios" action="{% url 'crear producto' %}" method="post">
     {% csrf_token %}
     {{ formulario.errors }}
     {{ formulario.as_p }}

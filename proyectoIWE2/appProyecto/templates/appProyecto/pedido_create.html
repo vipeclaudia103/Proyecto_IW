@@ -2,7 +2,7 @@
 {% block contenido %}
 <h2>Nuevo pedido</h2>
 
-<form action="{% url 'crear pedido' %}" method="post">
+<form  class = "cuadroFormularios" action="{% url 'crear pedido' %}" method="post">
   {% csrf_token %} {{ formulario.errors }} {{ formulario.as_p }}
   <input type="submit" value="Nuevo pedido" />
 </form>
