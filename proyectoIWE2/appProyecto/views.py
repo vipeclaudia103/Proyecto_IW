@@ -121,6 +121,7 @@ class ComponenteDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['elementos'] = self.object.elemento_set.all()
+        context['listaTodos'] = Componente.objects.all()
         return context
 
 
@@ -179,8 +180,8 @@ class CategoriaDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['productos'] = self.object.producto_set.all()
+        context['listaTodos'] = Categoria.objects.all()
         return context
-
 
 class CantidadCreateView(View):
     def get(self, request, *args, **kwargs):
