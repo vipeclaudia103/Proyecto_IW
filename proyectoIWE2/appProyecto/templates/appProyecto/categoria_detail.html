@@ -14,13 +14,13 @@
 {% block detalle %} 
 <div class="tituloProducto">
   Datos de la categoria
+  <a href="/appProyecto/categoria/{{categoria.id}}/update/" class="button">
+    Actualizar</a>
+  <a href="/appProyecto/categoria/{{categoria.id}}/delete/" class="button">
+    Borrar</a>
 </div>
 
 {% if categoria %}
-<a href="/appProyecto/categoria/{{categoria.id}}/update/" class="button">
-  Actualizar</a>
-<a href="/appProyecto/categoria/{{categoria.id}}/delete/" class="button">
-  Borrar</a>
 <ul>
   <li>Nombre: {{ categoria.nombre}}</li>
   <li>Descripcion: {{ categoria.descripcion}}</li>

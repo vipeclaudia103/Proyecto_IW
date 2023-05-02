@@ -10,15 +10,15 @@
 {% block detalle %}
   <div class="tituloProducto">
     Datos del componente
-  </div>
-
-  {% if componente %}
     <a href="/appProyecto/componentes/{{componente.id}}/update/" class="button">
       Actualizar
     </a>
     <a href="/appProyecto/componentes/{{componente.id}}/delete/" class="button">
       Borrar
     </a>
+  </div>
+
+  {% if componente %}
     <ul>
       <li>Nombre: {{ componente.nombre}}</li>
       <li>Marca: {{ componente.marca}}</li>
