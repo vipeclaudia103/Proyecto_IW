@@ -9,9 +9,8 @@
   <table class="listados">
     <thead>
       <tr>
-        <th>Nombre</th>
+        <th>Cliente</th>
         <th>Fecha</th>
-        <th>Precio</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +20,6 @@
           <a href="{% url 'detalle pedido' r.id %}">{{ r.id_cliente}}</a>
         </td>
         <td>{{ r.fecha}}</td>
-        <td>{{ r.precio}}</td>
       </tr>
       {% endfor %}
     </tbody>

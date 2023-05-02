@@ -1,23 +1,13 @@
-{% extends "detalle.html" %} 
-
-
-{% block titulo %} 
-Producto| {{ producto.nombre}}
-{% endblock %} 
-
-{% block elemListado %} productos {% endblock %} 
-{% block urlElemento %} 
+{% extends "detalle.html" %} {% block titulo %} Producto| {{ producto.nombre}}
+{% endblock %} {% block elemListado %} productos {% endblock %} {% block urlElemento %}
 
 <a href="{% url 'detalle producto' p.pk %}">
   <li>{{ p.nombre }}</li>
 </a>
-{% endblock %} 
-
-{% block detalle %} 
-{% if producto %}
+{% endblock %} {% block detalle %} {% if producto %}
 <div class="tituloProducto">
   Detalle del Producto
-  <div class="botonesProducto">
+  <div class="barraBtn">
     <a href="/appProyecto/productos/{{producto.id}}/delete/" class="button">
       Borrar</a
     >
@@ -41,10 +31,9 @@ Producto| {{ producto.nombre}}
     {{ producto.categoria}}
   </div>
 
-  <h2>Componentes:</h2>
-
   <div class="contenedorComponentes">
     <div class="elementoCompoenente">
+      <h2>Componentes:</h2>
       <table class="paleBlueRows">
         <thead>
           <tr>
@@ -84,7 +73,7 @@ Producto| {{ producto.nombre}}
 
     <div class="elementoCompoenente">
       <h2>Agregar Componente:</h2>
-     <form  class = "cuadroFormularios" method="post">
+      <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.as_p }}
         <button type="submit">Agregar</button>
       </form>

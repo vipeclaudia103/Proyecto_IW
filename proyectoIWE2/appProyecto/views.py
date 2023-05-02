@@ -1,5 +1,5 @@
 from django.forms import Form
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import *
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views import View
@@ -17,6 +17,8 @@ class ElementoDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('detalle producto', kwargs={'pk': self.object.id_producto.pk})
+
+
 class CantidadDeleteView(DeleteView):
     model = Cantidad
     success_url = "/appProyecto/pedidos"
@@ -106,11 +108,18 @@ class PedidoCreateView(View):
 
 class PedidoDetailView(DetailView):
     model = Pedido
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cantidades']  = self.object.cantidad_set.all()
+        context['cantidades'] = self.object.cantidad_set.all()
         context['listaTodos'] = Pedido.objects.all()
+        total = 0
+        for c in context['cantidades']:
+            total = total + c.obtener_cantidad()
+        context['precioTotal'] = total
         return context
+
+
 class ComponenteListView(ListView):
     model = Componente
 
