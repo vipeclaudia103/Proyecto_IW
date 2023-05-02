@@ -1,8 +1,26 @@
-{% extends "base.html" %} 
-{% block titulo %} Detalle del categoria {% endblock%}
-{% block contenido %}
-<h2>Datos del categoria</h2>
+{% extends "detalle.html" %} 
+
+{% block titulo %} Categoria| {{ categoria.nombre}}{% endblock%}
+
+{% block elemListado %} categorias {% endblock %} 
+{% block urlElemento %} 
+
+<a href="{% url 'detalle categoria' p.pk %}">
+  <li>{{p.nombre }}</li>
+</a>
+
+{% endblock %} 
+
+{% block detalle %} 
+<div class="tituloProducto">
+  Datos de la categoria
+</div>
+
 {% if categoria %}
+<a href="/appProyecto/categoria/{{categoria.id}}/update/" class="button">
+  Actualizar</a>
+<a href="/appProyecto/categoria/{{categoria.id}}/delete/" class="button">
+  Borrar</a>
 <ul>
   <li>Nombre: {{ categoria.nombre}}</li>
   <li>Descripcion: {{ categoria.descripcion}}</li>
@@ -29,4 +47,5 @@
 </table>
 {% else %}
 <p>No existe esta categoria.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+{% endblock %}
