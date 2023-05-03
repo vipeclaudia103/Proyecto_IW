@@ -265,7 +265,6 @@ class ComponenteCreateView(View):
 class ComponenteUpdateView(UpdateView):
     model = Componente
     fields = '__all__'
-    success_url = "/appProyecto/componentes/"
     template_name = "appProyecto/componente_update_form.html"
 
 
@@ -280,7 +279,6 @@ class ComponenteDeleteView(DeleteView):
 class CategoriaUpdateView(UpdateView):
     model = Categoria
     fields = '__all__'
-    success_url = "/appProyecto/categoria/"
     template_name = "appProyecto/categoria_update_form.html"
 
 

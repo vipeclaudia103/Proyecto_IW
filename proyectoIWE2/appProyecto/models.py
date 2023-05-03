@@ -24,6 +24,9 @@ class Componente(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    def get_absolute_url(self):
+        return reverse('detalle cliente', kwargs={'pk': self.pk})
 
 
 class Categoria(models.Model):
@@ -32,6 +35,9 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    def get_absolute_url(self):
+        return reverse('detalle cliente', kwargs={'pk': self.pk})
 
 
 class Producto(models.Model):

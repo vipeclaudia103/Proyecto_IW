@@ -3,10 +3,10 @@
 {% block titulo %}Borrar pedido{% endblock %}
 
 {% block contenido %}
-    <h2>Listado de componentes</h2>
+    <h2>Listado de pedidos</h2>
    <form  class = "cuadroFormularios" method="post"> 
         {% csrf_token %} 
         {{ form.as_p }} 
-        <input type="submit" value="Save"> 
+        <input type="submit" value="Guardar"> 
     </form> 
 {% endblock %}
