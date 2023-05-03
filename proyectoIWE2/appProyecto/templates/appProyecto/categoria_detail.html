@@ -13,6 +13,7 @@
 {% endblock %} {% block detalle %} {% if categoria %}
 <div class="tituloProducto">
   Datos de la categoria
+<<<<<<< HEAD
   <div class="barraBtn">
     <a href="/appProyecto/categoria/{{categoria.id}}/update/" class="button">
       Actualizar</a
@@ -55,6 +56,39 @@
     </table>
   </div>
 </div>
+=======
+  <a href="/appProyecto/categoria/{{categoria.id}}/update/" class="button">
+    Actualizar</a>
+  <a href="/appProyecto/categoria/{{categoria.id}}/delete/" class="button">
+    Borrar</a>
+</div>
+
+{% if categoria %}
+<ul>
+  <li>Nombre: {{ categoria.nombre}}</li>
+  <li>Descripcion: {{ categoria.descripcion}}</li>
+</ul>
+
+<h2>Productos de esta categoria:</h2>
+<table class="paleBlueRows">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for producto in productos %}
+    <tr>
+      <td>
+        <a href="{% url 'detalle producto' producto.pk %}">
+          {{ producto.nombre }}
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+>>>>>>> 4fe931805a6ff60423066a1c210195e9f2f8d404
 {% else %}
 <p>No existe esta categoria.</p>
 {% endif %} {% endblock %}
