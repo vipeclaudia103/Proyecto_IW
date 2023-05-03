@@ -1,13 +1,12 @@
 {% extends "detalle.html" %}
-<!--  -->
+
 {% block titulo %} Producto| {{ producto.nombre}}
-<!--  -->
+
 {% endblock %}
-<!--  -->
 {% block elemListado %}
-<!--  -->
+
 productos {% endblock %}
-<!--  -->
+
 {% block urlElemento %}
 
 <a href="{% url 'detalle producto' p.pk %}">

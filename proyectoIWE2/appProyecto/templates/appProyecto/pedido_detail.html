@@ -1,13 +1,11 @@
 {% extends "detalle.html" %}
-<!--  -->
-{% block titulo %} Pedido| {{ pedido.nombre}}
-<!--  -->
-{% endblock %}
-<!--  -->
+
+{% block titulo %} Pedido| {{ pedido.id_cliente.nombre}}{% endblock %}
+
 {% block elemListado %}
-<!--  -->
+
 pedidos {% endblock %}
-<!--  -->
+
 {% block urlElemento %}
 
 <a href="{% url 'detalle pedido' p.pk %}">
