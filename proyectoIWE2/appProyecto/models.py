@@ -40,6 +40,9 @@ class Producto(models.Model):
     def obtener_precio(self):
         return self.precio
 
+    def __str__(self):
+        return self.nombre
+
 
 class Elemento(models.Model):
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
@@ -54,9 +57,11 @@ class Pedido(models.Model):
     id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     fecha = models.DateTimeField('Fecha de creacion')
     precio = models.FloatField(default=0)
-
     producto = models.ManyToManyField(Producto, through="Cantidad")
-  
+
+    def __str__(self):
+        return self.nombre
+
 
 class Cantidad(models.Model):
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)

@@ -1,5 +1,14 @@
-{% extends "detalle.html" %} {% block titulo %} Producto| {{ producto.nombre}}
-{% endblock %} {% block elemListado %} productos {% endblock %} {% block urlElemento %}
+{% extends "detalle.html" %}
+<!--  -->
+{% block titulo %} Producto| {{ producto.nombre}}
+<!--  -->
+{% endblock %}
+<!--  -->
+{% block elemListado %}
+<!--  -->
+productos {% endblock %}
+<!--  -->
+{% block urlElemento %}
 
 <a href="{% url 'detalle producto' p.pk %}">
   <li>{{ p.nombre }}</li>
@@ -72,9 +81,9 @@
     </div>
 
     <div class="elementoCompoenente">
-      <h2>Agregar Componente:</h2>
+      <h2>Agregar Productos:</h2>
       <form class="cuadroFormularios" method="post">
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %} {{ form.errors }} {{ form.as_p }}
         <button type="submit">Agregar</button>
       </form>
     </div>

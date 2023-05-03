@@ -31,7 +31,16 @@ class PedidoForm(forms.ModelForm):
 class CantidadForm(forms.ModelForm):
     class Meta:
         model = Cantidad
-        fields = '__all__'
+        fields = ['id_producto', 'n_producto',]
+
+    def __init__(self, *args, **kwargs):
+        pedido = kwargs.pop('pedido', None)
+        super().__init__(*args, **kwargs)
+        if pedido:
+            productos_en_pedido = pedido.producto.all()
+            self.fields['id_producto'].queryset = Producto.objects.exclude(
+                id__in=productos_en_pedido
+            )
 
 
 class ClienteForm(forms.ModelForm):

@@ -113,11 +113,30 @@ class PedidoDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['cantidades'] = self.object.cantidad_set.all()
         context['listaTodos'] = Pedido.objects.all()
+        context['form'] = CantidadForm(
+            initial={'id_pedido': self.object},
+            pedido=self.object
+    )
         total = 0
         for c in context['cantidades']:
             total = total + c.obtener_cantidad()
         context['precioTotal'] = total
         return context
+    
+    def post(self, request, *args, **kwargs):
+        form = CantidadForm(request.POST)
+        if form.is_valid():
+            cantidad = form.save(commit=False)
+            cantidad.id_pedido = self.get_object()
+            cantidades = Cantidad.objects.all()
+            # for c in cantidad:
+            #     if(cantidad.id_pedido == c.id_pedido and cantidad.id_producto == c.id_producto):
+            #         return redirect('detalle pedido', pk=self.get_object().pk)
+            cantidad.save()
+            return redirect('detalle pedido', pk=self.get_object().pk)
+        else:
+            return self.get(request, *args, **kwargs)
+    
 
 
 class ComponenteListView(ListView):

@@ -1,63 +1,103 @@
-{% extends "base.html" %} 
-
-
-
-
-
-
-
-
-
-{% block contenido %}
-  <h1>Detalle de pedido</h1>
-  <ul>
-    <li>
-      Cliente:<a href="{% url 'detalle cliente' pedido.id_cliente.pk %}">
-      {{ pedido.id_cliente }}
-  </a>
-    </li> 
-  <li>Fecha: {{ pedido.fecha }}</li>
-  <li>Precio: {{ pedido.precio }}</li>
-  </ul>
-  <h2>Productos:</h2>
-  <table class="paleBlueRows">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-     {% for cantidad in cantidades %}
-      <tr>
-        <td>
-          <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
-            {{ cantidad.id_producto.nombre }}
-          </a>
-        </td>
-        <td>{{ cantidad.n_producto }}</td>
-        <td>
-            <form
-        class="botones"
-        action="{% url 'borrar cantidad' cantidad.pk %}"
-        method="POST"
-      >
-        {% csrf_token %}
-        <button type="submit" class="button">Borrar</button>
-      </form>
-        </td>
-      
-      </tr>
-      {% endfor %}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td>Precio total</td>
-        <td>{{precioTotal}}€</td>
-      </tr>
-    </tfoot>
-  </table>
-</div>
-{% block form %} {% endblock %}
+{% extends "detalle.html" %}
+<!--  -->
+{% block titulo %} Pedido| {{ pedido.nombre}}
+<!--  -->
 {% endblock %}
+<!--  -->
+{% block elemListado %}
+<!--  -->
+pedidos {% endblock %}
+<!--  -->
+{% block urlElemento %}
+
+<a href="{% url 'detalle pedido' p.pk %}">
+  <li>{{ p.id_cliente }} - {{ p.fecha }}</li>
+</a>
+{% endblock %} {% block detalle %} {% if pedido %}
+
+<div class="tituloProducto">
+  Detalle del Producto
+  <div class="barraBtn">
+    <a href="/appProyecto/pedidos/{{producto.id}}/delete/" class="button">
+      Borrar</a
+    >
+    <a href="/appProyecto/pedidos/{{producto.id}}/update/" class="button">
+      Actualizar</a
+    >
+  </div>
+</div>
+
+<div class="datosProducto">
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Cliente:</div>
+    {{ pedido.id_cliente.nombre}}
+  </div>
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Fecha:</div>
+    {{ pedido.id_cliente.precio}} €
+  </div>
+
+  <div class="contenedorComponentes">
+    <div class="elementoCompoenente">
+      <h2>Detalle de pedido</h2>
+      <ul>
+        <li>
+          Cliente:<a href="{% url 'detalle cliente' pedido.id_cliente.pk %}">
+            {{ pedido.id_cliente }}
+          </a>
+        </li>
+        <li>Fecha: {{ pedido.fecha }}</li>
+        <li>Precio: {{ pedido.precio }}</li>
+      </ul>
+      <h2>Productos:</h2>
+      <table class="paleBlueRows">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cantidad in cantidades %}
+          <tr>
+            <td>
+              <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
+                {{ cantidad.id_producto.nombre }}
+              </a>
+            </td>
+            <td>{{ cantidad.n_producto }}</td>
+            <td>
+              <form
+                class="botones"
+                action="{% url 'borrar cantidad' cantidad.pk %}"
+                method="POST"
+              >
+                {% csrf_token %}
+                <button type="submit" class="button">Borrar</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Precio total</td>
+            <td>{{precioTotal}}€</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="elementoCompoenente">
+      <h2>Agregar Componente:</h2>
+      <form class="cuadroFormularios" method="post">
+        {% csrf_token %} {{ form.errors }} {{ form.as_p }}
+        <button type="submit">Agregar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<p>No existe este producto.</p>
+{% endif %} {% endblock %}

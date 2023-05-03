@@ -1,51 +1,60 @@
-{% extends "detalle.html" %} 
-
-{% block titulo %} Categoria| {{ categoria.nombre}}{% endblock%}
-
-{% block elemListado %} categorias {% endblock %} 
-{% block urlElemento %} 
+{% extends "detalle.html" %}
+<!--  -->
+{% block titulo %} Categoria|{{categoria.nombre}}{% endblock%}
+<!--  -->
+{% block elemListado %} categorias {%endblock%}
+<!--  -->
+{% block urlElemento %}
 
 <a href="{% url 'detalle categoria' p.pk %}">
   <li>{{p.nombre }}</li>
 </a>
 
-{% endblock %} 
-
-{% block detalle %} 
+{% endblock %} {% block detalle %} {% if categoria %}
 <div class="tituloProducto">
   Datos de la categoria
+  <div class="barraBtn">
+    <a href="/appProyecto/categoria/{{categoria.id}}/update/" class="button">
+      Actualizar</a
+    >
+    <a href="/appProyecto/categoria/{{categoria.id}}/delete/" class="button">
+      Borrar</a
+    >
+  </div>
 </div>
-
-{% if categoria %}
-<a href="/appProyecto/categoria/{{categoria.id}}/update/" class="button">
-  Actualizar</a>
-<a href="/appProyecto/categoria/{{categoria.id}}/delete/" class="button">
-  Borrar</a>
-<ul>
-  <li>Nombre: {{ categoria.nombre}}</li>
-  <li>Descripcion: {{ categoria.descripcion}}</li>
-</ul>
-
-<h2>Productos de esta categoria:</h2>
-<table class="paleBlueRows">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for producto in productos %}
-    <tr>
-      <td>
-        <a href="{% url 'detalle producto' producto.pk %}">
-          {{ producto.nombre }}
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="datosProducto">
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">>Nombre:</div>
+    {{ categoria.nombre}}
+  </div>
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">>Descripcion:</div>
+    {{ categoria.descripcion}}
+  </div>
+</div>
+<div class="contenedorComponentes">
+  <div class="elementoCompoenente">
+    <h2>Productos de esta categoria:</h2>
+    <table class="paleBlueRows">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+        <tr>
+          <td>
+            <a href="{% url 'detalle producto' producto.pk %}">
+              {{ producto.nombre }}
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 {% else %}
 <p>No existe esta categoria.</p>
-{% endif %} 
-{% endblock %}
+{% endif %} {% endblock %}

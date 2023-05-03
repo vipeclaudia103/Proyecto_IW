@@ -18,7 +18,7 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: fit-content;
+  min-height: min-content;
   background-color: #1e242c;
   align-items: center;
   padding: 4px;
@@ -133,9 +133,10 @@ h4 {
 }
 h2 {
   padding: 0.5em;
-  margin-bottom: 0.5cm;
+  min-width: min-content;
+  margin: 0.5em;
+  max-width: max-content;
   border-bottom: 6px double darkslategrey;
-  width: fit-content;
 }
 form.cuadroFormularios,
 table.paleBlueRows,
@@ -143,7 +144,7 @@ table.listados {
   font-family: Arial, Helvetica, sans-serif;
   border: 1px solid #1c6ea4;
   background-color: #eeeeee;
-  width: max-content;
+  min-width: min-content;
   text-align: left;
   border-collapse: collapse;
   margin: 1em auto;
@@ -161,7 +162,7 @@ table.listados th,
 table.paleBlueRows td,
 table.paleBlueRows th {
   padding: 4px;
-  width: max-content;
+  min-width: min-content;
 }
 table.listados tbody td {
   font-size: 14px;
@@ -266,6 +267,7 @@ form button,
   -moz-box-shadow: 4px 2px 3px#d5b88f;
   box-shadow: 4px 2px 3px#d5b88f;
 }
+form button:hover,
 .button:hover {
   border: solid 2px #d4a56c;
   color: #1a5a82;
@@ -291,8 +293,8 @@ h2 {
   padding: 0;
   display: flex;
   flex-direction: column;
-  width: max-content;
-  height: max-content;
+  min-width: min-content;
+  min-height: min-content;
 }
 .contenedorPrincipal {
   display: flex;
@@ -302,6 +304,9 @@ h2 {
 .navegadorProductos,
 .descripcionProducto {
   background-color: #d7d7d7;
+  margin: 0.8em;
+  border-radius: 2em;
+  max-width: max-content;
 }
 .listaProductos {
   margin: 20px;
@@ -333,10 +338,13 @@ h2 {
   justify-content: space-around;
   align-items: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  height: max-content;
+  min-height: min-content;
 }
 .datosProducto {
   margin: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .propiedadProducto {
   background-color: white;
@@ -345,6 +353,8 @@ h2 {
   align-items: flex-end;
   padding: 15px;
   margin-bottom: 10px;
+  min-width: min-content;
+  max-width: max-content;
 }
 .tituloPropiedad {
   font-size: 20px;
