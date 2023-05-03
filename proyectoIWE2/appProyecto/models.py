@@ -13,6 +13,9 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    def get_absolute_url(self):
+        return reverse('detalle cliente', kwargs={'pk': self.pk})
 
 
 class Componente(models.Model):
@@ -43,6 +46,9 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    def get_absolute_url(self):
+        return reverse('detalle producto', kwargs={'pk': self.pk})
 
 
 class Elemento(models.Model):
@@ -62,6 +68,9 @@ class Pedido(models.Model):
 
     def __str__(self):
         return f"{self.id_cliente} - {self.fecha}"
+    
+    def get_absolute_url(self):
+        return reverse('detalle pedido', kwargs={'pk': self.pk})
 
 
 class Cantidad(models.Model):

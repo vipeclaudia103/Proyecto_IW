@@ -80,7 +80,6 @@ class ProductoCreateView(View):
 class ProductoUpdateView(UpdateView):
     model = Producto
     fields = ['nombre', 'precio', 'descripcion', 'categoria', ]
-    success_url = "/appProyecto/productos"
     template_name = "appProyecto/producto_update.html"
 
 
@@ -145,7 +144,6 @@ class PedidoDeleteView(DeleteView):
 class PedidoUpdateView(UpdateView):
     model = Pedido
     fields = ['id_cliente', 'fecha']
-    success_url = "/appProyecto/pedidos"
     template_name = "appProyecto/pedido_update.html"
     
 
@@ -197,7 +195,6 @@ class ClienteCreateView(View):
 class ClienteUpdateView(UpdateView):
     model = Cliente
     fields = '__all__'
-    success_url = "/appProyecto/clientes"
     template_name = "appProyecto/cliente_update.html"
 
 
