@@ -53,6 +53,15 @@ class ElementoForm(forms.ModelForm):
     class Meta:
         model = Elemento
         fields = ['id_componente', 'cantidad']
+    
+    def __init__(self, *args, **kwargs):
+        producto = kwargs.pop('producto', None)
+        super().__init__(*args, **kwargs)
+        if producto:
+            componenetes_en_producto = producto.componente.all()
+            self.fields['id_pedido'].queryset = Componente.objects.exclude(
+                id__in=componenetes_en_producto
+            )
 
 class CategoriaForm(forms.ModelForm):
     class Meta:

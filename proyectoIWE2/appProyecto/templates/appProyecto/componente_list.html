@@ -3,28 +3,31 @@
 <div id="content">
   <h1>Gestor de componentes</h1>
   <h2>Listado de componentes</h2>
-  {% if componente_list %}
-  <a href="/appProyecto/componentes/create" class="button">Componente&nbsp;✚</a>
-  <table class="listados">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Marca</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for r in object_list %}
-      <tr>
-        <td>
-          <a href="{% url 'detalle componentes' r.id %}">{{ r.nombre}}</a>
-        </td>
-        <td>{{ r.marca}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p>No hay componentes creados.</p>
-  {% endif %}
+  <div class="tablasList">
+    {% if componente_list %}
+    <a href="/appProyecto/componentes/create" class="button">Componente&nbsp;✚</a>
+    <table class="listados">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Marca</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in object_list %}
+        <tr>
+          <td>
+            <a href="{% url 'detalle componentes' r.id %}">{{ r.nombre}}</a>
+          </td>
+          <td>{{ r.marca}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="tituloPropiedad"> NO EXISTE NINGUN COMPONENTE</div>
+    {% endif %}
+  </div>
+
 </div>
 {% endblock %}

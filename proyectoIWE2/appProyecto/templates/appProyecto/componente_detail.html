@@ -1,15 +1,16 @@
-{% extends "detalle.html" %} 
+{% extends "detalle.html" %}
 
 {% block titulo %} Componente | {{ componente.nombre}}{% endblock%}
 
-{% block elemListado %} componentes {% endblock %} 
-{% block urlElemento %} 
+{% block elemListado %} componentes {% endblock %}
+{% block urlElemento %}
 <a href="{% url 'detalle componentes' p.pk %}">
   <li>{{ p.nombre }}</li>
 </a> {% endblock %}
 {% block detalle %}
-  <div class="tituloProducto">
-    Datos del componente
+<div class="tituloProducto">
+  Datos del componente
+  <div class="barraBtn">
     <a href="/appProyecto/componentes/{{componente.id}}/update/" class="button">
       Actualizar
     </a>
@@ -17,36 +18,48 @@
       Borrar
     </a>
   </div>
+</div>
 
-  {% if componente %}
-    <ul>
-      <li>Nombre: {{ componente.nombre}}</li>
-      <li>Marca: {{ componente.marca}}</li>
-    </ul>
-    <h2>Componentes:</h2>
-      <table class="paleBlueRows">
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Categoria</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for cantidad in elementos %}
-          <tr>
-            <td>
-              <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
-                {{ cantidad.id_producto.nombre }}
-              </a>
-            </td>
-            <td>
-              <a href="{% url 'detalle categoria' cantidad.id_producto.categoria.pk %}">
-                {{ cantidad.id_producto.categoria.nombre }}
-              </a>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-  {% endif %} 
+
+
+
+<div class="datosProducto">
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Nombre: </div>
+    {{ componente.nombre}}
+  </div>
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Marca:</div>
+    {{ componente.marca}}
+  </div>
+  {% if elementos %}
+  <h2>Productos:</h2>
+  <table class="paleBlueRows">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cantidad in elementos %}
+      <tr>
+        <td>
+          <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
+            {{ cantidad.id_producto.nombre }}
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'detalle categoria' cantidad.id_producto.categoria.pk %}">
+            {{ cantidad.id_producto.categoria.nombre }}
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO CON ESTE COMPONENTE</div>
+{% endif %}
 {% endblock %}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -26,7 +27,7 @@ class Componente(models.Model):
         return self.nombre
     
     def get_absolute_url(self):
-        return reverse('detalle cliente', kwargs={'pk': self.pk})
+        return reverse('detalle componentes', kwargs={'pk': self.pk})
 
 
 class Categoria(models.Model):
@@ -37,11 +38,16 @@ class Categoria(models.Model):
         return self.nombre
     
     def get_absolute_url(self):
-        return reverse('detalle cliente', kwargs={'pk': self.pk})
+        return reverse('detalle categoria', kwargs={'pk': self.pk})
 
 
 class Producto(models.Model):
-    precio = models.FloatField(default=0)
+    precio = models.FloatField(
+        default=0,
+        validators=[
+            MinValueValidator(0)
+        ]
+     )
     nombre = models.CharField(max_length=200)
     descripcion = models.CharField(max_length=1000)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
@@ -60,7 +66,12 @@ class Producto(models.Model):
 class Elemento(models.Model):
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     id_componente = models.ForeignKey(Componente, on_delete=models.CASCADE)
-    cantidad = models.IntegerField(default=1)
+    cantidad = models.IntegerField(
+        default=1,
+        validators=[
+            MinValueValidator(1)
+        ]
+     )
 
     class Meta:
         unique_together = (('id_producto', 'id_componente'),)
@@ -82,7 +93,12 @@ class Pedido(models.Model):
 class Cantidad(models.Model):
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     id_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-    n_producto = models.IntegerField(default=1)
+    n_producto = models.IntegerField(
+        default=1,
+        validators=[
+            MinValueValidator(1)
+        ]
+     )
 
     def obtener_cantidad(self):
         return self.n_producto * self.id_producto.obtener_precio()

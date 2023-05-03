@@ -3,29 +3,31 @@
 <div id="content">
   <h1>Gestor de pedidos</h1>
   <h2>Listado de pedidos</h2>
-  <a href="{%url 'crear pedido'%}" class="button">Pedido&nbsp;✚</a>
-  <a href="{%url 'crear cantidad'%}" class="button"> Producto&nbsp;✚ </a>
-  {% if object_list %}
-  <table class="listados">
-    <thead>
-      <tr>
-        <th>Cliente</th>
-        <th>Fecha</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for r in object_list %}
-      <tr>
-        <td>
-          <a href="{% url 'detalle pedido' r.id %}">{{ r.id_cliente}}</a>
-        </td>
-        <td>{{ r.fecha}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p>No hay pedidos creados.</p>
-  {% endif %}
+  <div class="tablasList">
+    <a href="{%url 'crear pedido'%}" class="button">Pedido&nbsp;✚</a>
+    {% if object_list %}
+    <table class="listados">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in object_list %}
+        <tr>
+          <td>
+            <a href="{% url 'detalle pedido' r.id %}">{{ r.id_cliente}}</a>
+          </td>
+          <td>{{ r.fecha}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No hay pedidos creados.</p>
+    {% endif %}
+  </div>
+  
 </div>
 {% endblock %}

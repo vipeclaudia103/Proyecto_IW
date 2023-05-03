@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block titulo %}Borrar pedido{% endblock %}
+{% block titulo %}Actualizar pedido{% endblock %}
 
 {% block contenido %}
     <h2>Listado de pedidos</h2>
    <form  class = "cuadroFormularios" method="post"> 
         {% csrf_token %} 
         {{ form.as_p }} 
-        <input type="submit" value="Guardar"> 
+        <input type="submit" class="button" value="Guardar"> 
     </form> 
 {% endblock %}

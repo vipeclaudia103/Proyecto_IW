@@ -71,9 +71,10 @@ class ProductoCreateView(View):
         formulario = ProductoForm(request.POST)
         if formulario.is_valid():
 
-            formulario.save()
+            producto = formulario.save()
+            url = reverse('detalle producto', args=[producto.pk])
+            return redirect(url)      
 
-            return redirect('lista productos')
         return render(request, 'appProyecto/producto_create.html', {'formulario': formulario})
 
 
@@ -98,10 +99,9 @@ class PedidoCreateView(View):
     def post(self, request, *args, **kwargs):
         formulario = PedidoForm(request.POST)
         if formulario.is_valid():
-
-            formulario.save()
-
-            return redirect('lista pedidos')
+            pedido = formulario.save()
+            url_pedido = reverse('detalle pedido', args=[pedido.pk])
+            return redirect(url_pedido)        
         return render(request, 'appProyecto/pedido_create.html', {'formulario': formulario})
 
 
@@ -119,6 +119,8 @@ class PedidoDetailView(DetailView):
         total = 0
         for c in context['cantidades']:
             total = total + c.obtener_cantidad()
+        self.object.precio = total
+        self.object.save()
         context['precioTotal'] = total
         return context
     
@@ -128,13 +130,34 @@ class PedidoDetailView(DetailView):
             cantidad = form.save(commit=False)
             cantidad.id_pedido = self.get_object()
             cantidades = Cantidad.objects.all()
-            # for c in cantidad:
-            #     if(cantidad.id_pedido == c.id_pedido and cantidad.id_producto == c.id_producto):
-            #         return redirect('detalle pedido', pk=self.get_object().pk)
             cantidad.save()
+             # actualizar el precio del pedido
+    #     cantidades = self.object.cantidad_set.all()
+    #     precio_total = sum([cantidad.obtener_cantidad() for cantidad in cantidades])
+    #     self.object.precio = precio_total
+    #     self.object.save()
             return redirect('detalle pedido', pk=self.get_object().pk)
         else:
             return self.get(request, *args, **kwargs)
+        
+
+    
+    # def post(self, request, *args, **kwargs):
+    # form = CantidadForm(request.POST)
+    # if form.is_valid():
+    #     cantidad = form.save(commit=False)
+    #     cantidad.id_pedido = self.get_object()
+    #     cantidad.save()
+    #     # actualizar el precio del pedido
+    #     cantidades = self.object.cantidad_set.all()
+    #     precio_total = sum([cantidad.obtener_cantidad() for cantidad in cantidades])
+    #     self.object.precio = precio_total
+    #     self.object.save()
+    #     return redirect('detalle pedido', pk=self.get_object().pk)
+    # else:
+    #     return self.get(request, *args, **kwargs)
+    
+
         
 class PedidoDeleteView(DeleteView):
     model = Pedido
@@ -187,8 +210,11 @@ class ClienteCreateView(View):
     def post(self, request, *args, **kwargs):
         formulario = ClienteForm(request.POST)
         if formulario.is_valid():
-            formulario.save()
-            return redirect('lista clientes')
+
+            cliente = formulario.save()
+            url = reverse('detalle cliente', args=[cliente.pk])
+            return redirect(url)      
+
         return render(request, 'appProyecto/cliente_create.html', {'formulario': formulario})
 
 
@@ -231,6 +257,7 @@ class CantidadCreateView(View):
         formulario = CantidadForm(request.POST)
         if formulario.is_valid():
             formulario.save()
+            
 
             return redirect('lista pedidos')
         return render(request, 'appProyecto/pedido_list.html', {'formulario': formulario})
@@ -253,12 +280,12 @@ class ComponenteCreateView(View):
 
     def post(self, request, *args, **kwargs):
         formulario = ComponenteForm(request.POST)
-        if formulario.is_valid():  # is_valid() deja los datos validados en el atributo cleaned_data
-            formulario.save()
+        if formulario.is_valid():
 
-            # Volvemos a la lista de departamentos
-            return redirect('lista componentes')
-        # Si los datos no son válidos, mostramos el formulario nuevamente indicando los errores
+            componente = formulario.save()
+            url = reverse('detalle componentes', args=[componente.pk])
+            return redirect(url)      
+
         return render(request, 'appProyecto/componente_create.html', {'formulario': formulario})
 
 
@@ -302,9 +329,11 @@ class CategoriaCreateView(View):
     def post(self, request, *args, **kwargs):
         formulario = CategoriaForm(request.POST)
         if formulario.is_valid():  # is_valid() deja los datos validados en el atributo cleaned_data
-            formulario.save()
 
-            # Volvemos a la lista de departamentos
-            return redirect('lista categorias')
+            categoria = formulario.save()
+            url = reverse('detalle categoria', args=[categoria.pk])
+            return redirect(url)      
+        
+            
         # Si los datos no son válidos, mostramos el formulario nuevamente indicando los errores
         return render(request, 'appProyecto/categoria_create.html', {'formulario': formulario})

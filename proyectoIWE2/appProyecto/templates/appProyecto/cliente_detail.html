@@ -1,40 +1,57 @@
-{% extends "detalle.html" %} 
+{% extends "detalle.html" %}
 
 {% block titulo %} Cliente | {{ cliente.nombre}}{% endblock%}
 
-{% block elemListado %} cliente {% endblock %} 
-{% block urlElemento %} 
+{% block elemListado %} cliente {% endblock %}
+{% block urlElemento %}
 
 <a href="{% url 'detalle cliente' p.pk %}">
   <li>{{ p.nombre }}</li>
-</a> 
-{% endblock %} 
+</a>
+{% endblock %}
 
 {% block detalle %}
 <div class="tituloProducto">
   Datos del cliente
-  <a href="/appProyecto/clientes/{{cliente.id}}/delete/" class="button">
-    Borrar
-  </a>
-  <a href="/appProyecto/clientes/{{cliente.id}}/update/" class="button">
-    Actualizar
-  </a>
+  <div class="barraBtn">
+    <a href="/appProyecto/clientes/{{cliente.id}}/delete/" class="button">
+      Borrar
+    </a>
+    <a href="/appProyecto/clientes/{{cliente.id}}/update/" class="button">
+      Actualizar
+    </a>
+  </div>
 </div>
 
-{% if cliente %}
-<ul>
-  <li>Nombre: {{ cliente.nombre}}</li>
-  <li>CIF: {{ cliente.cif}}</li>
-  <li>
-    Datos de contacto:
-    <ul>
-      <li>Teléfono: {{ cliente.telefono}}</li>
-      <li>Correo: {{ cliente.email}}</li>
-      <li>Dirección: {{ cliente.direccion}}</li>
-    </ul>
-  </li>
-</ul>
 
+
+<div class="datosProducto">
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">Nombre:</div> {{ cliente.nombre}}
+  </div>
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">CIF: </div> {{ cliente.cif}}
+  </div>
+  <div class="propiedadProducto">
+    <div class="tituloPropiedad">
+      Datos de contacto:</div>
+    <div class="lista">
+      <ul>
+        <li>
+          Teléfono: {{ cliente.telefono}}
+        </li>
+        <li>
+          Correo: {{ cliente.email}}
+        </li>
+        <li>
+          Dirección: {{ cliente.direccion}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+{% if pedidos %}
 <h2>Pedidos de este cliente:</h2>
 <table class="paleBlueRows">
   <thead>
@@ -53,6 +70,6 @@
   </tbody>
 </table>
 {% else %}
-<p>No existe este cliente.</p>
-{% endif %} 
+<div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO CON ESTE COMPONENTE</div>
+{% endif %}
 {% endblock %}

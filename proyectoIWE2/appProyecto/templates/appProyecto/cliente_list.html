@@ -1,31 +1,35 @@
-{% extends "base.html" %} {% block titulo %}Listado de componentes{% endblock %}
+{% extends "base.html" %} {% block titulo %}Listado de clientes{% endblock %}
 {% block contenido %}
 <div id="content">
   <h1>Gestor de Clientes</h1>
   <h2>Listado de Clientes</h2>
-  <a href="{%url 'crear cliente'%}" class="button">Cliente&nbsp;✚</a>
-
-  {% if object_list %}
-  <table class="listados">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Telfono</th>
-        <th>Correo</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for r in object_list %}
-      <tr>
-        <td><a href="{% url 'detalle cliente' r.id %}">{{ r.nombre}}</a></td>
-        <td>{{r.telefono}}</td>
-        <td>{{r.email}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p>No hay clientes creados.</p>
-  {% endif %}
+  <div class="tablasList">
+    <a href="{%url 'crear cliente'%}" class="button">Cliente&nbsp;✚</a>
+    {% if object_list %}
+    <table class="listados">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Telfono</th>
+          <th>Correo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in object_list %}
+        <div>
+          <tr>
+          <td><a href="{% url 'detalle cliente' r.id %}">{{ r.nombre}}</a></td>
+          <td>{{r.telefono}}</td>
+          <td>{{r.email}}</td>
+        </tr>
+        </div>
+        
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No hay clientes creados.</p>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

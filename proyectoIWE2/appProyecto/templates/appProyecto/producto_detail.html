@@ -17,11 +17,9 @@ productos {% endblock %}
   Detalle del Producto
   <div class="barraBtn">
     <a href="/appProyecto/productos/{{producto.id}}/delete/" class="button">
-      Borrar</a
-    >
+      Borrar</a>
     <a href="/appProyecto/productos/{{producto.id}}/update/" class="button">
-      Actualizar</a
-    >
+      Actualizar</a>
   </div>
 </div>
 
@@ -59,20 +57,14 @@ productos {% endblock %}
           {% for elemento in elementos %}
           <tr>
             <td>
-              <a
-                href="{% url 'detalle componentes' elemento.id_componente.pk %}"
-              >
+              <a href="{% url 'detalle componentes' elemento.id_componente.pk %}">
                 {{ elemento.id_componente.nombre }}
               </a>
             </td>
             <td>{{ elemento.id_componente.marca }}</td>
             <td>{{ elemento.cantidad }}</td>
             <td>
-              <form
-                class="botones"
-                action="{% url 'borrar elemento' elemento.pk %}"
-                method="POST"
-              >
+              <form class="botones" action="{% url 'borrar elemento' elemento.pk %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="button">Borrar</button>
               </form>

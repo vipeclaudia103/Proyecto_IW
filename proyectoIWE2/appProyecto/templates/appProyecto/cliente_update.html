@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block titulo %}Listado de clientes{% endblock %}
+{% block titulo %}Actualizar clientes{% endblock %}
 
 {% block contenido %}
     <h2>Listado de clientes</h2>
    <form  class = "cuadroFormularios" method="post"> 
         {% csrf_token %} 
         {{ form.as_p }} 
-        <input type="submit" value="Save"> 
+        <input type="submit" class="button" value="Guardar"> 
     </form> 
 {% endblock %}

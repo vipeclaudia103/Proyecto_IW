@@ -3,11 +3,13 @@ main,
 footer {
   margin: 1em 2em;
 }
+
 body {
   background-image: url(https://e1.pxfuel.com/desktop-wallpaper/586/170/desktop-wallpaper-blue-honeycomb-honeycomb.jpg);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #242c32;
 }
+
 /* PALETA DE COLORES
   -p-azul-muy-oscuro:  #242c32 ;
   -p-azul-oscuro: #123655;
@@ -23,6 +25,7 @@ header {
   align-items: center;
   padding: 4px;
 }
+
 .cabecera {
   display: flex;
   flex-wrap: wrap;
@@ -31,6 +34,8 @@ header {
   color: #cce1e8;
   flex-grow: 2;
 }
+
+.lista,
 .enlace,
 .cabecera,
 main,
@@ -38,6 +43,7 @@ main,
 .listaProductos li {
   border-radius: 0.8em;
 }
+
 nav {
   display: flex;
   flex-direction: row;
@@ -48,11 +54,13 @@ nav {
   justify-content: space-between;
   flex-grow: 1;
 }
+
 main {
   padding: 20px;
   background-color: #e3f1f5;
   border: 0.6em dashed #242c32;
 }
+
 .listaProductos ul li {
   background-color: #fff;
   padding: 10px;
@@ -60,11 +68,13 @@ main {
   color: #242c32;
   border: 1px solid #88bdca;
 }
+
 .listaProductos ul li:hover {
   background-color: #123655;
   color: #cce1e8;
   border-color: #123655;
 }
+
 .enlace {
   background-color: #fff;
   padding: 10px;
@@ -72,6 +82,7 @@ main {
   color: #242c32;
   border: 2px solid #242c32;
 }
+
 h3,
 h4,
 .iconosRedes,
@@ -80,6 +91,7 @@ a.flexFila,
 a.enlacesClaros {
   color: #cce1e8;
 }
+
 .iconosRedes,
 ul.linksFooter,
 a {
@@ -87,6 +99,7 @@ a {
   list-style: none;
   padding: 5px;
 }
+
 .LinkIiconosRedes:hover,
 .enlace:hover {
   background-color: #242c32;
@@ -104,6 +117,7 @@ footer,
   align-content: center;
   flex-wrap: wrap;
 }
+
 footer {
   padding: 1em;
   color: white;
@@ -111,26 +125,43 @@ footer {
   justify-content: space-evenly;
   align-content: center;
 }
+
+.lista,
+.lista ul {
+  color: #123655;
+  background-color: #d7d7d7;
+  font-size: 12px;
+  padding: 8px;
+  list-style: circle;
+  margin: .9em;
+  line-height: 25px;
+
+}
+
 h3,
 h4 {
   margin: 0em;
   width: fit-content;
 }
+
 .descripcion {
-  font-size: 16px;
-  line-height: 30px;
+  font-size: 15px;
+  line-height: 25px;
   padding: 6px;
   background-color: #d7d7d7;
 }
+
 .listadoDetalles {
   background-color: white;
   padding: 10px;
   border: 1px solid #0e0e0e;
 }
+
 #logoCompleto {
   flex-wrap: wrap-reverse;
   max-height: 150px;
 }
+
 h2 {
   padding: 0.5em;
   min-width: min-content;
@@ -138,6 +169,7 @@ h2 {
   max-width: max-content;
   border-bottom: 6px double darkslategrey;
 }
+
 form.cuadroFormularios,
 table.paleBlueRows,
 table.listados {
@@ -151,6 +183,7 @@ table.listados {
   padding: 1.5em;
   border-radius: 0.5em;
 }
+
 form select:hover,
 form input:hover {
   background-color: #dbeff7;
@@ -164,23 +197,28 @@ table.paleBlueRows th {
   padding: 4px;
   min-width: min-content;
 }
+
 table.listados tbody td {
   font-size: 14px;
 }
+
 table.listados tr:nth-child(even) {
   background: #d0e4f5;
 }
+
 table.listados thead {
   background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1c6ea4 100%);
   border-bottom: 2px solid #444444;
 }
+
 table.listados thead th {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: bold;
   color: #ffffff;
   border-left: 2px solid #d0e4f5;
   padding: 4px 10px;
 }
+
 table.listados thead th:first-child {
   border-left: none;
 }
@@ -194,40 +232,44 @@ table.paleBlueRows tbody td {
   font-size: 12px;
   text-align: center;
 }
+
 table.paleBlueRows tr:nth-child(even) {
   background: #d0e4f5;
 }
+
 table.paleBlueRows thead {
   background: linear-gradient(to bottom, #526d91 0%, #2f507b 66%, #183d6d 100%);
 }
+
 table.paleBlueRows thead th {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   color: #ffffff;
   border-left: 2px solid #ffffff;
-  padding: 6px 15px;
+  padding: 6px 8px;
 }
+
 table.paleBlueRows thead th:first-child {
   border-left: none;
 }
 
 table.paleBlueRows tfoot {
-  font-size: 19px;
+  font-size: 14px;
   font-weight: bold;
   color: #ffffff;
   background: #183d6d;
   background: -moz-linear-gradient(top, #526d91 0%, #2f507b 66%, #183d6d 100%);
-  background: -webkit-linear-gradient(
-    top,
-    #526d91 0%,
-    #2f507b 66%,
-    #183d6d 100%
-  );
+  background: -webkit-linear-gradient(top,
+      #526d91 0%,
+      #2f507b 66%,
+      #183d6d 100%);
   background: linear-gradient(to bottom, #526d91 0%, #2f507b 66%, #183d6d 100%);
 }
+
 table.paleBlueRows tfoot td {
-  font-size: 17px;
+  font-size: 15px;
 }
+
 .barraBtn {
   display: flex;
   flex-direction: row;
@@ -236,12 +278,14 @@ table.paleBlueRows tfoot td {
   place-content: end;
   float: right;
 }
+
 td.centrarBtnTabla {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: auto;
 }
+
 form button,
 .button {
   margin: 0.2em;
@@ -261,33 +305,39 @@ form button,
   background-image: -webkit-linear-gradient(top, #3ba4c7 0%, #2a6b80 100%);
   background-image: -o-linear-gradient(top, #3ba4c7 0%, #2a6b80 100%);
   background-image: -ms-linear-gradient(top, #3ba4c7 0%, #2a6b80 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a6b80', endColorstr='#2a6b80',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a6b80', endColorstr='#2a6b80', GradientType=0);
   background-image: linear-gradient(top, #3ba4c7 0%, #2a6b80 100%);
   -webkit-box-shadow: 4px 2px 3px#d5b88f;
   -moz-box-shadow: 4px 2px 3px#d5b88f;
   box-shadow: 4px 2px 3px#d5b88f;
 }
+
 form button:hover,
 .button:hover {
   border: solid 2px #d4a56c;
   color: #1a5a82;
   background-color: #e6c191;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
   background-image: -moz-linear-gradient(top, #e6c191 0%, #d5b88f 100%);
   background-image: -webkit-linear-gradient(top, #e6c191 0%, #d5b88f 100%);
   background-image: -o-linear-gradient(top, #e6c191 0%, #d5b88f 100%);
   background-image: -ms-linear-gradient(top, #e6c191 0%, #d5b88f 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5b88f', endColorstr='#d5b88f',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d5b88f', endColorstr='#d5b88f', GradientType=0);
   background-image: linear-gradient(top, #e6c191 0%, #d5b88f 100%);
   -webkit-box-shadow: 4px 2px 3px #2a6b80;
   -moz-box-shadow: 4px 2px 3px #2a6b80;
   box-shadow: 4px 2px 3px #2a6b80;
 }
+
 .bloque,
 table,
 .propiedadProducto,
 h2 {
   border-radius: 1.5em;
 }
+
 .bloque {
   margin: 0.9em;
   padding: 0;
@@ -296,11 +346,13 @@ h2 {
   min-width: min-content;
   min-height: min-content;
 }
+
 .contenedorPrincipal {
   display: flex;
   flex-wrap: unset;
   flex-direction: row;
 }
+
 .navegadorProductos,
 .descripcionProducto {
   background-color: #d7d7d7;
@@ -308,13 +360,16 @@ h2 {
   border-radius: 2em;
   max-width: max-content;
 }
+
 .listaProductos {
   margin: 20px;
 }
+
 .listaProductos ul {
   list-style: none;
   padding: 0;
 }
+
 .listaProductos li {
   cursor: pointer;
   padding: 15px;
@@ -322,6 +377,7 @@ h2 {
   border: 2px solid #ddd;
   margin-bottom: 10px;
 }
+
 .listaProductos li:hover {
   background-color: #f9f9f9;
 }
@@ -340,12 +396,14 @@ h2 {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   min-height: min-content;
 }
+
 .datosProducto {
   margin: 30px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
+
 .propiedadProducto {
   background-color: white;
   display: flex;
@@ -356,10 +414,16 @@ h2 {
   min-width: min-content;
   max-width: max-content;
 }
+
 .tituloPropiedad {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-right: 20px;
+}
+
+.tablasList {
+  padding: 1.5em;
+  margin: 1em;
 }
 
 .contenedorComponentes {

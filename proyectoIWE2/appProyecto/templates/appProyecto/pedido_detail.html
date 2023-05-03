@@ -11,17 +11,15 @@ pedidos {% endblock %}
 <a href="{% url 'detalle pedido' p.pk %}">
   <li>{{ p.id_cliente }} - {{ p.fecha }}</li>
 </a>
-{% endblock %} {% block detalle %} {% if pedido %}
+{% endblock %} {% block detalle %}
 
 <div class="tituloProducto">
   Detalle del pedido
   <div class="barraBtn">
     <a href="/appProyecto/pedidos/{{pedido.id}}/delete/" class="button">
-      Borrar</a
-    >
+      Borrar</a>
     <a href="/appProyecto/pedidos/{{pedido.id}}/update/" class="button">
-      Actualizar</a
-    >
+      Actualizar</a>
   </div>
 </div>
 
@@ -34,7 +32,7 @@ pedidos {% endblock %}
     <div class="tituloPropiedad">Fecha:</div>
     {{ pedido.fecha}}
   </div>
-
+  {% if cantidades %}
   <div class="contenedorComponentes">
     <div class="elementoComponente">
       <h2>Productos:</h2>
@@ -43,7 +41,7 @@ pedidos {% endblock %}
           <tr>
             <th>Nombre</th>
             <th>Cantidad</th>
-            <th>Acciones</th>
+            <th colspan="2">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -56,18 +54,14 @@ pedidos {% endblock %}
             </td>
             <td>{{ cantidad.n_producto }}</td>
             <td>
-              <form
-                class="botones"
-                action="{% url 'borrar cantidad' cantidad.pk %}"
-                method="POST"
-              >
+              <form class="botones" action="{% url 'borrar cantidad' cantidad.pk %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="button">Borrar</button>
               </form>
             </td>
             <td>
-              <a href="{% url 'actualizar cantidad' cantidad.pk %}">
-                Acttualizar cantidad
+              <a class="button" href="{% url 'actualizar cantidad' cantidad.pk %}">
+                Actualizar
               </a>
             </td>
           </tr>
@@ -75,14 +69,14 @@ pedidos {% endblock %}
         </tbody>
         <tfoot>
           <tr>
-            <td>Precio total</td>
-            <td>{{precioTotal}}€</td>
+            <td colspan="2">Precio total</td>
+            <td colspan="2">{{precioTotal}}€</td>
           </tr>
         </tfoot>
       </table>
     </div>
     <div class="elementoComponente">
-      <h2>Agregar Componente:</h2>
+      <h2>Agregar productos:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
         <button type="submit">Agregar</button>
@@ -90,7 +84,6 @@ pedidos {% endblock %}
     </div>
   </div>
 </div>
-
 {% else %}
-<p>No existe este producto.</p>
+<div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
 {% endif %} {% endblock %}

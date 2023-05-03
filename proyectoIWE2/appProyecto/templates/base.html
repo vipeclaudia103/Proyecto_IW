@@ -1,134 +1,88 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block titulo %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
-  </head>
-  <body>
-    <header class="cabeceraflex">
-      <a href="{% url 'inicio'%}" class="logoCabecera enlacesClaros">
-        <div class="cabecera" style="margin-right: 10em">
-          <img src="{% static 'imagenes/miniLogo.png' %}" style="height: 4em" />
-          <h1 style="text-decoration: none; margin: 0px; display: inline-block">
-            Deustronic Components S.L.
-          </h1>
-        </div></a
-      >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block titulo %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
+  <link rel="shortcut icon" href="{% static 'imagenes/miniLogo.png' %}" />
+</head>
+
+<body>
+  <header class="cabeceraflex">
+    <a href="{% url 'inicio'%}" class="logoCabecera enlacesClaros">
       <div class="cabecera">
-        <nav class="menu">
-          <a class="enlace" href="{% url 'lista productos'  %}">Productos</a>
-          <a class="enlace" href="{% url 'lista pedidos'  %}">Pedidos</a>
-          <a class="enlace" href="{% url 'lista clientes'  %}">Clientes</a>
-          <a class="enlace" href="{% url 'lista componentes'  %}"
-            >Componentes</a
-          >
-          <a class="enlace" href="{% url 'lista categorias'  %}">Categorias</a>
-          <!-- <a class="enlace" href="">Caracteristicas</a> -->
-        </nav>
+        <img src="{% static 'imagenes/miniLogo.png' %}" style="height: 4em" />
+        <h1 style="text-decoration: none; margin: 0px; display: inline-block">
+          Deustronic Components S.L.
+        </h1>
       </div>
-    </header>
-    <main>{% block contenido %}{% endblock %}</main>
-    <footer class="flexFila">
-      <div class="sociales-footer">
-        <h3>Formularios</h3>
-        <ul class="linksFooter">
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'crear producto'  %}"
-              ><span>+ Productos</span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'crear pedido'  %}"
-              ><span>+ Pedidos</span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'crear componente'  %}"
-              ><span>+ Componentes</span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'crear cantidad'  %}"
-              ><span>+ Pedido cantidad </span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'crear categoria'  %}"
-              ><span>+ Categoria</span>
-            </a>
-          </li>
-          <li class="iconosRedes">
-              <a
-                class="LinkIiconosRedes enlacesClaros"
-                href="{% url 'crear cliente'  %}">
-                <span>+ Cliente</span>
-              </a>
-          </li>
-        </ul>
-      </div>
-      <div class="sociales-footer">
-        <h3>Listados</h3>
-        <ul class="linksFooter">
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'lista productos'  %}"
-              ><span>Productos</span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'lista pedidos'  %}"
-              ><span>Pedidos</span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'lista clientes'  %}"
-              ><span>Clientes</span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'lista componentes'  %}"
-              ><span>Componentes</span></a
-            >
-          </li>
-          <li class="iconosRedes">
-            <a
-              class="LinkIiconosRedes enlacesClaros"
-              href="{% url 'lista categorias'  %}"
-              >Categorias</a
-            >
-          </li>
-        </ul>
-      </div>
-      <div id="cuadroFooterLogo" class="sociales-footer">
-        <a class="enlacesClaros" href="{% url 'inicio'%}"
-          ><img
-            id="logoCompleto"
-            src="{% static 'imagenes/logoCompleto.png' %}"
-            alt="logo completo"
-          />
-        </a>
-      </div>
-    </footer>
-  </body>
+    </a>
+    <div class="cabecera">
+      <nav class="menu">
+        <a class="enlace" href="{% url 'lista productos'  %}">Productos</a>
+        <a class="enlace" href="{% url 'lista pedidos'  %}">Pedidos</a>
+        <a class="enlace" href="{% url 'lista clientes'  %}">Clientes</a>
+        <a class="enlace" href="{% url 'lista componentes'  %}">Componentes</a>
+        <a class="enlace" href="{% url 'lista categorias'  %}">Categorias</a>
+        <!-- <a class="enlace" href="">Caracteristicas</a> -->
+      </nav>
+    </div>
+  </header>
+  <main>{% block contenido %}{% endblock %}</main>
+  <footer class="flexFila">
+    <div class="sociales-footer">
+      <h3>Formularios</h3>
+      <ul class="linksFooter">
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'crear producto'  %}"><span>+ Productos</span></a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'crear pedido'  %}"><span>+ Pedidos</span></a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'crear componente'  %}"><span>+ Componentes</span></a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'crear categoria'  %}"><span>+ Categoria</span>
+          </a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'crear cliente'  %}">
+            <span>+ Cliente</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sociales-footer">
+      <h3>Listados</h3>
+      <ul class="linksFooter">
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'lista productos'  %}"><span>Productos</span></a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'lista pedidos'  %}"><span>Pedidos</span></a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'lista clientes'  %}"><span>Clientes</span></a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'lista componentes'  %}"><span>Componentes</span></a>
+        </li>
+        <li class="iconosRedes">
+          <a class="LinkIiconosRedes enlacesClaros" href="{% url 'lista categorias'  %}">Categorias</a>
+        </li>
+      </ul>
+    </div>
+    <div id="cuadroFooterLogo" class="sociales-footer">
+      <a class="enlacesClaros" href="{% url 'inicio'%}"><img id="logoCompleto"
+          src="{% static 'imagenes/logoCompleto.png' %}" alt="logo completo" />
+      </a>
+    </div>
+  </footer>
+</body>
+
 </html>

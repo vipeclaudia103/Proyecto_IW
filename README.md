@@ -3,17 +3,19 @@ Está tanto en la página inicial del proyecto como linkeada la imagen de github
 Link al repositorio:  https://github.com/vipeclaudia103/Proyecto_IW
 
 Funcionalidades adicionales:
-- Cantidad: añadir al pedido la cantidad correspondiente de cada producto 
+- Cantidad: añadir al pedido la cantidad correspondiente de cada producto.
 - Elementos: une id_producto e id_componente para poder poner la cantidad de componente que compone ese producto.
 - Componentes: Crear, visualizar (listado y detalle), actualizar y eliminar. 
 - Clientes: Crear, visualizar (listado y detalle), actualizar y eliminar.
-Te lista que dia se ha realizado el pedido. Borrar, listar y añadir los pedidos que ha realizado, el precio total de lo que deben pagar.
+Te lista que dia se ha realizado el pedido. 
 - Categoría: Crear, visualizar (listado y detalle), actualizar y eliminar. 
-Te lista los productos que son de esa categoria
+- Producto: Lista los productos que son de esa categoria.
+- Pedido: Lista los pedidos que ha realizado el cliente.
 - Gestión de productos que componen cada pedido y su precio total.
 - Gestión de componentes y la cantidad que componen cada producto. 
 
 Funcionalidades no operativas o devuelvan errores:
+- No deberia haber ningun error.
 
 
 Documentación adicional relevante:

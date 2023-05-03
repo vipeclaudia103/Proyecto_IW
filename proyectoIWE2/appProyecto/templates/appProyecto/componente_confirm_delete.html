@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block titulo %}Listado de componentes{% endblock %}
+{% block titulo %}Borrar componente{% endblock %}
 
 {% block contenido %}
    <form  class = "cuadroFormularios" method="post">{% csrf_token %}
      
-        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <p>¿Seguro que quieres borrar el compoente "{{ object }}"?</p>
      
-        <input type="submit" value="Confirm">
+        <input type="submit" class="button" value="Aceptar">
     </form>
 {% endblock %}
