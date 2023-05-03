@@ -237,6 +237,12 @@ class CantidadCreateView(View):
 
             return redirect('lista pedidos')
         return render(request, 'appProyecto/pedido_list.html', {'formulario': formulario})
+    
+class CantidadUpdateView(UpdateView):
+    model = Cantidad
+    fields = ['n_producto']
+    # success_url = "/appProyecto/pedidos/"
+    template_name = "appProyecto/cantidad_update.html"
 
 
 class ComponenteCreateView(View):

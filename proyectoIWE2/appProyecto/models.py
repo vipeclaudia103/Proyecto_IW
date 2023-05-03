@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -60,7 +61,7 @@ class Pedido(models.Model):
     producto = models.ManyToManyField(Producto, through="Cantidad")
 
     def __str__(self):
-        return self.nombre
+        return f"{self.id_cliente} - {self.fecha}"
 
 
 class Cantidad(models.Model):
@@ -73,3 +74,6 @@ class Cantidad(models.Model):
 
     class Meta:
         unique_together = (('id_producto', 'id_pedido'),)
+
+    def get_absolute_url(self):
+        return reverse('detalle pedido', kwargs={'pk': self.id_pedido.pk})

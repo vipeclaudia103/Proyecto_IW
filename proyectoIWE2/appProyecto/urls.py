@@ -32,6 +32,8 @@ urlpatterns = [
          name='crear cantidad'),
     path('cantidad/<int:pk>/delete/',
          views.CantidadDeleteView.as_view(), name='borrar cantidad'),
+    path('cantidad/<int:pk>/update/',
+         views.CantidadUpdateView.as_view(), name='actualizar cantidad'),
 
     path('categoria/<int:pk>',
          views.CategoriaDetailView.as_view(), name='detalle categoria'),

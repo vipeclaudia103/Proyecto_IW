@@ -65,6 +65,11 @@ pedidos {% endblock %}
                 <button type="submit" class="button">Borrar</button>
               </form>
             </td>
+            <td>
+              <a href="{% url 'actualizar cantidad' cantidad.pk %}">
+                Acttualizar cantidad
+              </a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
