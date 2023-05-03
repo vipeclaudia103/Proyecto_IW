@@ -136,6 +136,17 @@ class PedidoDetailView(DetailView):
             return redirect('detalle pedido', pk=self.get_object().pk)
         else:
             return self.get(request, *args, **kwargs)
+        
+class PedidoDeleteView(DeleteView):
+    model = Pedido
+    success_url = "/appProyecto/pedidos"
+    template_name = "appProyecto/pedido_confirm_delete.html"
+
+class PedidoUpdateView(UpdateView):
+    model = Pedido
+    fields = ['id_cliente', 'fecha']
+    success_url = "/appProyecto/pedidos"
+    template_name = "appProyecto/pedido_update.html"
     
 
 

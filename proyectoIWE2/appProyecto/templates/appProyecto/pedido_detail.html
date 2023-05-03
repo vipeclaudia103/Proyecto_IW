@@ -16,12 +16,12 @@ pedidos {% endblock %}
 {% endblock %} {% block detalle %} {% if pedido %}
 
 <div class="tituloProducto">
-  Detalle del Producto
+  Detalle del pedido
   <div class="barraBtn">
-    <a href="/appProyecto/pedidos/{{producto.id}}/delete/" class="button">
+    <a href="/appProyecto/pedidos/{{pedido.id}}/delete/" class="button">
       Borrar</a
     >
-    <a href="/appProyecto/pedidos/{{producto.id}}/update/" class="button">
+    <a href="/appProyecto/pedidos/{{pedido.id}}/update/" class="button">
       Actualizar</a
     >
   </div>
@@ -34,21 +34,11 @@ pedidos {% endblock %}
   </div>
   <div class="propiedadProducto">
     <div class="tituloPropiedad">Fecha:</div>
-    {{ pedido.id_cliente.precio}} €
+    {{ pedido.fecha}}
   </div>
 
   <div class="contenedorComponentes">
-    <div class="elementoCompoenente">
-      <h2>Detalle de pedido</h2>
-      <ul>
-        <li>
-          Cliente:<a href="{% url 'detalle cliente' pedido.id_cliente.pk %}">
-            {{ pedido.id_cliente }}
-          </a>
-        </li>
-        <li>Fecha: {{ pedido.fecha }}</li>
-        <li>Precio: {{ pedido.precio }}</li>
-      </ul>
+    <div class="elementoComponente">
       <h2>Productos:</h2>
       <table class="paleBlueRows">
         <thead>
@@ -88,7 +78,7 @@ pedidos {% endblock %}
         </tfoot>
       </table>
     </div>
-    <div class="elementoCompoenente">
+    <div class="elementoComponente">
       <h2>Agregar Componente:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}

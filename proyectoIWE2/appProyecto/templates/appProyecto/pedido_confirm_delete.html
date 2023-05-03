@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block titulo %}Listado de productos{% endblock %}
+
+{% block contenido %}
+   <form  class = "cuadroFormularios" method="post">{% csrf_token %}
+     
+        <p>¿Seguro que quieres borrar el pedido?</p>
+     
+        <input type="submit" value="Confirmar">
+    </form>
+{% endblock %}
