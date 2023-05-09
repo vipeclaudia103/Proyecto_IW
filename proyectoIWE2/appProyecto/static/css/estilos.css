@@ -1,11 +1,10 @@
 header,
-main,
 footer {
-  margin: 1em 2em;
+  margin: 1em auto;
 }
 
 body {
-  background-image: url(https://e1.pxfuel.com/desktop-wallpaper/586/170/desktop-wallpaper-blue-honeycomb-honeycomb.jpg);
+  background-color: #1e242c;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #242c32;
 }
@@ -21,9 +20,10 @@ header {
   justify-content: space-between;
   flex-wrap: wrap;
   min-height: min-content;
-  background-color: #1e242c;
   align-items: center;
   padding: 4px;
+  max-height: max-content;
+  margin-bottom: 1em;
 }
 
 .cabecera {
@@ -38,27 +38,38 @@ header {
 .lista,
 .enlace,
 .cabecera,
-main,
+.content,
 .descripcion,
 .listaProductos li {
-  border-radius: 0.8em;
+  border-radius: 0.9em;
 }
-
+.cajaEnlace,
 nav {
   display: flex;
   flex-direction: row;
   align-content: space-evenly;
   flex-wrap: wrap;
   padding: 9px;
-  margin: 1em;
   justify-content: space-between;
   flex-grow: 1;
+  margin-left: 1.3em;
 }
 
 main {
-  padding: 20px;
+  margin: 0.8em 3em;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content {
+  padding: 10px;
   background-color: #e3f1f5;
-  border: 0.6em dashed #242c32;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
 }
 
 .listaProductos ul li {
@@ -81,6 +92,7 @@ main {
   margin: 0.2em;
   color: #242c32;
   border: 2px solid #242c32;
+  margin: 0px 1em;
 }
 
 h3,
@@ -121,7 +133,6 @@ footer,
 footer {
   padding: 1em;
   color: white;
-  background-color: #1e242c;
   justify-content: space-evenly;
   align-content: center;
 }
@@ -133,9 +144,8 @@ footer {
   font-size: 12px;
   padding: 8px;
   list-style: circle;
-  margin: .9em;
+  margin: 0.9em;
   line-height: 25px;
-
 }
 
 h3,
@@ -176,7 +186,7 @@ table.listados {
   font-family: Arial, Helvetica, sans-serif;
   border: 1px solid #1c6ea4;
   background-color: #eeeeee;
-  min-width: min-content;
+  /* min-width: min-content; */
   text-align: left;
   border-collapse: collapse;
   margin: 1em auto;
@@ -259,10 +269,12 @@ table.paleBlueRows tfoot {
   color: #ffffff;
   background: #183d6d;
   background: -moz-linear-gradient(top, #526d91 0%, #2f507b 66%, #183d6d 100%);
-  background: -webkit-linear-gradient(top,
-      #526d91 0%,
-      #2f507b 66%,
-      #183d6d 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #526d91 0%,
+    #2f507b 66%,
+    #183d6d 100%
+  );
   background: linear-gradient(to bottom, #526d91 0%, #2f507b 66%, #183d6d 100%);
 }
 
@@ -351,6 +363,7 @@ h2 {
   display: flex;
   flex-wrap: unset;
   flex-direction: row;
+  max-height: fit-content;
 }
 
 .navegadorProductos,
@@ -403,16 +416,24 @@ h2 {
   flex-direction: column;
   flex-wrap: wrap;
 }
-
+.columnaFlex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 15px;
+  margin-bottom: 10px;
+  min-width: min-content;
+  max-width: -webkit-fill-available;
+  flex-direction: column;
+}
 .propiedadProducto {
   background-color: white;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
   padding: 15px;
   margin-bottom: 10px;
   min-width: min-content;
-  max-width: max-content;
+  max-width: -webkit-fill-available;
 }
 
 .tituloPropiedad {
@@ -423,7 +444,13 @@ h2 {
 
 .tablasList {
   padding: 1.5em;
-  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.elementoComponente {
+  padding: 0.2em;
+  margin: 0.3em;
 }
 
 .contenedorComponentes {

@@ -3,8 +3,7 @@
 {% block titulo %}Listado de productos{% endblock %}
 
 {% block contenido %}
-<div id="content">
-  <h1>Gestor de productos</h1>
+<div class="content">
   <h2>Listado de productos</h2>
   <div class="tablasList"><a href="{%url 'crear producto'%}" class="button" />Producto&nbsp;✚</a>
     {% if object_list %}
@@ -12,6 +11,7 @@
       <thead>
         <tr>
           <th>Nombre</th>
+          <th>Categoria</th>
           <th>Precio</th>
         </tr>
       </thead>
@@ -22,7 +22,8 @@
             <a href="{% url 'detalle producto' producto.id %}">
               {{producto.nombre}}</a>
           </td>
-          <td>{{producto.precio}}€</td>
+          <td>            <a href="{% url 'detalle categoria' producto.categoria.id %}">
+            {{producto.categoria}}</a></td>          <td>{{producto.precio}}€</td>
         </tr>
         {% endfor %}
       </tbody>

@@ -1,29 +1,28 @@
 {% extends "base.html" %} {% block titulo %}Listado de clientes{% endblock %}
 {% block contenido %}
-<div id="content">
-  <h1>Gestor de Clientes</h1>
+<div class="content">
   <h2>Listado de Clientes</h2>
   <div class="tablasList">
-    <a href="{%url 'crear cliente'%}" class="button">Cliente&nbsp;✚</a>
     {% if object_list %}
-    <table class="listados">
+    <table class="listados">    <a href="{%url 'crear cliente'%}" class="button">Cliente&nbsp;✚</a>
+
       <thead>
         <tr>
           <th>Nombre</th>
+          <th>Direccion</th>
           <th>Telfono</th>
           <th>Correo</th>
         </tr>
       </thead>
       <tbody>
         {% for r in object_list %}
-        <div>
+       
           <tr>
           <td><a href="{% url 'detalle cliente' r.id %}">{{ r.nombre}}</a></td>
+          <td>{{r.direccion}}</td>
           <td>{{r.telefono}}</td>
           <td>{{r.email}}</td>
-        </tr>
-        </div>
-        
+        </tr>        
         {% endfor %}
       </tbody>
     </table>

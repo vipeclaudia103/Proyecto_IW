@@ -42,7 +42,7 @@ productos {% endblock %}
   </div>
 
   <div class="contenedorComponentes">
-    <div class="elementoCompoenente">
+    <div class="elementoComponente">
       <h2>Componentes:</h2>
       <table class="paleBlueRows">
         <thead>
@@ -75,8 +75,8 @@ productos {% endblock %}
       </table>
     </div>
 
-    <div class="elementoCompoenente">
-      <h2>Agregar Productos:</h2>
+    <div class="elementoComponente">
+      <h2>Agregar Componente:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
         <button type="submit">Agregar</button>
