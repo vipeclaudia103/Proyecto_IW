@@ -55,6 +55,7 @@ productos {% endblock %}
         </thead>
         <tbody>
           {% for elemento in elementos %}
+      
           <tr>
             <td>
               <a href="{% url 'detalle componentes' elemento.id_componente.pk %}">
