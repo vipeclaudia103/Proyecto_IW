@@ -1,10 +1,10 @@
-header,
+/* header,
 footer {
   margin: 1em auto;
-}
+} */
 
 body {
-  background-color: #1e242c;
+  background-color: #171f26;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #242c32;
 }
@@ -34,7 +34,9 @@ header {
   color: #cce1e8;
   flex-grow: 2;
 }
-
+.cabecera img,
+main,
+#logoCompleto,
 .lista,
 .enlace,
 .cabecera,
@@ -54,17 +56,20 @@ nav {
   flex-grow: 1;
   margin-left: 1.3em;
 }
-
+.cabecera img{
+  margin-right: 4px;
+}
 main {
-  margin: 0.8em 3em;
+ padding: 1em;
   max-height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #1e242c;
 }
 .content {
   padding: 10px;
-  background-color: #e3f1f5;
+  background-color: #c0c8c5;
   max-height: fit-content;
   display: flex;
   flex-direction: column;
