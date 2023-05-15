@@ -1,27 +1,30 @@
 {% extends "base.html" %} {% block titulo %} Lista de Categorias{% endblock %}
 {% block contenido %}
-<h2>Listado de categorias</h2>
-<div class="tablasList">
-  <a href="/appProyecto/categoria/create" class="button">Categoria&nbsp;✚</a>
-  {% if object_list %}
-  <table class="listados">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for e in object_list %}
-      <tr>
-        <td>
-          <a href="{% url 'detalle categoria' e.id %}">{{ e.nombre}}</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p>No hay categorias creadas.</p>
-  {% endif %}
+<div class="content">
+  <h2>Listado de categorias</h2>
+  <div class="tablasList">
+    <a href="/appProyecto/categoria/create" class="button">Categoria&nbsp;✚</a>
+    {% if object_list %}
+    <table class="listados">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in object_list %}
+        <tr>
+          <td>
+            <a href="{% url 'detalle categoria' e.id %}">{{ e.nombre}}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No hay categorias creadas.</p>
+    {% endif %}
+  </div>
 </div>
+
 {% endblock contenido %}
