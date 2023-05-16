@@ -79,6 +79,7 @@ pedidos {% endblock %}
       <h2>Agregar productos:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
+        <p id="informacionCantidad"></p>
         <button type="submit">Agregar</button>
       </form>
     </div>
