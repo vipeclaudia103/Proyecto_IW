@@ -1,10 +1,16 @@
 {% extends "base.html" %} {% block titulo %} Detalle del producto {% endblock %}
 {% block contenido %}
-<h2>Nuevo pedido</h2>
+<div class="content">
+  <h2>Nuevo pedido</h2>
 
-<form  class = "cuadroFormularios" action="{% url 'crear pedido' %}" method="post">
-  {% csrf_token %} {{ formulario.errors }} {{ formulario.as_p }}
-  <input type="submit" class="button" value="Nuevo pedido" />
-</form>
+  <form
+    class="cuadroFormularios"
+    action="{% url 'crear pedido' %}"
+    method="post"
+  >
+    {% csrf_token %} {{ formulario.errors }} {{ formulario.as_p }}
+    <input type="submit" class="button" value="Nuevo pedido" />
+  </form>
+</div>
 
 {% endblock %}

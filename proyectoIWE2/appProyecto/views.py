@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import *
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views import View
+from django.core.paginator import Paginator
 from appProyecto.forms import *
 from django.urls import reverse_lazy
 
@@ -30,6 +31,7 @@ class CantidadDeleteView(DeleteView):
 class ProductosListView(ListView):
     model = Producto
     context_object_name = 'producto'
+    paginate_by = 4
 
 
 class ProductoDetailView(DetailView):
@@ -131,32 +133,12 @@ class PedidoDetailView(DetailView):
             cantidad.id_pedido = self.get_object()
             cantidades = Cantidad.objects.all()
             cantidad.save()
-             # actualizar el precio del pedido
-    #     cantidades = self.object.cantidad_set.all()
-    #     precio_total = sum([cantidad.obtener_cantidad() for cantidad in cantidades])
-    #     self.object.precio = precio_total
-    #     self.object.save()
+
             return redirect('detalle pedido', pk=self.get_object().pk)
         else:
             return self.get(request, *args, **kwargs)
         
 
-    
-    # def post(self, request, *args, **kwargs):
-    # form = CantidadForm(request.POST)
-    # if form.is_valid():
-    #     cantidad = form.save(commit=False)
-    #     cantidad.id_pedido = self.get_object()
-    #     cantidad.save()
-    #     # actualizar el precio del pedido
-    #     cantidades = self.object.cantidad_set.all()
-    #     precio_total = sum([cantidad.obtener_cantidad() for cantidad in cantidades])
-    #     self.object.precio = precio_total
-    #     self.object.save()
-    #     return redirect('detalle pedido', pk=self.get_object().pk)
-    # else:
-    #     return self.get(request, *args, **kwargs)
-    
 
         
 class PedidoDeleteView(DeleteView):
