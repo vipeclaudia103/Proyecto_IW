@@ -3,6 +3,7 @@
 {% block titulo %} Crear producto {% endblock %}
 
 {% block contenido %}
+<div class="content">
 <h2>Nuevo producto</h2>
 
 <form  class = "cuadroFormularios" action="{% url 'crear producto' %}" method="post">
@@ -11,5 +12,5 @@
     {{ formulario.as_p }}
     <input type="submit" class="button" value="Nuevo producto" />
 </form>
-
+</div>
 {% endblock %}

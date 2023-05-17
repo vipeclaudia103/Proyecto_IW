@@ -3,6 +3,7 @@
 {% block titulo %} Detalle del departamento {% endblock %}
 
 {% block contenido %}
+<div class="content">
 <h2>Nuevo componente</h2>
 
 <form  class = "cuadroFormularios" action="{% url 'crear componente' %}" method="post">
@@ -11,5 +12,5 @@
     {{ formulario.as_p }}
     <input type="submit" class="button" value="Nuevo componente" />
 </form>
-
+</div>
 {% endblock %}

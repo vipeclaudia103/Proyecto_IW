@@ -30,8 +30,8 @@ class CantidadDeleteView(DeleteView):
 
 class ProductosListView(ListView):
     model = Producto
-    context_object_name = 'producto'
-    paginate_by = 4
+    context_object_name = 'productos'
+    paginate_by = 3
 
 
 class ProductoDetailView(DetailView):
@@ -75,7 +75,7 @@ class ProductoCreateView(View):
 
             producto = formulario.save()
             url = reverse('detalle producto', args=[producto.pk])
-            return redirect(url)      
+            return redirect(url)
 
         return render(request, 'appProyecto/producto_create.html', {'formulario': formulario})
 
@@ -88,6 +88,8 @@ class ProductoUpdateView(UpdateView):
 
 class PedidosListView(ListView):
     model = Pedido
+    paginate_by = 3
+    context_object_name = 'pedidos'
 
 
 class PedidoCreateView(View):
@@ -103,7 +105,7 @@ class PedidoCreateView(View):
         if formulario.is_valid():
             pedido = formulario.save()
             url_pedido = reverse('detalle pedido', args=[pedido.pk])
-            return redirect(url_pedido)        
+            return redirect(url_pedido)
         return render(request, 'appProyecto/pedido_create.html', {'formulario': formulario})
 
 
@@ -117,7 +119,7 @@ class PedidoDetailView(DetailView):
         context['form'] = CantidadForm(
             initial={'id_pedido': self.object},
             pedido=self.object
-    )
+        )
         total = 0
         for c in context['cantidades']:
             total = total + c.obtener_cantidad()
@@ -125,7 +127,7 @@ class PedidoDetailView(DetailView):
         self.object.save()
         context['precioTotal'] = total
         return context
-    
+
     def post(self, request, *args, **kwargs):
         form = CantidadForm(request.POST)
         if form.is_valid():
@@ -137,24 +139,24 @@ class PedidoDetailView(DetailView):
             return redirect('detalle pedido', pk=self.get_object().pk)
         else:
             return self.get(request, *args, **kwargs)
-        
 
 
-        
 class PedidoDeleteView(DeleteView):
     model = Pedido
     success_url = "/appProyecto/pedidos"
     template_name = "appProyecto/pedido_confirm_delete.html"
 
+
 class PedidoUpdateView(UpdateView):
     model = Pedido
     fields = ['id_cliente', 'fecha']
     template_name = "appProyecto/pedido_update.html"
-    
 
 
 class ComponenteListView(ListView):
     model = Componente
+    paginate_by = 3
+    context_object_name = 'componentes'
 
 
 class ComponenteDetailView(DetailView):
@@ -169,6 +171,8 @@ class ComponenteDetailView(DetailView):
 
 class ClientesListView(ListView):
     model = Cliente
+    paginate_by = 3
+    context_object_name = 'clientes'
 
 
 class ClienteDetailView(DetailView):
@@ -195,7 +199,7 @@ class ClienteCreateView(View):
 
             cliente = formulario.save()
             url = reverse('detalle cliente', args=[cliente.pk])
-            return redirect(url)      
+            return redirect(url)
 
         return render(request, 'appProyecto/cliente_create.html', {'formulario': formulario})
 
@@ -216,6 +220,7 @@ class ClienteDeleteView(DeleteView):
 
 class CategoriasListView(ListView):
     model = Categoria
+    paginate_by = 3
 
 
 class CategoriaDetailView(DetailView):
@@ -226,6 +231,7 @@ class CategoriaDetailView(DetailView):
         context['productos'] = self.object.producto_set.all()
         context['listaTodos'] = Categoria.objects.all()
         return context
+
 
 class CantidadCreateView(View):
     def get(self, request, *args, **kwargs):
@@ -239,11 +245,11 @@ class CantidadCreateView(View):
         formulario = CantidadForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            
 
             return redirect('lista pedidos')
         return render(request, 'appProyecto/pedido_list.html', {'formulario': formulario})
-    
+
+
 class CantidadUpdateView(UpdateView):
     model = Cantidad
     fields = ['n_producto']
@@ -266,7 +272,7 @@ class ComponenteCreateView(View):
 
             componente = formulario.save()
             url = reverse('detalle componentes', args=[componente.pk])
-            return redirect(url)      
+            return redirect(url)
 
         return render(request, 'appProyecto/componente_create.html', {'formulario': formulario})
 
@@ -314,8 +320,7 @@ class CategoriaCreateView(View):
 
             categoria = formulario.save()
             url = reverse('detalle categoria', args=[categoria.pk])
-            return redirect(url)      
-        
-            
+            return redirect(url)
+
         # Si los datos no son válidos, mostramos el formulario nuevamente indicando los errores
         return render(request, 'appProyecto/categoria_create.html', {'formulario': formulario})

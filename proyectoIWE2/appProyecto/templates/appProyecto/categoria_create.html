@@ -3,6 +3,7 @@
 {% block titulo %} Crear categoria {% endblock %}
 
 {% block contenido %}
+<div class="content">
 <h2>Nuevo categoria</h2>
 
 <form  class = "cuadroFormularios" action="{% url 'crear categoria' %}" method="post">
@@ -11,5 +12,5 @@
     {{ formulario.as_p }}
     <input type="submit" class="button" value="Nueva categoria" />
 </form>
-
+</div>
 {% endblock %}

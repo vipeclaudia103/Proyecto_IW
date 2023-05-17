@@ -4,25 +4,51 @@
   <h2>Listado de pedidos</h2>
   <div class="tablasList">
     <a href="{%url 'crear pedido'%}" class="button">Pedido&nbsp;✚</a>
-    {% if object_list %}
-    <table class="listados">
+    {% if pedidos %}
+    <table class="paleBlueRows blueTable">
       <thead>
         <tr>
           <th>Cliente</th>
           <th>Fecha</th>
+          <th>Precio</th>
         </tr>
       </thead>
       <tbody>
-        {% for r in object_list %}
+        {% for r in pedidos %}
         <tr>
           <td>
             <a href="{% url 'detalle pedido' r.id %}">{{ r.id_cliente}}</a>
           </td>
           <td>{{ r.fecha}}</td>
+          <td>{{ r.precio}}</td>
         </tr>
         {% endfor %}
       </tbody>
-
+      {% if page_obj.paginator.num_pages > 3  %}
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <div class="links">
+             {% if page_obj.has_previous %}
+              <a href="?page=1"> inicio</a>
+              <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+              {% endif %}
+              {% for i in page_obj.paginator.page_range %}
+  
+              {% if i != page_obj.number %}
+                      <a href="?page={{ i }}">{{ i }}</a>
+              {% endif %}
+              
+             {% endfor %}
+              {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">final</a>
+        {% endif %}
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+      {% endif %}
     </table>
     {% else %}
     <p>No hay pedidos creados.</p>

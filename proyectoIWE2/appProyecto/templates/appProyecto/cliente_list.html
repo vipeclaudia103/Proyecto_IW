@@ -4,7 +4,7 @@
   <h2>Listado de Clientes</h2>
   <div class="tablasList">
     {% if object_list %}
-    <table class="listados">    <a href="{%url 'crear cliente'%}" class="button">Cliente&nbsp;✚</a>
+  <table class="blueTable">    <a href="{%url 'crear cliente'%}" class="button">Cliente&nbsp;✚</a>
 
       <thead>
         <tr>
@@ -25,6 +25,31 @@
         </tr>        
         {% endfor %}
       </tbody>
+      {% if page_obj.paginator.num_pages > 3  %}
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <div class="links">
+             {% if page_obj.has_previous %}
+              <a href="?page=1"> inicio</a>
+              <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+              {% endif %}
+              {% for i in page_obj.paginator.page_range %}
+  
+              {% if i != page_obj.number %}
+                      <a href="?page={{ i }}">{{ i }}</a>
+              {% endif %}
+              
+             {% endfor %}
+              {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">final</a>
+        {% endif %}
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+      {% endif %}
     </table>
     {% else %}
     <p>No hay clientes creados.</p>
