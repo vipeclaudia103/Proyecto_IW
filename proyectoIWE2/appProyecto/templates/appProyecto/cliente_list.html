@@ -12,6 +12,7 @@
           <th>Direccion</th>
           <th>Telfono</th>
           <th>Correo</th>
+          <th colspan="2">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +26,7 @@
         </tr>        
         {% endfor %}
       </tbody>
-      {% if page_obj.paginator.num_pages > 3  %}
+      {% if page_obj.paginator.num_pages > 1  %}
       <tfoot>
         <tr>
           <td colspan="4">
@@ -35,8 +36,9 @@
               <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
               {% endif %}
               {% for i in page_obj.paginator.page_range %}
-  
-              {% if i != page_obj.number %}
+              {% if i == page_obj.number %}
+              ...
+              {% else %}
                       <a href="?page={{ i }}">{{ i }}</a>
               {% endif %}
               

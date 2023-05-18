@@ -155,7 +155,7 @@ class PedidoUpdateView(UpdateView):
 
 class ComponenteListView(ListView):
     model = Componente
-    paginate_by = 3
+    paginate_by = 4
     context_object_name = 'componentes'
 
 

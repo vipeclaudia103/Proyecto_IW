@@ -1,5 +1,5 @@
 {% extends "base.html" %} 
-
+{% load static %}
 {% block titulo %}Listado de productos{% endblock %}
 
 {% block contenido %}
@@ -13,6 +13,7 @@
           <th>Nombre</th>
           <th>Categoria</th>
           <th>Precio</th>
+          <th colspan="2">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -25,12 +26,23 @@
           <td>            <a href="{% url 'detalle categoria' producto.categoria.id %}">
             {{producto.categoria}}</a></td>          
             <td>{{producto.precio}}€</td>
+            <td>
+              <a href="/appProyecto/productos/{{producto.id}}/delete/" class="buttonBorrar">
+                &nbsp;✖</a
+              >
+            </td>
+            <td>
+              <a href="/appProyecto/productos/{{producto.id}}/update/" class="buttonAccion">
+                &nbsp;✐</a
+              >
+            </td>
         </tr>
         {% endfor %}
       </tbody>
+      {% if page_obj.paginator.num_pages > 1  %}
       <tfoot>
         <tr>
-          <td colspan="3">
+          <td colspan="5">
             <div class="links">
              {% if page_obj.has_previous %}
               <a href="?page=1"> inicio</a>
@@ -39,7 +51,7 @@
               {% for i in page_obj.paginator.page_range %}
               {% if i == page_obj.number %}
               ...
-          {% else %}
+              {% else %}
                       <a href="?page={{ i }}">{{ i }}</a>
               {% endif %}
               
@@ -52,8 +64,10 @@
           </td>
         </tr>
       </tfoot>
+      {% endif %}
         </table>
     {% else %}
-    <div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO</div> {% endif %}
+    <div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO</div> 
+    {% endif %}
   </div </div>
  {% endblock %}

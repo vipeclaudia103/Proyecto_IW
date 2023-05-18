@@ -56,12 +56,12 @@ pedidos {% endblock %}
             <td>
               <form class="botones" action="{% url 'borrar cantidad' cantidad.pk %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="button">Borrar</button>
+                <button type="submit" class="buttonBorrar"> &nbsp;✖</button>
               </form>
             </td>
             <td>
-              <a class="button" href="{% url 'actualizar cantidad' cantidad.pk %}">
-                Actualizar
+              <a class="buttonAccion" href="{% url 'actualizar cantidad' cantidad.pk %}">
+                 &nbsp;✐
               </a>
             </td>
           </tr>

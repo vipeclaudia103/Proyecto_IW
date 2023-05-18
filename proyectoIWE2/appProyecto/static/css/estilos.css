@@ -273,6 +273,7 @@ table.blueTable tfoot td {
 table.blueTable tfoot .links {
   text-align: center;
 }
+.buttonAccion,
 table.blueTable tfoot .links a {
   margin: 2px;
   text-decoration: none;
@@ -358,12 +359,32 @@ form button:hover,
   -moz-box-shadow: 4px 2px 3px #2a6b80;
   box-shadow: 4px 2px 3px #2a6b80;
 }
+.buttonBorrar{
+  text-decoration:none; text-align:center; 
+  padding:3px 2px; 
+  font:15px Georgia, "Times New Roman", Times, serif; 
+  font-weight:bold; 
+  color:#ff0000; 
+  background:transparent; 
+  }
+  .buttonBorrar:hover{
+color: #cce1e8;
+background-color: red;
+border:solid 1px  #204956;
+  }
+  .buttonBorrar:active{
+    color: #560072;
+    background-color: olivedrab;
+    border-color: #204956;
+      }
 /* PALETA DE COLORES
   -p-azul-muy-oscuro:  #242c32 ;
   -p-azul-oscuro: #123655;
   -p-azul-medio: #1a5f79;
   -p-azul-claro: #7d9fb6;
   -p-azul-muy-claro: #cce1e8; */
+  
+  .buttonAccion:hover,
 table.blueTable tfoot .links a:hover {
   border: solid 2px#171f26;
   color: #171f26;
@@ -381,16 +402,17 @@ table.blueTable tfoot .links a:hover {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   filter: alpha(opacity=90);
 }
+.buttonAccion:active,
 table.blueTable tfoot .links a:active {
   border-color: #560072;
   color: #792994;
   background-color: #aacf53;
-  background-image: -moz-linear-gradient(top, #aacf53 0%, #417370 100%);
-  background-image: -webkit-linear-gradient(top, #aacf53 0%, #417370 100%);
-  background-image: -o-linear-gradient(top, #aacf53 0%, #417370 100%);
-  background-image: -ms-linear-gradient(top, #aacf53 0%, #417370 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#417370', endColorstr='#417370',GradientType=0 );
-  background-image: linear-gradient(top, #aacf53 0%, #417370 100%);
+  background-image: -moz-linear-gradient(top, #aacf53 0%, #6ec244 100%);
+  background-image: -webkit-linear-gradient(top, #aacf53 0%, #6ec244 100%);
+  background-image: -o-linear-gradient(top, #aacf53 0%, #6ec244 100%);
+  background-image: -ms-linear-gradient(top, #aacf53 0%, #6ec244 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6ec244', endColorstr='#6ec244',GradientType=0 );
+  background-image: linear-gradient(top, #aacf53 0%, #6ec244 100%);
   -webkit-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
   -moz-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
   box-shadow: 0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;

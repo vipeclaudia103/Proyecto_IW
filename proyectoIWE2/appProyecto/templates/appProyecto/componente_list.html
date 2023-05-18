@@ -10,6 +10,7 @@
         <tr>
           <th>Nombre</th>
           <th>Marca</th>
+
         </tr>
       </thead>
       <tbody>
@@ -19,20 +20,32 @@
             <a href="{% url 'detalle componentes' r.id %}">{{ r.nombre}}</a>
           </td>
           <td>{{ r.marca}}</td>
+          <td>
+            <a href="/appProyecto/componentes/{{r.id}}/update/" class="button">
+              Actualizar
+            </a>
+           
+          </td>
+          <td> <a href="/appProyecto/componentes/{{r.id}}/delete/" class="button">
+              Borrar
+            </a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
+      {% if page_obj.paginator.num_pages > 1  %}
       <tfoot>
         <tr>
-          <td colspan="2">
+          <td colspan="3">
             <div class="links">
              {% if page_obj.has_previous %}
               <a href="?page=1"> inicio</a>
               <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
               {% endif %}
               {% for i in page_obj.paginator.page_range %}
-  
-              {% if i != page_obj.number %}
+              {% if i == page_obj.number %}
+              ...
+              {% else %}
                       <a href="?page={{ i }}">{{ i }}</a>
               {% endif %}
               
@@ -45,6 +58,7 @@
           </td>
         </tr>
       </tfoot>
+      {% endif %}
     </table>
     {% else %}
     <div class="tituloPropiedad"> NO EXISTE NINGUN COMPONENTE</div>
