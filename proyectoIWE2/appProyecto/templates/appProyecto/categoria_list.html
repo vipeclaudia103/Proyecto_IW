@@ -9,6 +9,7 @@
       <thead>
         <tr>
           <th>Nombre</th>
+          <th colspan="2">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -17,13 +18,23 @@
           <td>
             <a href="{% url 'detalle categoria' e.id %}">{{ e.nombre}}</a>
           </td>
+          <td>
+            <a href="/appProyecto/categoria/{{e.id}}/delete/" class="buttonBorrar">
+              &nbsp;✖</a
+            >
+          </td>
+          <td>
+            <a href="/appProyecto/categoria/{{e.id}}/update/" class="buttonAccion">
+              &nbsp;✐</a
+            >
+          </td>
         </tr>
         {% endfor %}
       </tbody>
       {% if page_obj.paginator.num_pages > 1  %}
       <tfoot>
         <tr>
-          <td colspan="1">
+          <td colspan="3">
             <div class="links">
              {% if page_obj.has_previous %}
               <a href="?page=1"> inicio</a>

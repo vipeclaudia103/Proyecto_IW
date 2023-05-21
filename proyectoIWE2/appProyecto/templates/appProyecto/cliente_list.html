@@ -23,6 +23,16 @@
           <td>{{r.direccion}}</td>
           <td>{{r.telefono}}</td>
           <td>{{r.email}}</td>
+          <td>
+            <a href="/appProyecto/clientes/{{r.id}}/delete/" class="buttonBorrar">
+              &nbsp;✖</a
+            >
+          </td>
+          <td>
+            <a href="/appProyecto/clientes/{{r.id}}/update/" class="buttonAccion">
+              &nbsp;✐</a
+            >
+          </td>
         </tr>        
         {% endfor %}
       </tbody>
