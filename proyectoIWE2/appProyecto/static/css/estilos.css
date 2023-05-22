@@ -366,17 +366,23 @@ form button:hover,
   font-weight:bold; 
   color:#ff0000; 
   background:transparent; 
+  border:solid 1px  red;
+
   }
-  .buttonBorrar:hover{
-color: #cce1e8;
-background-color: red;
-border:solid 1px  #204956;
-  }
-  .buttonBorrar:active{
-    color: #560072;
-    background-color: olivedrab;
-    border-color: #204956;
-      }
+.buttonBorrar:hover{
+  color: #cce1e8;
+  background-color: red;
+  border:solid 1px  #581427;
+
+}
+
+.buttonBorrar:active{
+  color: #560072;
+  background-color: olivedrab;
+  border-color: #204956;
+  border:solid 1px  #204956;
+
+    }
 /* PALETA DE COLORES
   -p-azul-muy-oscuro:  #242c32 ;
   -p-azul-oscuro: #123655;
