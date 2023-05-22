@@ -28,18 +28,15 @@
             {{producto.categoria}}</a></td>          
             <td>{{producto.precio}}€</td>
             <td>
-              <a href="/appProyecto/productos/{{producto.id}}/delete/" class="buttonBorrar">
-                &nbsp;✖</a
+              <a href="/appProyecto/productos/{{producto.id}}/delete/" class="buttonBorrar">✖</a
               >
             </td>
             <td>
-              <a href="/appProyecto/productos/{{producto.id}}/update/" class="buttonAccion">
-                &nbsp;✐</a
+              <a href="/appProyecto/productos/{{producto.id}}/update/" class="buttonAccion">✐</a
               >
             </td>
             <td>
-              <a class="buttonAccion">
-                &nbsp;✚</a
+              <a class="buttonAccion btnMasInfo">✚</a
               >
             </td>
 
@@ -49,7 +46,7 @@
       {% if page_obj.paginator.num_pages > 1  %}
       <tfoot>
         <tr>
-          <td colspan="5">
+          <td colspan="6">
             <div class="links">
              {% if page_obj.has_previous %}
               <a href="?page=1"> inicio</a>

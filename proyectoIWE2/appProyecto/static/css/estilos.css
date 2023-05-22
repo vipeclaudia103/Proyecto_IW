@@ -180,16 +180,15 @@ table.listados {
   border: 1px solid #1c6ea4;
   background-color: #eeeeee;
   /* min-width: min-content; */
-  text-align: left;
+  text-align: center;
   border-collapse: collapse;
   margin: 1em auto;
   padding: 1.5em;
   border-radius: 0.5em;
 }
-
 form select:hover,
 form input:hover {
-  background-color: #dbeff7;
+  background-color: #455f69;
   border-radius: 5px;
 }
 

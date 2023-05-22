@@ -13,25 +13,42 @@ function comprobarCantidad(event) {
     document.getElementById("informacionCantidad").textContent = respuesta
 }
 
-function Encima(event) {
+function pasarEncima(event) {
     var origen = event.currentTarget;
     var filaCambiar = origen.querySelectorAll('td');
-    filaCambiar.forEach(elem => elem.style.fontSize = '20px');
+
 }
-function Noencima(event) {
+function noPasarEncima(event) {
     var origen = event.currentTarget;
     var filaCambiar = origen.querySelectorAll('td');
-    filaCambiar.forEach(elem => elem.style.fontSize = '14px');
+
 }
 
-let test =document.querySelectorAll("div.tablasList > table > tbody > tr");
+let test = document.querySelectorAll("div.tablasList > table > tbody > tr");
 var numTest = test.length;
-for (var i = 0 ; i < test.length; i++) {
-    test[i].addEventListener('mouseover', Encima);
+for (var i = 0; i < test.length; i++) {
+    test[i].addEventListener('mouseover', pasarEncima);
 }
 let test1 = document.querySelectorAll('table tbody tr');
 var numTest1 = test1.length;
 for (var i = 0; i < test1.length; i++) {
-    test1[i].addEventListener('mouseout', Noencima);
+    test1[i].addEventListener('mouseout', noPasarEncima);
+}
+function activarMasInfo(event) {
+    event.preventDefault();
+    let origen = event.currentTarget;
+    origen
+
+}
+function expandir() {
+
+    document.getElementById('boton').style.padding = '10px 20px';
+}
+function contraer() {
+
+    document.getElementById('boton').style.padding = '5px 10px';
 }
 
+
+let btnInfo = document.querySelectorAll(".btnMasInfo");
+btnInfo.addEventListener("click", activarMasInfo);
