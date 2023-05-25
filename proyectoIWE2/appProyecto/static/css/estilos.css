@@ -2,6 +2,7 @@ body {
   background-color: #171f26;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #242c32;
+  text-align: justify;
 }
 header {
   display: flex;
@@ -186,9 +187,23 @@ table.listados {
   padding: 1.5em;
   border-radius: 0.5em;
 }
+form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+form input .button{
+  display: inline-block;
+}
+form p{
+  margin: .5em;
+  padding: 4px;
+
+}
 form select:hover,
 form input:hover {
-  background-color: #455f69;
+  background-color: #daf5ff;
   border-radius: 5px;
 }
 

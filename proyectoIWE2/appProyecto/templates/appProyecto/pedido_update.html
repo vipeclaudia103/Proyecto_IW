@@ -3,10 +3,12 @@
 {% block titulo %}Actualizar pedido{% endblock %}
 
 {% block contenido %}
+  <div class="content">
     <h2>Listado de pedidos</h2>
    <form  class = "cuadroFormularios" method="post"> 
         {% csrf_token %} 
         {{ form.as_p }} 
-        <input type="submit" class="button" value="Guardar"> 
+        <span>  <input type="submit" class="button" value="Guardar"> 
     </form> 
+</div>  
 {% endblock %}

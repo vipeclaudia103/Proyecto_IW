@@ -3,10 +3,13 @@
 {% block titulo %}Borrar cliente{% endblock %}
 
 {% block contenido %}
-   <form  class = "cuadroFormularios" method="post">{% csrf_token %}
+<div class="content">
+      <form  class = "cuadroFormularios" method="post">{% csrf_token %}
      
         <p>¿Seguro que quieres borrar "{{ object }}"?</p>
      
-        <input type="submit" class="button" value="Aceptar">
-    </form>
+        <span>  <input type="submit" class="button" value="Aceptar ">
+</span>    </form>
+</div>
+ 
 {% endblock %}

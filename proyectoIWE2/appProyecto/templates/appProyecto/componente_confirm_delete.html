@@ -3,10 +3,14 @@
 {% block titulo %}Borrar componente{% endblock %}
 
 {% block contenido %}
-   <form  class = "cuadroFormularios" method="post">{% csrf_token %}
+<div class="content">
+    <h2>Borrar Componente</h2>
+    <form  class = "cuadroFormularios" method="post">{% csrf_token %}
      
         <p>¿Seguro que quieres borrar el compoente "{{ object }}"?</p>
      
-        <input type="submit" class="button" value="Aceptar">
-    </form>
+        <span>  <input type="submit" class="button" value="Aceptar ">
+</span>    </form>
+</div>
+   
 {% endblock %}

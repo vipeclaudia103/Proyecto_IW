@@ -4,13 +4,13 @@
 
 {% block contenido %}
 <div class="content">
-<h2>Nuevo producto</h2>
+<h2>Nuevo Producto</h2>
 
 <form  class = "cuadroFormularios" action="{% url 'crear producto' %}" method="post">
     {% csrf_token %}
     {{ formulario.errors }}
     {{ formulario.as_p }}
-    <input type="submit" class="button" value="Nuevo producto" />
+    <span>  <input type="submit" class="button" value="Nuevo producto" />
 </form>
 </div>
 {% endblock %}

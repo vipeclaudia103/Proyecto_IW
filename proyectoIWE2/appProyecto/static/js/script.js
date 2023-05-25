@@ -37,18 +37,17 @@ for (var i = 0; i < test1.length; i++) {
 function activarMasInfo(event) {
     event.preventDefault();
     let origen = event.currentTarget;
-    origen
-
+    let idProducto = origen.parentElement.parentElement.id;
+    let cuadContenido = document.querySelector('main')
+    let cuadroDescripcion = document.createElement('div');
+    fila.className = datos.length;
+    borrar.className = 'content';
+    borrar.textContent = 'Borrar';
+    borrar.addEventListener("click", borrarElem);
+    fila.append(borrar);
 }
-function expandir() {
-
-    document.getElementById('boton').style.padding = '10px 20px';
-}
-function contraer() {
-
-    document.getElementById('boton').style.padding = '5px 10px';
-}
-
 
 let btnInfo = document.querySelectorAll(".btnMasInfo");
-btnInfo.addEventListener("click", activarMasInfo);
+for (var i = 0; i < test1.length; i++) {
+    btnInfo[i].addEventListener("click", activarMasInfo);
+}

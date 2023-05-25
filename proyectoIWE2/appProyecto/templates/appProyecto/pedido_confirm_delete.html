@@ -3,10 +3,14 @@
 {% block titulo %}Borrar pedido{% endblock %}
 
 {% block contenido %}
-   <form  class = "cuadroFormularios" method="post">{% csrf_token %}
+<div class="content">
+    <h2>Borrar Pedido</h2>
+    <form  class = "cuadroFormularios" method="post">{% csrf_token %}
      
         <p>¿Seguro que quieres borrar el pedido?</p>
      
-        <input type="submit" class="button" value="Confirmar">
-    </form>
+        <span>  <input type="submit" class="button" value="Confirmar ">
+</span>    </form>
+</div>
+   
 {% endblock %}

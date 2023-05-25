@@ -19,7 +19,7 @@
       </thead>
       <tbody>
         {% for producto in object_list %}
-        <tr>
+        <tr id="{{producto.id}}">
           <td>
             <a href="{% url 'detalle producto' producto.id %}">
               {{producto.nombre}}</a>

@@ -3,12 +3,12 @@
 {% block titulo %}Crear cantidad{% endblock %}
 
 {% block contenido %}
-
-<h2>Nuevo componente</h2>
+<div class="content">
+    <h2>Nuevo componente</h2>
 
 <form  class = "cuadroFormularios" action="{% url 'crear cantidad' %}" method="post">
   {% csrf_token %} {{ formulario.errors }} {{ formulario.as_p }}
-  <input type="submit" value="Agregar Producto" />
+  <span><input type="submit" value="value="Agregar Producto" />
 </form>
 </div>
 {% endblock %}

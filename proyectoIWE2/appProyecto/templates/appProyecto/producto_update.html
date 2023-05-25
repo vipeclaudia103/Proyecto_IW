@@ -3,10 +3,13 @@
 {% block titulo %}Actualiar producto{% endblock %}
 
 {% block contenido %}
-    <h2>Listado de componentes</h2>
+<div class="content">
+     <h2>Actualizar Producto</h2>
    <form  class = "cuadroFormularios" method="post"> 
         {% csrf_token %} 
         {{ form.as_p }} 
-        <input type="submit" class="button" value="Guardar"> 
+        <span>  <input type="submit" class="button" value="Guardar"> 
     </form> 
+</div>
+   
 {% endblock %}
