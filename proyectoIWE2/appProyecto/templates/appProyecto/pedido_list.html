@@ -3,7 +3,7 @@
 <div class="content">
   <h2>Listado de pedidos</h2>
   <div class="tablasList">
-    <a href="{%url 'crear pedido'%}" class="button">Pedido&nbsp;✚</a>
+    <a href="{%url 'crear pedido'%}" class="button">Pedido ✚</a>
     {% if pedidos %}
     <table class="paleBlueRows blueTable">
       <thead>
@@ -24,12 +24,12 @@
           <td>{{ r.precio}}</td>
           <td>
             <a href="/appProyecto/pedidos/{{r.id}}/delete/" class="buttonBorrar">
-              &nbsp;✖</a
+              ✖</a
             >
           </td>
           <td>
             <a href="/appProyecto/pedidos/{{r.id}}/update/" class="buttonAccion">
-              &nbsp;✐</a
+              ✐</a
             >
           </td>
         </tr>

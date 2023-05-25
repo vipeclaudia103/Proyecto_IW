@@ -4,7 +4,7 @@
   <h2>Listado de Clientes</h2>
   <div class="tablasList">
     {% if object_list %}
-  <table class="blueTable">    <a href="{%url 'crear cliente'%}" class="button">Cliente&nbsp;✚</a>
+  <table class="blueTable">    <a href="{%url 'crear cliente'%}" class="button">Cliente✚</a>
 
       <thead>
         <tr>
@@ -25,12 +25,12 @@
           <td>{{r.email}}</td>
           <td>
             <a href="/appProyecto/clientes/{{r.id}}/delete/" class="buttonBorrar">
-              &nbsp;✖</a
+              ✖</a
             >
           </td>
           <td>
             <a href="/appProyecto/clientes/{{r.id}}/update/" class="buttonAccion">
-              &nbsp;✐</a
+              ✐</a
             >
           </td>
         </tr>        
