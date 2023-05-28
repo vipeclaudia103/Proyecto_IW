@@ -69,4 +69,6 @@ urlpatterns = [
      path('categoria/create', views.CategoriaCreateView.as_view(),
           name='crear categoria'),
 
+
+     path('email', views.enviar_email, name='enviar email'),
 ]

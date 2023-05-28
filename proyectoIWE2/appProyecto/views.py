@@ -8,6 +8,12 @@ from appProyecto.forms import *
 from django.urls import reverse_lazy
 
 
+
+from django.core.mail import EmailMessage, get_connection
+from django.conf import settings
+from django.template.loader import render_to_string
+
+
 def inicio(request):
     return render(request, 'inicio.html')
 
@@ -324,3 +330,28 @@ class CategoriaCreateView(View):
 
         # Si los datos no son válidos, mostramos el formulario nuevamente indicando los errores
         return render(request, 'appProyecto/categoria_create.html', {'formulario': formulario})
+
+
+
+def enviar_email(request):  
+   if request.method == "POST": 
+       with get_connection(  
+           host=settings.EMAIL_HOST, 
+     port=settings.EMAIL_PORT,  
+     username=settings.EMAIL_HOST_USER, 
+     password=settings.EMAIL_HOST_PASSWORD, 
+     use_tls=settings.EMAIL_USE_TLS  
+       ) as connection:  
+           asunto = request.POST.get("asunto")  
+           emisor = settings.EMAIL_HOST_USER  
+           receptores = [request.POST.get("correo"), ]
+           mensaje = request.POST.get("mensaje")
+
+           context = {'asunto': asunto, 'mensaje': mensaje}
+           mensaje = render_to_string('appProyecto/plantilla_email.html', context)
+        
+           email = EmailMessage(asunto, mensaje, emisor, receptores, connection=connection)
+           email.content_subtype = 'html'
+           email.send()
+ 
+   return render(request, 'appProyecto/email.html')

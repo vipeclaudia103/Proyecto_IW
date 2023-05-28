@@ -38,9 +38,13 @@
             <td>
               <a class="buttonAccion btnMasInfo">✚</a
               >
-            </td>
+              <a class="buttonAccion btnMenosInfo" style="display: none;">✖</a>
+            <p id="{{producto.id}}" class="complete" style="display: none;">
+          {{producto.descripcion}}
+        </p></td>
 
         </tr>
+        
         {% endfor %}
       </tbody>
       {% if page_obj.paginator.num_pages > 1  %}
@@ -74,4 +78,7 @@
     <div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO</div> 
     {% endif %}
   </div </div>
+  </div>  <div id="cuadroInformacion" disable = "true"></div>
+  
+  <script src="{% static 'js/masInfo.js' %}"></script>
  {% endblock %}

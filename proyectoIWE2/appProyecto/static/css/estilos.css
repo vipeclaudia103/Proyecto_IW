@@ -6,7 +6,7 @@ body {
 }
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   min-height: min-content;
   align-items: center;
@@ -14,7 +14,16 @@ header {
   max-height: max-content;
   margin-bottom: 1em;
 }
-
+.contenidoMasInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 20em;
+  text-align: justify;
+  margin: 0.6em;
+  padding: 15px;
+  background-color: whitesmoke;
+}
 .cabecera {
   display: flex;
   flex-wrap: wrap;
@@ -23,6 +32,7 @@ header {
   color: #cce1e8;
   flex-grow: 2;
 }
+.contenidoMasInfo,
 .cabecera img,
 main,
 #logoCompleto,
@@ -50,10 +60,10 @@ nav {
 }
 main {
   padding: 1em;
-  max-height: fit-content;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
   background-color: #1e242c;
 }
 .content {
@@ -183,23 +193,22 @@ table.listados {
   /* min-width: min-content; */
   text-align: center;
   border-collapse: collapse;
-  margin: 1em auto;
-  padding: 1.5em;
+  margin: 1em;
+  padding: 0.5em;
   border-radius: 0.5em;
 }
-form{
+form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-form input .button{
+form input .button {
   display: inline-block;
 }
-form p{
-  margin: .5em;
+form p {
+  margin: 0.2em;
   padding: 4px;
-
 }
 form select:hover,
 form input:hover {
@@ -213,11 +222,10 @@ table.blueTable th {
   min-width: min-content;
 }
 
-
 table.blueTable thead th:first-child {
   border-left: none;
 }
-table.blueTable tbody tr:hover{
+table.blueTable tbody tr:hover {
   background-color: #eed189;
   color: #204956;
 }
@@ -259,7 +267,7 @@ table.blueTable thead th {
   border-left: 2px solid #d0e4f5;
   padding: 4px 10px;
 }
-}
+
 table.blueTable thead th:first-child {
   border-left: none;
 }
@@ -300,19 +308,21 @@ table.blueTable tfoot .links a {
   border-radius: 5px;
   font: 13px Arial, Helvetica, sans-serif;
   font-weight: bold;
-  color:#cef2f2; 
-  background-color:#547cf5; 
-  background-image: -moz-linear-gradient(top, #547cf5 0%, #0056cf 100%); 
-  background-image: -webkit-linear-gradient(top, #547cf5 0%, #0056cf 100%); 
-  background-image: -o-linear-gradient(top, #547cf5 0%, #0056cf 100%); 
-  background-image: -ms-linear-gradient(top, #547cf5 0% ,#0056cf 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0056cf', endColorstr='#0056cf',GradientType=0 ); 
-  background-image: linear-gradient(top, #547cf5 0% ,#0056cf 100%);   
-  -webkit-box-shadow:0px 0px 2px #bababa;  -moz-box-shadow: 0px 0px 2px #bababa;  box-shadow:0px 0px 2px #bababa;  
-  opacity:0.9; 
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90); 
-  filter: alpha(opacity=90); 
-   }
+  color: #cef2f2;
+  background-color: #547cf5;
+  background-image: -moz-linear-gradient(top, #547cf5 0%, #0056cf 100%);
+  background-image: -webkit-linear-gradient(top, #547cf5 0%, #0056cf 100%);
+  background-image: -o-linear-gradient(top, #547cf5 0%, #0056cf 100%);
+  background-image: -ms-linear-gradient(top, #547cf5 0%, #0056cf 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0056cf', endColorstr='#0056cf',GradientType=0 );
+  background-image: linear-gradient(top, #547cf5 0%, #0056cf 100%);
+  -webkit-box-shadow: 0px 0px 2px #bababa;
+  -moz-box-shadow: 0px 0px 2px #bababa;
+  box-shadow: 0px 0px 2px #bababa;
+  opacity: 0.9;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  filter: alpha(opacity=90);
+}
 .barraBtn {
   display: flex;
   flex-direction: row;
@@ -373,38 +383,38 @@ form button:hover,
   -moz-box-shadow: 4px 2px 3px #2a6b80;
   box-shadow: 4px 2px 3px #2a6b80;
 }
-.buttonBorrar{
-  text-decoration:none; text-align:center; 
-  padding:3px 2px; 
-  font:15px Georgia, "Times New Roman", Times, serif; 
-  font-weight:bold; 
-  color:#ff0000; 
-  background:transparent; 
-  border:solid 1px  red;
-
-  }
-.buttonBorrar:hover{
-  color: #cce1e8;
-  background-color: red;
-  border:solid 1px  #581427;
+.buttonBorrar {
+  text-decoration: none;
+  text-align: center;
+  padding: 3px 2px;
+  font: 15px Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  color: #ff0000;
+  background: transparent;
+  border: solid 1px red;
+  border-radius: 5px;
 
 }
+.buttonBorrar:hover {
+  color: #cce1e8;
+  background-color: red;
+  border: solid 1px #581427;
+}
 
-.buttonBorrar:active{
+.buttonBorrar:active {
   color: #560072;
   background-color: olivedrab;
   border-color: #204956;
-  border:solid 1px  #204956;
-
-    }
+  border: solid 1px #204956;
+}
 /* PALETA DE COLORES
   -p-azul-muy-oscuro:  #242c32 ;
   -p-azul-oscuro: #123655;
   -p-azul-medio: #1a5f79;
   -p-azul-claro: #7d9fb6;
   -p-azul-muy-claro: #cce1e8; */
-  
-  .buttonAccion:hover,
+
+.buttonAccion:hover,
 table.blueTable tfoot .links a:hover {
   border: solid 2px#171f26;
   color: #171f26;
@@ -555,4 +565,64 @@ h2 {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+form,
+#cuadroInformacion {
+  max-width: 20em;
+}
+#cuadroInformacion {
+  display: inherit;
+}
+.formularioContacto {
+  background-color: lightgray;
+  padding: 30px;
+  border-radius: 20px;
+  width: min-content;
+  margin: auto;
+}
+
+.formularioContacto div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.formularioContacto label {
+  margin-right: 30px;
+  width: 50%;
+}
+
+.errorCantidad {
+  width: 300px;
+  height: 30px;
+  background-color: red;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: solid 2px black;
+  border-radius: 10px;
+  font-size: small;
+}
+
+.emailCliente {
+  background-color: lightgray;
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  display: none;
+}
+
+.emailCliente div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+  height: min-content;
+}
+
+.emailCliente label {
+  margin-right: 30px;
+  width: 30%;
 }

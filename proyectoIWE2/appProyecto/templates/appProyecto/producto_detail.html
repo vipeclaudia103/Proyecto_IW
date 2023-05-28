@@ -80,12 +80,18 @@ productos {% endblock %}
       <h2>Agregar Componente:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
-        <button type="submit">Agregar</button>
+        <button type="submit" class="botonAgregar">Agregar</button>
       </form>
+      <div class="errorCantidad">
+        La cantidad no puede ser menor a 1.
+      </div>
     </div>
   </div>
 </div>
 
 {% else %}
 <p>No existe este producto.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+
+
+{% endblock %}

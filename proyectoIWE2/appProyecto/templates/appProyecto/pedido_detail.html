@@ -1,10 +1,9 @@
 {% extends "detalle.html" %}
+{% load static %}
 
-{% block titulo %} Pedido| {{ pedido.id_cliente.nombre}}{% endblock %}
+{% block titulo %} Pedido| {{pedido.id_cliente.nombre}}{% endblock %} 
 
-{% block elemListado %}
-
-pedidos {% endblock %}
+{% block elemListado %} pedidos {%endblock %}
 
 {% block urlElemento %}
 
@@ -17,9 +16,11 @@ pedidos {% endblock %}
   Detalle del pedido
   <div class="barraBtn">
     <a href="/appProyecto/pedidos/{{pedido.id}}/delete/" class="button">
-      Borrar</a>
+      Borrar</a
+    >
     <a href="/appProyecto/pedidos/{{pedido.id}}/update/" class="button">
-      Actualizar</a>
+      Actualizar</a
+    >
   </div>
 </div>
 
@@ -36,7 +37,7 @@ pedidos {% endblock %}
   <div class="contenedorComponentes">
     <div class="elementoComponente">
       <h2>Productos:</h2>
-    <table class="blueTable">
+      <table class="blueTable">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -54,11 +55,19 @@ pedidos {% endblock %}
             </td>
             <td>{{ cantidad.n_producto }}</td>
             <td>
-              <a href="{% url 'borrar cantidad' cantidad.pk %}" class="buttonBorrar"> ✖</a>
+              <a
+                href="{% url 'borrar cantidad' cantidad.pk %}"
+                class="buttonBorrar"
+              >
+                ✖</a
+              >
             </td>
             <td>
-              <a class="buttonAccion" href="{% url 'actualizar cantidad' cantidad.pk %}">
-                 ✐
+              <a
+                class="buttonAccion"
+                href="{% url 'actualizar cantidad' cantidad.pk %}"
+              >
+                ✐
               </a>
             </td>
           </tr>
@@ -77,11 +86,19 @@ pedidos {% endblock %}
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
         <p id="informacionCantidad"></p>
-        <button type="submit">Agregar</button>
+        <button type="submit" class="botonAgregar">Agregar</button>
       </form>
     </div>
   </div>
 </div>
 {% else %}
-<div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
-{% endif %} {% endblock %}
+<div class="tituloPropiedad">NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
+{% endif %}
+
+{% endblock %}
+
+
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
