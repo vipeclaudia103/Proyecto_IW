@@ -354,4 +354,4 @@ def enviar_email(request):
            email.content_subtype = 'html'
            email.send()
  
-   return render(request, 'appProyecto/email.html')
+   return redirect(request.META.get('HTTP_REFERER'))

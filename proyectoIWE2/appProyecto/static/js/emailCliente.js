@@ -1,10 +1,15 @@
 let correoCliente = document.querySelector("#correoCliente");
-let formulario = document.querySelector(".emailCliente");
+let div = document.querySelector(".contactoCliente");
 correoCliente.addEventListener("click", mostrarFormulario);
-
+let btnCerrar = document.querySelector(".botonCerrar");
+btnCerrar.addEventListener("click", cerrar);
+let idCorreo = document.querySelector("#idCorreo");
 
 function mostrarFormulario(event) {
+    div.style.display = "flex";
+    idCorreo.value = correoCliente.textContent;
+}
 
-    formulario.style.display = "block";
-
+function cerrar(event) {
+    div.style.display = "none";
 }

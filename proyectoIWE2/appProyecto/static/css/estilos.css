@@ -606,23 +606,52 @@ form,
   font-size: small;
 }
 
-.emailCliente {
+.contactoCliente {
   background-color: lightgray;
   padding: 30px;
   border-radius: 20px;
-  width: 100%;
   display: none;
+  margin: 0.8em;
+  flex-direction: column;
+}
+.contactoCliente form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }
 
-.emailCliente div {
+.emailCliente .fila {
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.emailCliente .fila label {
+  width: 50px;
+}
+
+.emailCliente .columna {
+  display: flex;
+  flex-direction: column;
+}
+
+.emailCliente .columna label {
   margin-bottom: 10px;
-  width: 100%;
-  height: min-content;
 }
 
 .emailCliente label {
   margin-right: 30px;
   width: 30%;
+} 
+
+.botonCerrar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.botonCerrar img {
+  width: 30px;
+  height: 30px;
+}
+
+#correoCliente, .botonCerrar {
+  cursor: pointer;
 }
