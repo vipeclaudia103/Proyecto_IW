@@ -655,3 +655,7 @@ form,
 #correoCliente, .botonCerrar {
   cursor: pointer;
 }
+
+.imputIncorrecto {
+  border-color: red;
+}
