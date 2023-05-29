@@ -7,31 +7,6 @@ const API = {
     Categoria: "/categoria/"
 }
     
-let cantidadProducto = document.querySelector("#id_n_producto");
-cantidadProducto.addEventListener("keyup", comprobarCantidad);
-function comprobarCantidad(event) {
-  let origen = event.currentTarget;
-  let text = origen.value;
-
-  let botonAgregar = document.querySelector(".botonAgregar");
-  let errorCantidad = document.querySelector("#errorCantidad");
-
-  if (text < 1) {
-    respuesta = "La cantidad tiene que ser mayor que 0.";
-
-    botonAgregar.disabled = true;
-    botonAgregar.style.background = "gray";
-
-    origen.style.borderColor = "red";
-  } else {
-    botonAgregar.disabled = false;
-    botonAgregar.style.background = "#3ba4c7";
-    origen.border;
-  }
-
-  document.getElementById("informacionCantidad").textContent = respuesta;
-}
-
 
 
 

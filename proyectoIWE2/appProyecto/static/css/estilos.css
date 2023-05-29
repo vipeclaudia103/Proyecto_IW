@@ -606,12 +606,22 @@ form,
   font-size: small;
 }
 
+<<<<<<< HEAD
 .accionCliente {
+=======
+.contactoCliente {
+>>>>>>> 0983323b6aa261d24478b78128cbcf09ef9e571d
   background-color: lightgray;
   padding: 30px;
   border-radius: 20px;
-  width: 100%;
   display: none;
+  margin: 0.8em;
+  flex-direction: column;
+}
+.contactoCliente form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }
 .cuadroInformacion {
   background-color: lightgray;
@@ -620,15 +630,42 @@ form,
   height: fit-content;
 }
 
-.emailCliente div {
+.emailCliente .fila {
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.emailCliente .fila label {
+  width: 50px;
+}
+
+.emailCliente .columna {
+  display: flex;
+  flex-direction: column;
+}
+
+.emailCliente .columna label {
   margin-bottom: 10px;
-  width: 100%;
-  height: min-content;
 }
 
 .emailCliente label {
   margin-right: 30px;
   width: 30%;
+} 
+
+.botonCerrar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.botonCerrar img {
+  width: 30px;
+  height: 30px;
+}
+
+#correoCliente, .botonCerrar {
+  cursor: pointer;
+}
+
+.imputIncorrecto {
+  border-color: red;
 }

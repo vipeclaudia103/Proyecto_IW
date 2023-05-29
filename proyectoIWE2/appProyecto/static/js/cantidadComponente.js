@@ -16,16 +16,13 @@ if (urlActual.includes("productos")) {
 
       botonAgregar.disabled = true;
       botonAgregar.style.background = "gray";
-
-      origen.style.borderColor = "red";
-
       errorCantidad.style.display = "flex";
-      
+      origen.classList.add("imputIncorrecto");
     } else {
       botonAgregar.disabled = false;
       botonAgregar.style.background = "#3ba4c7";
-
       errorCantidad.style.display = "none";
+      origen.classList.remove("imputIncorrecto");
     }
   }
 }

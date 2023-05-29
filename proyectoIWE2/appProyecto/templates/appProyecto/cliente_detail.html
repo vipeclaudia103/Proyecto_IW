@@ -78,24 +78,28 @@
 {% endblock %}
 {% block accion %}
 
+{% load static %}
+<div class="botonCerrar">
+  <img src="{% static 'imagenes/btnCerrar.png' %}" alt="Cerrar">
+</div>  
 
-  <form method="post" action="{% url 'enviar email' %}" class="emailCliente"> 
- <h2>Comunicación</h2> 
-   {% csrf_token %} 
-    <div>
-        <label for="idCorreo">Email de contacto:</label>
-        <input type="email" name="correo" id="idCorreo" placeholder="ejemplo@ejemplo.com">
-      </div>
-      <div>
-        <label for="idAsunto">Asunto</label>
-        <input type="text" name="asunto" id="idAsunto" placeholder="Tipo de error">
-      </div>
-      <div>
-        <label for="idMensaje">Mensaje</label>
-        <textarea id="idMensaje" name="mensaje" rows="3" placeholder="Detalles del problema"></textarea>
-      </div>
-      <button type="submit">Enviar</button>
-    </form>
-
+  <h2>Comunicación</h2>
+  <form method="post" action="{% url 'enviar email' %}" class="emailCliente">
+    {% csrf_token %}
+    <div class="fila">
+      <label for="idCorreo">Correo</label>
+      <input type="email" name="correo" id="idCorreo">
+    </div>
+    <div class="fila">
+      <label for="idAsunto">Asunto</label>
+      <input type="text" name="asunto" id="idAsunto">
+    </div>
+    <div class="columna">
+      <label for="idMensaje">Mensaje</label>
+      <textarea id="idMensaje" name="mensaje" rows="20"></textarea>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+  
 
 {% endblock %}

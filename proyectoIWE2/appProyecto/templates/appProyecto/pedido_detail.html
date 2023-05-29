@@ -103,7 +103,11 @@
         <p id="informacionCantidad"></p>
         <button type="submit" class="botonAgregar">Agregar</button>
       </form>
+      <div class="errorCantidad">
+        La cantidad no puede ser menor a 1.
+      </div>
     </div>
+<<<<<<< HEAD
   
 {% endblock %}
 
@@ -114,3 +118,19 @@
 <script src="{% static 'js/script.js' %}"></script>
 
 
+=======
+  </div>
+</div>
+{% else %}
+<div class="tituloPropiedad">NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
+{% endif %}
+
+
+{% load static %}
+
+<script src="{% static 'js/cantidadProducto.js' %}"></script>
+
+{% endblock %}
+
+
+>>>>>>> 0983323b6aa261d24478b78128cbcf09ef9e571d
