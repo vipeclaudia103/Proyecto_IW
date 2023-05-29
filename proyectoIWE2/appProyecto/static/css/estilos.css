@@ -606,11 +606,10 @@ form,
   font-size: small;
 }
 
-<<<<<<< HEAD
-.accionCliente {
-=======
+
+.accionCliente,
 .contactoCliente {
->>>>>>> 0983323b6aa261d24478b78128cbcf09ef9e571d
+
   background-color: lightgray;
   padding: 30px;
   border-radius: 20px;

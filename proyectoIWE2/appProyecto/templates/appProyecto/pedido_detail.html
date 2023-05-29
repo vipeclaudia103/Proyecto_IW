@@ -1,11 +1,6 @@
-{% extends "detalle.html" %}
-{% load static %}
-
-{% block titulo %} Pedido| {{pedido.id_cliente.nombre}}{% endblock %} 
-
-{% block elemListado %} pedidos {%endblock %}
-
-{% block urlElemento %}
+{% extends "detalle.html" %} {% load static %} {% block titulo %} Pedido|
+{{pedido.id_cliente.nombre}}{% endblock %} {% block elemListado %} pedidos
+{%endblock %} {% block urlElemento %}
 
 <a href="{% url 'detalle pedido' p.pk %}">
   <li>{{ p.id_cliente }} - {{ p.fecha }}</li>
@@ -28,9 +23,8 @@
   <div class="propiedadProducto">
     <div class="tituloPropiedad">Cliente:</div>
     <a href="{% url 'detalle cliente' pedido.id_cliente.id %}">
-          {{ pedido.id_cliente.nombre}}
+      {{ pedido.id_cliente.nombre}}
     </a>
-
   </div>
   <div class="propiedadProducto">
     <div class="tituloPropiedad">Fecha:</div>
@@ -57,9 +51,7 @@
                 {{ cantidad.id_producto.nombre }}
               </a>
             </td>
-            <td>
-                {{ cantidad.id_producto.precio }}
-            </td>
+            <td>{{ cantidad.id_producto.precio }}</td>
             <td>{{ cantidad.n_producto }}</td>
             <td>
               <a
@@ -88,49 +80,23 @@
         </tfoot>
       </table>
       {% else %}
-<div class="tituloPropiedad">NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
-{% endif %}
-    </div>
-   
-</div>
-</div>
-{% endblock %}
-{% block accion%}
- <div class="elementoComponente">
-      <h2>Agregar productos:</h2>
-      <form class="cuadroFormularios" method="post">
-        {% csrf_token %} {{ form.errors }} {{ form.as_p }}
-        <p id="informacionCantidad"></p>
-        <button type="submit" class="botonAgregar">Agregar</button>
-      </form>
-      <div class="errorCantidad">
-        La cantidad no puede ser menor a 1.
+      <div class="tituloPropiedad">
+        NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO
       </div>
+      {% endif %}
     </div>
-<<<<<<< HEAD
-  
-{% endblock %}
-
-
-
-
-
-<script src="{% static 'js/script.js' %}"></script>
-
-
-=======
   </div>
 </div>
-{% else %}
-<div class="tituloPropiedad">NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
-{% endif %}
-
-
-{% load static %}
-
+{% endblock %} 
+{% block accion %}
+<div class="elementoComponente">
+  <h2>Agregar productos:</h2>
+  <form class="cuadroFormularios" method="post">
+    {% csrf_token %} {{ form.errors }} {{ form.as_p }}
+    <p id="informacionCantidad"></p>
+    <button type="submit" class="botonAgregar">Agregar</button>
+  </form>
+  <div class="errorCantidad">La cantidad no puede ser menor a 1.</div>
+</div>
 <script src="{% static 'js/cantidadProducto.js' %}"></script>
-
 {% endblock %}
-
-
->>>>>>> 0983323b6aa261d24478b78128cbcf09ef9e571d
