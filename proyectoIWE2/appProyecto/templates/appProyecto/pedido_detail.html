@@ -27,7 +27,10 @@
 <div class="datosProducto">
   <div class="propiedadProducto">
     <div class="tituloPropiedad">Cliente:</div>
-    {{ pedido.id_cliente.nombre}}
+    <a href="{% url 'detalle cliente' pedido.id_cliente.id %}">
+          {{ pedido.id_cliente.nombre}}
+    </a>
+
   </div>
   <div class="propiedadProducto">
     <div class="tituloPropiedad">Fecha:</div>
@@ -41,6 +44,7 @@
         <thead>
           <tr>
             <th>Nombre</th>
+            <th>Precio/u</th>
             <th>Nº</th>
             <th colspan="2">Acciones</th>
           </tr>
@@ -52,6 +56,9 @@
               <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
                 {{ cantidad.id_producto.nombre }}
               </a>
+            </td>
+            <td>
+                {{ cantidad.id_producto.precio }}
             </td>
             <td>{{ cantidad.n_producto }}</td>
             <td>
@@ -76,12 +83,20 @@
         <tfoot>
           <tr>
             <td colspan="2">Precio total</td>
-            <td colspan="2">{{precioTotal}}€</td>
+            <td colspan="3">{{precioTotal}}€</td>
           </tr>
         </tfoot>
       </table>
+      {% else %}
+<div class="tituloPropiedad">NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
+{% endif %}
     </div>
-    <div class="elementoComponente">
+   
+</div>
+</div>
+{% endblock %}
+{% block accion%}
+ <div class="elementoComponente">
       <h2>Agregar productos:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
@@ -89,13 +104,10 @@
         <button type="submit" class="botonAgregar">Agregar</button>
       </form>
     </div>
-  </div>
-</div>
-{% else %}
-<div class="tituloPropiedad">NO EXISTE NINGUN PRODUCTO EN ESTE PEDIDO</div>
-{% endif %}
-
+  
 {% endblock %}
+
+
 
 
 

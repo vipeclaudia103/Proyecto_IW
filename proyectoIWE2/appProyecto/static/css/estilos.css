@@ -32,6 +32,7 @@ header {
   color: #cce1e8;
   flex-grow: 2;
 }
+.cuadroInformacion,
 .contenidoMasInfo,
 .cabecera img,
 main,
@@ -393,7 +394,6 @@ form button:hover,
   background: transparent;
   border: solid 1px red;
   border-radius: 5px;
-
 }
 .buttonBorrar:hover {
   color: #cce1e8;
@@ -606,12 +606,18 @@ form,
   font-size: small;
 }
 
-.emailCliente {
+.accionCliente {
   background-color: lightgray;
   padding: 30px;
   border-radius: 20px;
   width: 100%;
   display: none;
+}
+.cuadroInformacion {
+  background-color: lightgray;
+  padding: 0.5em;
+  width: max-content;
+  height: fit-content;
 }
 
 .emailCliente div {

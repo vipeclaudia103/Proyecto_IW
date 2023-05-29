@@ -75,8 +75,18 @@ productos {% endblock %}
         </tbody>
       </table>
     </div>
+    {% else %}
+    <p>No existe este producto.</p>
+    {% endif %} 
+   
+    </div>
+  </div>
+</div>
 
-    <div class="elementoComponente">
+{% endblock %}
+
+{% block accion%}
+ <div class="elementoComponente">
       <h2>Agregar Componente:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
@@ -85,13 +95,4 @@ productos {% endblock %}
       <div class="errorCantidad">
         La cantidad no puede ser menor a 1.
       </div>
-    </div>
-  </div>
-</div>
-
-{% else %}
-<p>No existe este producto.</p>
-{% endif %} 
-
-
 {% endblock %}
