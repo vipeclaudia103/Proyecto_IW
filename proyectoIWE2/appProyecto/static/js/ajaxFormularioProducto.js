@@ -1,19 +1,4 @@
-/*let correoCliente = document.querySelector("#correoCliente");
-let div = document.querySelector(".contactoCliente");
-correoCliente.addEventListener("click", mostrarFormulario);
-let btnCerrar = document.querySelector(".botonCerrar");
-btnCerrar.addEventListener("click", cerrar);
-let idCorreo = document.querySelector("#idCorreo");
-
-function mostrarFormulario(event) {
-    div.style.display = "flex";
-    idCorreo.value = correoCliente.textContent;
-}
-
-function cerrar(event) {
-    div.style.display = "none";
-}
-*/
+//ESTA EN emailCliente
 let formu = document.getElementById("formularioComponente");
 formu.addEventListener('submit', botonGuardar);
 
@@ -21,7 +6,7 @@ async function botonGuardar(event){
     event.preventDefault();
     
     const data=new FormData(formu);
-    response = await fetch('',{
+    response = await fetch('/appProyecto/componentes/',{
         method:'POST',
         mode:'cors',
         cache:'no-cache',

@@ -3,10 +3,10 @@
 {% block titulo %} Detalle del departamento {% endblock %}
 
 {% block contenido %}
-<div class="content">
+<div class="content" id="formularioComponentes">
 <h2>Nuevo componente</h2>
 
-<form  class = "cuadroFormularios" action="{% url 'crear componente' %}" method="post">
+<form  id="formularioComponente" class = "cuadroFormularios" action="{% url 'crear componente' %}" method="post">
     {% csrf_token %}
     {{ formulario.errors }}
     {{ formulario.as_p }}

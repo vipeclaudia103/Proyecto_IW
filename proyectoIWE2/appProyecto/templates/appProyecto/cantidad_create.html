@@ -8,7 +8,7 @@
 
 <form  class = "cuadroFormularios" action="{% url 'crear cantidad' %}" method="post">
   {% csrf_token %} {{ formulario.errors }} {{ formulario.as_p }}
-  <span><input type="submit" value="value="Agregar Producto" />
+  <span><input type="submit" value="Agregar Producto" /></span>
 </form>
 </div>
 {% endblock %}
