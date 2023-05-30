@@ -128,7 +128,7 @@ class PedidoDetailView(DetailView):
         )
         total = 0
         for c in context['cantidades']:
-            total = total + c.obtener_cantidad()
+            total = round( total + c.obtener_cantidad(), 2)
         self.object.precio = total
         self.object.save()
         context['precioTotal'] = total
