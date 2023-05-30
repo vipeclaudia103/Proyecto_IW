@@ -7,10 +7,18 @@
 {% block urlElemento %}
 
 <a href="{% url 'detalle categoria' p.pk %}">
-  <li>{{p.nombre }}</li>
+  {% if  p.id == categoria.id %}
+  <li style="
+  background-color: #123655;
+  color: #cce1e8;
+  border-color: #123655;
+">{{ p.nombre }}</li>
+  {% else %}
+  <li>{{ p.nombre }}</li>
+  {% endif %}
 </a>
 
-{% endblock %} {% block detalle %} {% if categoria %}
+{% endblock %} {% block detalle %} 
 <div class="tituloProducto">
   Datos de la categoria
 
@@ -31,9 +39,8 @@
     {{ categoria.descripcion}}
   </div>
 </div>
-<div class="contenedorComponentes">
-  <div class="elementoCompoenente">
-    <h2>Productos de esta categoria:</h2>
+{% if productos %}
+<div class="tablasList"> <h2>Productos de esta categoria:</h2>
   <table class="blueTable">
       <thead>
         <tr>
@@ -53,8 +60,8 @@
       </tbody>
     </table>
   </div>
-</div>
+
 
 {% else %}
-<p>No existe esta categoria.</p>
+<p>No existen productos en esta categoria.</p>
 {% endif %} {% endblock %}

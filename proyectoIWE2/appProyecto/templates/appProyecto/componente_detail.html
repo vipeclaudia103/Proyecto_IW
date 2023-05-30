@@ -1,13 +1,12 @@
 {% extends "detalle.html" %}
-
-{% block titulo %} Componente | {{ componente.nombre}}{% endblock%}
-
-{% block elemListado %} componentes {% endblock %}
-{% block urlElemento %}
+<!--  -->
+{% block titulo %} Componente | {{componente.nombre}} {% endblock%}
+<!--  -->
+{% block elemListado %} componentes {% endblock%} {% block urlElemento %}
 <a href="{% url 'detalle componentes' p.pk %}">
   <li>{{ p.nombre }}</li>
-</a> {% endblock %}
-{% block detalle %}
+</a>
+{% endblock %} {% block detalle %}
 <div class="tituloProducto">
   Datos del componente
   <div class="barraBtn">
@@ -20,46 +19,50 @@
   </div>
 </div>
 
-
-
-
 <div class="datosProducto">
   <div class="propiedadProducto">
-    <div class="tituloPropiedad">Nombre: </div>
+    <div class="tituloPropiedad">Nombre:</div>
     {{ componente.nombre}}
   </div>
   <div class="propiedadProducto">
     <div class="tituloPropiedad">Marca:</div>
     {{ componente.marca}}
   </div>
-  {% if elementos %}
-  <h2>Productos:</h2>
-   <table class="blueTable">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Categoria</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for cantidad in elementos %}
-      <tr>
-        <td>
-          <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
-            {{ cantidad.id_producto.nombre }}
-          </a>
-        </td>
-        <td>
-          <a href="{% url 'detalle categoria' cantidad.id_producto.categoria.pk %}">
-            {{ cantidad.id_producto.categoria.nombre }}
-          </a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="tablasList">
+    <h2>Productos:</h2>
+    {% if elementos %}
+    <table class="blueTable">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cantidad in elementos %}
+        <tr>
+          <td>
+            <a href="{% url 'detalle producto' cantidad.id_producto.pk %}">
+              {{ cantidad.id_producto.nombre }}
+            </a>
+          </td>
+          <td>
+            <a
+              href="{% url 'detalle categoria' cantidad.id_producto.categoria.pk %}"
+            >
+              {{ cantidad.id_producto.categoria.nombre }}
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="tituloPropiedad">
+    NO EXISTE NINGUN PRODUCTO CON ESTE COMPONENTE
+  </div>
+  {% endif %}
 </div>
-{% else %}
-<div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO CON ESTE COMPONENTE</div>
-{% endif %}
+
 {% endblock %}

@@ -3,7 +3,16 @@
 {%endblock %} {% block urlElemento %}
 
 <a href="{% url 'detalle pedido' p.pk %}">
+  {% if  p.id == pedido.id %}
+  <li style="
+  background-color: #123655;
+  color: #cce1e8;
+  border-color: #123655;
+">{{ p.id_cliente }} - {{ p.fecha }}</li>
+  {% else %}
   <li>{{ p.id_cliente }} - {{ p.fecha }}</li>
+  {% endif %} 
+
 </a>
 {% endblock %} {% block detalle %}
 
@@ -56,7 +65,7 @@
             <td>
               <a
                 href="{% url 'borrar cantidad' cantidad.pk %}"
-                class="buttonBorrar"
+                class="buttonBorrar borrar"
               >
                 ✖</a
               >
@@ -89,14 +98,17 @@
 </div>
 {% endblock %} 
 {% block accion %}
-<div class="elementoComponente">
-  <h2>Agregar productos:</h2>
-  <form class="cuadroFormularios" method="post">
-    {% csrf_token %} {{ form.errors }} {{ form.as_p }}
-    <p id="informacionCantidad"></p>
-    <button type="submit" class="botonAgregar">Agregar</button>
-  </form>
-  <div class="errorCantidad">La cantidad no puede ser menor a 1.</div>
+  <div class="cuadroInformacion">{% block accion %} {% endblock %}</div>
+  <div class="elementoComponente">
+    <h2>Agregar productos:</h2>
+    <form class="cuadroFormularios" method="post">
+      {% csrf_token %} {{ form.errors }} {{ form.as_p }}
+      <p id="informacionCantidad"></p>
+      <button type="submit" class="botonAgregar">Agregar</button>
+    </form>
+    <div class="errorCantidad">La cantidad no puede ser menor a 1.</div>
+  </div>
 </div>
 <script src="{% static 'js/cantidadProducto.js' %}"></script>
+<script src="{% static 'js/emailCliente.js' %}"></script>
 {% endblock %}

@@ -8,7 +8,6 @@ from appProyecto.forms import *
 from django.urls import reverse_lazy
 
 
-
 from django.core.mail import EmailMessage, get_connection
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -37,7 +36,7 @@ class CantidadDeleteView(DeleteView):
 class ProductosListView(ListView):
     model = Producto
     context_object_name = 'productos'
-    paginate_by = 3
+    paginate_by = 5
 
 
 class ProductoDetailView(DetailView):
@@ -94,7 +93,7 @@ class ProductoUpdateView(UpdateView):
 
 class PedidosListView(ListView):
     model = Pedido
-    paginate_by = 3
+    paginate_by = 5
     context_object_name = 'pedidos'
 
 
@@ -128,7 +127,7 @@ class PedidoDetailView(DetailView):
         )
         total = 0
         for c in context['cantidades']:
-            total = round( total + c.obtener_cantidad(), 2)
+            total = round(total + c.obtener_cantidad(), 2)
         self.object.precio = total
         self.object.save()
         context['precioTotal'] = total
@@ -161,7 +160,7 @@ class PedidoUpdateView(UpdateView):
 
 class ComponenteListView(ListView):
     model = Componente
-    paginate_by = 4
+    paginate_by = 5
     context_object_name = 'componentes'
 
 
@@ -177,7 +176,7 @@ class ComponenteDetailView(DetailView):
 
 class ClientesListView(ListView):
     model = Cliente
-    paginate_by = 3
+    paginate_by = 5
     context_object_name = 'clientes'
 
 
@@ -226,7 +225,7 @@ class ClienteDeleteView(DeleteView):
 
 class CategoriasListView(ListView):
     model = Categoria
-    paginate_by = 3
+    paginate_by = 5
 
 
 class CategoriaDetailView(DetailView):
@@ -332,26 +331,27 @@ class CategoriaCreateView(View):
         return render(request, 'appProyecto/categoria_create.html', {'formulario': formulario})
 
 
+def enviar_email(request):
+    if request.method == "POST":
+        with get_connection(
+            host=settings.EMAIL_HOST,
+            port=settings.EMAIL_PORT,
+            username=settings.EMAIL_HOST_USER,
+            password=settings.EMAIL_HOST_PASSWORD,
+            use_tls=settings.EMAIL_USE_TLS
+        ) as connection:
+            asunto = request.POST.get("asunto")
+            emisor = settings.EMAIL_HOST_USER
+            receptores = [request.POST.get("correo"), ]
+            mensaje = request.POST.get("mensaje")
 
-def enviar_email(request):  
-   if request.method == "POST": 
-       with get_connection(  
-           host=settings.EMAIL_HOST, 
-     port=settings.EMAIL_PORT,  
-     username=settings.EMAIL_HOST_USER, 
-     password=settings.EMAIL_HOST_PASSWORD, 
-     use_tls=settings.EMAIL_USE_TLS  
-       ) as connection:  
-           asunto = request.POST.get("asunto")  
-           emisor = settings.EMAIL_HOST_USER  
-           receptores = [request.POST.get("correo"), ]
-           mensaje = request.POST.get("mensaje")
+            context = {'asunto': asunto, 'mensaje': mensaje}
+            mensaje = render_to_string(
+                'appProyecto/plantilla_email.html', context)
 
-           context = {'asunto': asunto, 'mensaje': mensaje}
-           mensaje = render_to_string('appProyecto/plantilla_email.html', context)
-        
-           email = EmailMessage(asunto, mensaje, emisor, receptores, connection=connection)
-           email.content_subtype = 'html'
-           email.send()
- 
-   return redirect(request.META.get('HTTP_REFERER'))
+            email = EmailMessage(asunto, mensaje, emisor,
+                                 receptores, connection=connection)
+            email.content_subtype = 'html'
+            email.send()
+
+    return redirect(request.META.get('HTTP_REFERER'))

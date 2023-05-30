@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block titulo %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
+    <link id="estilos" rel="stylesheet" href="{% static 'css/estilos.css' %}" />
     <link rel="shortcut icon" href="{% static 'imagenes/miniLogo.png' %}" />
   </head>
 
@@ -29,7 +29,8 @@
             >Componentes</a
           >
           <a class="enlace" href="{% url 'lista categorias'  %}">Categorias</a>
-          <!-- <a class="enlace" href="">Caracteristicas</a> -->
+          <a class="enlace" id="modoClaro">☼</a>
+          <a class="enlace" id="modoOscuro" style="display: none;">⦿</a>
         </nav>
       </div>
     </header>
@@ -124,11 +125,9 @@
             alt="logo completo"
           />
         </a>
+        <h5>Esta con el modo <p id="modoPagina">OSCURO</p></h5>
       </div>
     </footer>
-
-    <script src="{% static 'js/emailCliente.js' %}"></script>
-
-
+    <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

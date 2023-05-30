@@ -24,7 +24,7 @@
           <td>{{r.telefono}}</td>
           <td>{{r.email}}</td>
           <td>
-            <a href="/appProyecto/clientes/{{r.id}}/delete/" class="buttonBorrar">
+            <a href="/appProyecto/clientes/{{r.id}}/delete/" class="buttonBorrar borrar">
               ✖</a
             >
           </td>
@@ -39,7 +39,7 @@
       {% if page_obj.paginator.num_pages > 1  %}
       <tfoot>
         <tr>
-          <td colspan="4">
+          <td colspan="6">
             <div class="links">
              {% if page_obj.has_previous %}
               <a href="?page=1"> inicio</a>

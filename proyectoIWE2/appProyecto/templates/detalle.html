@@ -14,7 +14,11 @@
   </section>
   <div class="descripcionProducto">{% block detalle %} {% endblock %}</div>
 
-  <div class="cuadroInformacion">{% block accion %} {% endblock %}</div>
+{% block accion %} {% endblock %}
+  <div class="contactoCliente">
+    {% block email %} {% endblock %}
+  </div>
 
-  {% endblock %}
+
 </div>
+  {% endblock %}

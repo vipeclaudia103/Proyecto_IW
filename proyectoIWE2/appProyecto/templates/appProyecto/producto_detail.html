@@ -10,7 +10,17 @@ productos {% endblock %}
 {% block urlElemento %}
 
 <a href="{% url 'detalle producto' p.pk %}">
+  {% if  p.id == producto.id %}
+  <li style="
+  background-color: #123655;
+  color: #cce1e8;
+  border-color: #123655;
+">{{ p.nombre }}</li>
+  {% else %}
   <li>{{ p.nombre }}</li>
+  {% endif %} 
+  
+
 </a>
 {% endblock %} {% block detalle %} {% if producto %}
 <div class="tituloProducto">
@@ -40,9 +50,9 @@ productos {% endblock %}
     <div class="tituloPropiedad">Descripcion:</div>
     {{ producto.descripcion}}
   </div>
+</div>
 
-  <div class="contenedorComponentes">
-    <div class="elementoComponente">
+    <div class="tablasList">
       <h2>Componentes:</h2>
     <table class="blueTable">
         <thead>
@@ -67,7 +77,8 @@ productos {% endblock %}
             <td>
               <form class="botones" action="{% url 'borrar elemento' elemento.pk %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="button">Borrar</button>
+                <button type="submit" class="buttonBorrar borrar">
+              ✖</button>
               </form>
             </td>
           </tr>
@@ -78,15 +89,12 @@ productos {% endblock %}
     {% else %}
     <p>No existe este producto.</p>
     {% endif %} 
-   
-    </div>
-  </div>
-</div>
 
 {% endblock %}
 
 {% block accion%}
- <div class="elementoComponente">
+<div class="cuadroInformacion">
+  <div class="elementoComponente">
       <h2>Agregar Componente:</h2>
       <form class="cuadroFormularios" method="post">
         {% csrf_token %} {{ form.errors }} {{ form.as_p }}
@@ -95,18 +103,9 @@ productos {% endblock %}
       <div class="errorCantidad">
         La cantidad no puede ser menor a 1.
       </div>
-<<<<<<< HEAD
-=======
-    </div>
-  </div>
+      {% load static %}
+      <script src="{% static 'js/cantidadComponente.js' %}"></script>
+ </div>
 </div>
-
-{% else %}
-<p>No existe este producto.</p>
-{% endif %} 
-
-{% load static %}
-<script src="{% static 'js/cantidadComponente.js' %}"></script>
-
->>>>>>> 0983323b6aa261d24478b78128cbcf09ef9e571d
+ 
 {% endblock %}

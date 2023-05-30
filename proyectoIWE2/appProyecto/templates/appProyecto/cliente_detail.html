@@ -6,7 +6,15 @@
 {% block urlElemento %}
 
 <a href="{% url 'detalle cliente' p.pk %}">
-  <li>{{ p.nombre }}</li>
+ {% if  p.id == cliente.id %}
+<li style="
+background-color: #123655;
+color: #cce1e8;
+border-color: #123655;
+">{{ p.nombre }}</li>
+{% else %}
+<li>{{ p.nombre }}</li>
+{% endif %} 
 </a>
 {% endblock %}
 
@@ -41,7 +49,9 @@
           Teléfono: {{ cliente.telefono}}
         </li>
         <li>
-          Correo: {{ cliente.email}}<a id="correoCliente" class="buttonAccion">✚</a>
+          Correo: <span id="correoCliente" >
+            {{ cliente.email}}
+          </span><a id="btnCorreoCliente" class="buttonAccion">✚</a>
         </li>
         <li>
           Dirección: {{ cliente.direccion}}
@@ -72,11 +82,11 @@
   </tbody>
 </table>
 {% else %}
-<div class="tituloPropiedad"> NO EXISTE NINGUN PRODUCTO CON ESTE COMPONENTE</div>
+<div class="tituloPropiedad"> NO EXISTE NINGUN PEDIDO DE ESTE CLIENTE</div>
 {% endif %}
 </div>
 {% endblock %}
-{% block accion %}
+{% block email %}
 
 {% load static %}
 <div class="botonCerrar">
@@ -100,6 +110,6 @@
     </div>
     <button type="submit">Enviar</button>
   </form>
-  
+  <script src="{% static 'js/emailCliente.js' %}"></script>
 
 {% endblock %}
