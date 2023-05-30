@@ -98,17 +98,19 @@
 </div>
 {% endblock %} 
 {% block accion %}
-  <div class="cuadroInformacion">{% block accion %} {% endblock %}</div>
-  <div class="elementoComponente">
-    <h2>Agregar productos:</h2>
-    <form class="cuadroFormularios" method="post">
-      {% csrf_token %} {{ form.errors }} {{ form.as_p }}
-      <p id="informacionCantidad"></p>
-      <button type="submit" class="botonAgregar">Agregar</button>
-    </form>
-    <div class="errorCantidad">La cantidad no puede ser menor a 1.</div>
+  <div class="cuadroInformacion">
+    <div class="elementoComponente">
+        <h2>Agregar productos:</h2>
+        <form class="cuadroFormularios" method="post">
+          {% csrf_token %} {{ form.errors }} {{ form.as_p }}
+          <p id="informacionCantidad"></p>
+          <button type="submit" class="botonAgregar">Agregar</button>
+        </form>
+        <div class="errorCantidad">La cantidad no puede ser menor a 1.</div>
+      </div>
+    </div>
   </div>
-</div>
+  
 <script src="{% static 'js/cantidadProducto.js' %}"></script>
 <script src="{% static 'js/emailCliente.js' %}"></script>
 {% endblock %}
