@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function setModo(modo) {
     document.cookie = "rutaCSS=" + encodeURIComponent(modo);
-    console.log(modo);
     setCookie('rutaCSS', modo, 30);
 }
 
