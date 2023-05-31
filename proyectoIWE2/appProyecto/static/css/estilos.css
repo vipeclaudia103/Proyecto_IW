@@ -90,6 +90,9 @@
     border-radius: 0.5em;
   }
 }
+#cuadroFooterLogo h5 {
+  color: #ffffff;
+}
 body {
   background-color: #171f26;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
