@@ -28,9 +28,14 @@ async function cuadroConfirmarAnadir() {
     cuadroAnadir.innerHTML = "Añadido correctamente";
     seleccionarSitio.append(cuadroAnadir);
     setTimeout(cuadroConfirmarQuitar, 3000);
-
+    limpiarFormulario();
 };
-
+function limpiarFormulario() {
+    let cuadrosTexto = document.querySelectorAll("#formularioComponente > p > input")
+    cuadrosTexto.forEach(element => {
+        element.value = "";
+    });;
+}
 function cuadroConfirmarQuitar() {
     let selecciondivanadido = document.getElementsByClassName('anadirDiv');
     for (var i = 0; i < selecciondivanadido.length; i++) {

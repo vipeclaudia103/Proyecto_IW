@@ -1,8 +1,8 @@
 {% extends "base.html" %} {% block titulo %}Listado de pedidos{% endblock %}
 {%block contenido %}
 <div class="content">
-  <h2>Listado de pedidos</h2>
-  <div class="tablasList">
+
+  <div class="tablasList">  <h2>Listado de pedidos</h2>
     <a href="{%url 'crear pedido'%}" class="button">Pedido ✚</a>
     {% if pedidos %}
     <table class="blueTable blueTable">

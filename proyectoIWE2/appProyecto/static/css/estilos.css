@@ -115,7 +115,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: min-content;
+  max-width: -webkit-fill-available;
   text-align: justify;
   margin: 0.6em;
   padding: 15px;
@@ -145,13 +145,12 @@ main,
 .cajaEnlace,
 nav {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
   align-content: space-evenly;
   flex-wrap: wrap;
   padding: 9px;
-  justify-content: space-between;
-  flex-grow: 1;
+  justify-content: space-evenly;
+  flex-grow: 2;
   margin-left: 1.3em;
 }
 .cabecera img {
@@ -183,6 +182,11 @@ main {
   margin: 0.1em;
   color: #242c32;
   border: 1px solid #88bdca;
+  display: flex;
+  min-width: min-content;
+  max-width: -webkit-fill-available;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .listaProductos ul li:hover {
@@ -287,7 +291,7 @@ h2 {
   padding: 0.5em;
   min-width: min-content;
   margin: 0.5em;
-  max-width: min-content;
+  max-width: -webkit-fill-available;
   border-bottom: 6px double darkslategrey;
 }
 
@@ -580,6 +584,7 @@ h2 {
   flex-direction: row;
   max-height: fit-content;
   justify-content: space-around;
+  align-items: baseline;
 }
 
 .navegadorProductos,
@@ -587,7 +592,8 @@ h2 {
   background-color: #d7d7d7;
   margin: 0.8em;
   border-radius: 2em;
-  max-width: min-content;
+  min-width: min-content;
+  max-width: -webkit-fill-available;
 }
 
 .listaProductos {
@@ -671,11 +677,12 @@ h2 {
 }
 
 .tablasList {
-  padding: 1.5em;
+  padding: 1em;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 .elementoComponente {
   padding: 0.2em;
@@ -695,7 +702,9 @@ h2 {
 }
 form,
 #cuadroInformacion {
-  width: 20em;
+  max-width: 20em;
+  min-width: min-content;
+  margin: 1em;
 }
 #cuadroInformacion {
   display: inherit;
@@ -799,4 +808,9 @@ form,
 
 .imputIncorrecto {
   border-color: red;
+}
+#cuadroFooterLogo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }

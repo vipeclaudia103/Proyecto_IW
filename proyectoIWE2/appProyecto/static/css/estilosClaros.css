@@ -90,8 +90,9 @@
     border-radius: 0.5em;
   }
 }
-#cuadroFooterLogo h5{
+#cuadroFooterLogo h5 {
   color: #123655;
+
 }
 body {
   background-color: #c0c8c5;
@@ -114,7 +115,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: min-content;
+    max-width: -webkit-fill-available;
   text-align: justify;
   margin: 0.6em;
   padding: 15px;
@@ -144,13 +145,12 @@ main,
 .cajaEnlace,
 nav {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
   align-content: space-evenly;
   flex-wrap: wrap;
   padding: 9px;
-  justify-content: space-between;
-  flex-grow: 1;
+  justify-content: space-evenly;
+  flex-grow: 2;
   margin-left: 1.3em;
 }
 .cabecera img {
@@ -166,14 +166,12 @@ main {
   background-color: #a3aba9;
 }
 .content {
-  padding: 10px;
+  padding: 0;
   background-color: #c0c8c5;
-  max-height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  width: fit-content;
+  flex-direction: row;
+  align-items: baseline;
 }
 
 .listaProductos ul li {
@@ -182,6 +180,11 @@ main {
   margin: 0.1em;
   color: navy;
   border: 1px solid #cce1e8;
+  display: flex;
+  min-width: min-content;
+  max-width: -webkit-fill-available;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .listaProductos ul li:hover {
@@ -290,7 +293,7 @@ h2 {
   padding: 0.5em;
   min-width: min-content;
   margin: 0.5em;
-  max-width: min-content;
+    max-width: -webkit-fill-available;
   border-bottom: 6px double darkslategrey;
 }
 
@@ -578,6 +581,7 @@ h2 {
   flex-direction: row;
   max-height: fit-content;
   justify-content: space-around;
+  align-items: baseline;
 }
 
 .navegadorProductos,
@@ -585,7 +589,7 @@ h2 {
   background-color: #e6fffa;
   margin: 0.8em;
   border-radius: 2em;
-  max-width: min-content;
+    max-width: -webkit-fill-available;
 }
 
 .listaProductos {
@@ -669,11 +673,12 @@ h2 {
 }
 
 .tablasList {
-  padding: 1.5em;
+  padding: 1em;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 .elementoComponente {
   padding: 0.2em;
@@ -689,11 +694,14 @@ h2 {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  align-items: start;
   flex-wrap: wrap;
 }
 form,
 #cuadroInformacion {
-  width: 20em;
+  max-width: 20em;
+  min-width: min-content;
+  margin: 1em;
 }
 #cuadroInformacion {
   display: inherit;
@@ -797,4 +805,9 @@ form,
 
 .imputIncorrecto {
   border-color: red;
+}
+#cuadroFooterLogo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
