@@ -6,7 +6,7 @@ async function botonGuardar(event) {
     event.preventDefault();
 
     const data = new FormData(formu);
-    response = await fetch("http://127.0.0.1:8000/appProyecto/componentes/", {
+    response = await fetch('', {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
