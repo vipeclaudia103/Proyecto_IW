@@ -92,7 +92,6 @@
 }
 #cuadroFooterLogo h5 {
   color: #123655;
-
 }
 body {
   background-color: #c0c8c5;
@@ -115,7 +114,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-    max-width: -webkit-fill-available;
+  max-width: -webkit-fill-available;
   text-align: justify;
   margin: 0.6em;
   padding: 15px;
@@ -170,7 +169,7 @@ main {
   background-color: #c0c8c5;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
 }
 
@@ -293,7 +292,7 @@ h2 {
   padding: 0.5em;
   min-width: min-content;
   margin: 0.5em;
-    max-width: -webkit-fill-available;
+  max-width: -webkit-fill-available;
   border-bottom: 6px double darkslategrey;
 }
 
@@ -589,7 +588,7 @@ h2 {
   background-color: #e6fffa;
   margin: 0.8em;
   border-radius: 2em;
-    max-width: -webkit-fill-available;
+  max-width: -webkit-fill-available;
 }
 
 .listaProductos {
